@@ -1,0 +1,5 @@
+plugins:
+  katex:
+    enable: true
+    inject: |
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16/dist/katex.min.css">

@@ -1,0 +1,13 @@
+# Hexo
+public/
+.deploy_git/
+node_modules/
+db.json
+
+# Obsidian
+source/_posts/**/.obsidian/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.log
