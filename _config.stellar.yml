@@ -3,3 +3,18 @@ plugins:
     enable: true
     inject: |
       <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16/dist/katex.min.css">
+
+# # 侧边栏主功能导航菜单
+# menubar:
+#   columns: 4
+#   items:
+#     - id: post
+#       theme: '#1BCDFC'
+#       icon: solar:documents-bold-duotone
+#       title: 博客
+#       url: /
+#     - id: about
+#       theme: '#FF8F2C'
+#       icon: solar:user-bold-duotone
+#       title: 关于
+#       url: /about/

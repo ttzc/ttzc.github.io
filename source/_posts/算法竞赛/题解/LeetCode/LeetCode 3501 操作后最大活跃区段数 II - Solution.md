@@ -5,7 +5,7 @@ platform: LeetCode
 tags:
   - LeetCode
   - 字符串
-  - Sparse-Table
+  - ST表
   - 离线查询
   - 贪心
 author: zaochen
