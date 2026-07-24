@@ -112,7 +112,7 @@ deploy:
   type: git
   repo: git@github.com:ttzc/ttzc.github.io.git
   branch: gh-pages
-  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+  message: "Site updated at {{ now('yyyy-MM-dd HH:mm:ss') }}"
 
 # Obsidian [[双链]] → 站内链接（按文件名匹配）
 titlebased_link:
