@@ -1,0 +1,143 @@
+/* Obsidian Callout 样式 | 适配浅色主题 */
+/* markdown-it-obsidian-callouts 插件输出结构:
+   <div class="callout" data-callout="note">
+     <div class="callout-title">
+       <div class="callout-title-icon"><svg>...</svg></div>
+       <div class="callout-title-inner">标题</div>
+     </div>
+     <div class="callout-content">...</div>
+   </div>
+*/
+
+.callout {
+  --callout-color: var(--text-strong, #1f2329);
+  --callout-bg: rgba(180, 180, 180, 0.1);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 16px 0;
+  background-color: var(--callout-bg);
+  border-left: 4px solid var(--callout-color);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9375em;
+  line-height: 1.6;
+}
+
+.callout-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--callout-color);
+  font-size: 1em;
+}
+
+.callout-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.callout-title-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--callout-color);
+}
+
+.callout-title-inner {
+  font-weight: 600;
+}
+
+.callout-content {
+  overflow-x: auto;
+}
+
+.callout-content p:first-child {
+  margin-top: 0;
+}
+
+.callout-content p:last-child {
+  margin-bottom: 0;
+}
+
+.callout-content .callout {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* 各类型颜色 */
+.callout[data-callout="note"] {
+  --callout-color: #448aff;
+  --callout-bg: rgba(68, 138, 255, 0.1);
+}
+.callout[data-callout="info"] {
+  --callout-color: #00b8d4;
+  --callout-bg: rgba(0, 184, 212, 0.1);
+}
+.callout[data-callout="abstract"],
+.callout[data-callout="summary"],
+.callout[data-callout="tldr"] {
+  --callout-color: #00a6c7;
+  --callout-bg: rgba(0, 166, 199, 0.1);
+}
+.callout[data-callout="tip"],
+.callout[data-callout="hint"],
+.callout[data-callout="important"] {
+  --callout-color: #00b67a;
+  --callout-bg: rgba(0, 182, 122, 0.1);
+}
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+  --callout-color: #00a040;
+  --callout-bg: rgba(0, 160, 64, 0.1);
+}
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"] {
+  --callout-color: #e9a23b;
+  --callout-bg: rgba(233, 162, 59, 0.1);
+}
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+  --callout-color: #e08c1e;
+  --callout-bg: rgba(224, 140, 30, 0.1);
+}
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="missing"] {
+  --callout-color: #d44a4a;
+  --callout-bg: rgba(212, 74, 74, 0.1);
+}
+.callout[data-callout="danger"],
+.callout[data-callout="error"] {
+  --callout-color: #c0392b;
+  --callout-bg: rgba(192, 57, 43, 0.1);
+}
+.callout[data-callout="bug"] {
+  --callout-color: #b8568f;
+  --callout-bg: rgba(184, 86, 143, 0.1);
+}
+.callout[data-callout="example"] {
+  --callout-color: #7c3aed;
+  --callout-bg: rgba(124, 58, 237, 0.1);
+}
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+  --callout-color: #888888;
+  --callout-bg: rgba(136, 136, 136, 0.1);
+}
+
+/* 可折叠 callout（插件暂不支持折叠，但保留样式以备扩展） */
+.callout.is-collapsible .callout-title {
+  cursor: pointer;
+  user-select: none;
+}
+.callout.is-collapsed .callout-content {
+  display: none;
+}
