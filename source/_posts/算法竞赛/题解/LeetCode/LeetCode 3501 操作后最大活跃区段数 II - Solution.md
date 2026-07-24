@@ -1,5 +1,5 @@
 ---
-title: LeetCode 3501 操作后最大活跃区段数 II
+title: LeetCode 3501 操作后最大活跃区段数 II  - Solution
 category: 题解
 platform: LeetCode
 tags:
@@ -9,7 +9,7 @@ tags:
   - 离线查询
   - 贪心
 author: zaochen
-abbrlink: 76b5
+abbrlink: 2de0
 date: 2026-07-23 00:00:00
 ---
 ## 1. 题目数据 (Problem Metadata)
