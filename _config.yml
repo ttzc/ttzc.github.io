@@ -114,6 +114,7 @@ feed:
   limit: 20
   hub:
   content: true
+  autodiscovery: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
