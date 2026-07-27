@@ -10,6 +10,7 @@ tags:
 author: zaochen
 abbrlink: d566f658
 date: 2026-07-24 10:00:00
+updated: 2026-07-27 10:00:00
 ---
 本文记录了我把 Obsidian 笔记发布为 Hexo 静态博客的完整过程——从 7 月 23 日晚到 24 日上午，大约 12 小时，经历了三次架构迭代，踩了一堆坑，最终落地为一个简洁的方案。
 
@@ -88,7 +89,7 @@ Hexo Integration 的 Convert/Publish 流程 + pathMapping 脚本 + hexo-backlink
 | 写作 | Obsidian（vault = `source/_posts/`） | 写完即发布 |
 | 渲染 | `hexo-renderer-markdown-it-plus` | 替代默认 marked，支持 callout / 图片尺寸 / 任务列表 |
 | 双链 | `hexo-filter-titlebased-link` | `[[文件名]]` → 文章链接 |
-| URL | `hexo-abbrlink` | crc32 短哈希 permalink（如 `/acc5/`） |
+| URL | `hexo-abbrlink` | CRC32 短哈希 permalink（如 `/d566f658/`） |
 | 公式 | KaTeX | CSS 经 stellar 主题 `plugins.katex.inject` 注入 |
 | 主题 | stellar v1.33.1 | |
 | 部署 | `hexo-deployer-git` | → GitHub Pages |
@@ -101,7 +102,7 @@ Hexo Integration 的 Convert/Publish 流程 + pathMapping 脚本 + hexo-backlink
 ```yaml
 permalink: :abbrlink/
 abbrlink:
-  algorithm: crc32
+  alg: crc32
   rep: hex
 
 post_asset_folder: true
