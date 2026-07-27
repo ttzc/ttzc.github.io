@@ -8,7 +8,7 @@ tags:
   - 线性DP
   - 数字三角形
 author: zaochen
-abbrlink: a234
+abbrlink: '508743e0'
 date: 2026-07-11 00:00:00
 ---
 ## 1. 题目数据 (Problem Metadata)

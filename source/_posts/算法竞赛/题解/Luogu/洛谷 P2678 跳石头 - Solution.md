@@ -8,7 +8,7 @@ tags:
   - 贪心
   - 最大化最小值
 author: zaochen
-abbrlink: 91d0
+abbrlink: ad1e1585
 date: 2026-07-15 00:00:00
 ---
 ## 1. 题目数据 (Problem Metadata)

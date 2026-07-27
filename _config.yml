@@ -17,7 +17,7 @@ avatar: https://avatars.githubusercontent.com/u/58620217
 url: http://ttzc.github.io
 permalink: :abbrlink/
 abbrlink:
-  algorithm: crc32
+  alg: crc32
   rep: hex
 permalink_defaults:
 pretty_urls:
@@ -106,6 +106,14 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: stellar
+
+# RSS Feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

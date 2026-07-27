@@ -9,7 +9,7 @@ tags:
   - 区间最值
 author: zaochen
 permalink: 16a27d21/
-abbrlink: 6dcb
+abbrlink: aade55f3
 date: 2026-07-22 00:00:00
 ---
 ST 表基于倍增思想，用 $st[i][j]$ 维护以 $i$ 为左端点、长度为 $2^j$ 的区间 $[i,\,i+2^j-1]$ 的最值，由两个长度为 $2^{j-1}$ 的子区间合并而来。预处理 $O(n\log n)$，单次查询 $O(1)$，但不支持修改，适用于离线 RMQ 问题。

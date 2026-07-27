@@ -9,7 +9,7 @@ tags:
   - 栈
   - 字符串
 author: zaochen
-abbrlink: "5157"
+abbrlink: 2905f300
 date: 2026-07-20 00:00:00
 ---
 ## 1. 题目数据 (Problem Metadata)

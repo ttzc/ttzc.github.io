@@ -8,7 +8,7 @@ tags:
   - 0/1背包
   - 动态规划
 author: zaochen
-abbrlink: "4324"
+abbrlink: ae043577
 date: 2026-07-15 00:00:00
 ---
 ## 1. 题目数据 (Problem Metadata)

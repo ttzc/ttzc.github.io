@@ -7,7 +7,7 @@ tags:
   - 字符串
   - 贪心
 author: zaochen
-abbrlink: c178
+abbrlink: 8a401a71
 date: 2026-07-22 00:00:00
 ---
 ## 1. 题目数据 (Problem Metadata)

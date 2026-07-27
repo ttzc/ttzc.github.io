@@ -10,7 +10,7 @@ tags:
 author: zaochen
 permalink: c3e7e194/
 published: false
-abbrlink: 7fab
+abbrlink: 957cf6c7
 date: 2026-07-22 00:00:00
 ---
 ## RMQ 问题

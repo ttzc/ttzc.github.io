@@ -9,7 +9,7 @@ tags:
   - 数学
   - 模逆元
 author: zaochen
-abbrlink: 944b
+abbrlink: a12f0831
 date: 2026-07-26 00:00:00
 ---
 

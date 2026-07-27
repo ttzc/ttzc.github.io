@@ -8,7 +8,7 @@ tags:
   - stellar
   - KaTeX
 author: zaochen
-abbrlink: f457
+abbrlink: d566f658
 date: 2026-07-24 10:00:00
 ---
 本文记录了我把 Obsidian 笔记发布为 Hexo 静态博客的完整过程——从 7 月 23 日晚到 24 日上午，大约 12 小时，经历了三次架构迭代，踩了一堆坑，最终落地为一个简洁的方案。

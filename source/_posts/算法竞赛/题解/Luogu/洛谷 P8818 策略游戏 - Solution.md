@@ -9,7 +9,7 @@ tags:
   - 区间最值
   - 博弈
 author: zaochen
-abbrlink: 97db
+abbrlink: 2983d0b1
 date: 2026-07-22 00:00:00
 ---
 ## 1. 题目数据 (Problem Metadata)

@@ -9,7 +9,7 @@ tags:
   - 反悔贪心
   - 排序
 author: zaochen
-abbrlink: b472
+abbrlink: ac6e74e8
 date: 2026-07-23 00:00:00
 ---
 ## 1. 题目数据 (Problem Metadata)
