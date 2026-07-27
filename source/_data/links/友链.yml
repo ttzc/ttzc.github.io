@@ -1,0 +1,10 @@
+# 友链分组名称即为文件名（友链），使用 `{% friends 友链 %}` 引用
+# 每个条目至少需要 title 和 url，icon/avatar 可选
+
+- title: zaochen's blog
+  url: https://ttzc.github.io
+  icon: https://avatars.githubusercontent.com/u/58620217
+
+- title: MZTLab‘s Realm
+  url: https://www.mztlab.net/
+  icon: https://www.mztlab.net/favicon.ico

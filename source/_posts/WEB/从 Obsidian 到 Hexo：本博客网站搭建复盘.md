@@ -85,7 +85,7 @@ Hexo Integration 的 Convert/Publish 流程 + pathMapping 脚本 + hexo-backlink
 ### 技术栈
 
 | 层级 | 组件 | 作用 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 写作 | Obsidian（vault = `source/_posts/`） | 写完即发布 |
 | 渲染 | `hexo-renderer-markdown-it-plus` | 替代默认 marked，支持 callout / 图片尺寸 / 任务列表 |
 | 双链 | `hexo-filter-titlebased-link` | `[[文件名]]` → 文章链接 |
@@ -183,7 +183,7 @@ hexo clean && hexo g && hexo d    :: 部署站点
 git add -A && git commit && git push  :: 提交源码
 ```
 
-站点地址：*https://ttzc.github.io
+站点地址：<https://ttzc.github.io>
 
 ## 复盘：哪些弯路值得走
 

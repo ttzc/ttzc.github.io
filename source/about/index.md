@@ -21,3 +21,7 @@ menu_id: about
 
 [GitHub](https://github.com/ttzc)
 [Codeforces](https://codeforces.com/profile/zaochen)
+
+## 联系方式
+
+EMAIl && QQ：<ftc2008@qq.com>
