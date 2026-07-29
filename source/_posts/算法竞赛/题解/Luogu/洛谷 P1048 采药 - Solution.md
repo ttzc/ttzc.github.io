@@ -9,7 +9,7 @@ tags:
   - 动态规划
 author: zaochen
 abbrlink: ae043577
-date: 2026-07-15 00:00:00
+date: 2026-07-15
 ---
 ## 1. 题目数据 (Problem Metadata)
 

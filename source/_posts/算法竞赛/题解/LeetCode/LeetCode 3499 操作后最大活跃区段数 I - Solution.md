@@ -8,7 +8,7 @@ tags:
   - 贪心
 author: zaochen
 abbrlink: 8a401a71
-date: 2026-07-22 00:00:00
+date: 2026-07-22
 ---
 ## 1. 题目数据 (Problem Metadata)
 

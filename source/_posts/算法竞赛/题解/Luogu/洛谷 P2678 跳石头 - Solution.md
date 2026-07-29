@@ -9,7 +9,7 @@ tags:
   - 最大化最小值
 author: zaochen
 abbrlink: ad1e1585
-date: 2026-07-15 00:00:00
+date: 2026-07-15
 ---
 ## 1. 题目数据 (Problem Metadata)
 

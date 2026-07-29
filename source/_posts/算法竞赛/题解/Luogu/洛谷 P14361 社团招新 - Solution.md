@@ -10,7 +10,7 @@ tags:
   - 排序
 author: zaochen
 abbrlink: ac6e74e8
-date: 2026-07-23 00:00:00
+date: 2026-07-23
 ---
 ## 1. 题目数据 (Problem Metadata)
 

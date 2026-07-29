@@ -9,7 +9,7 @@ tags:
   - 数字三角形
 author: zaochen
 abbrlink: '508743e0'
-date: 2026-07-11 00:00:00
+date: 2026-07-11
 ---
 ## 1. 题目数据 (Problem Metadata)
 
