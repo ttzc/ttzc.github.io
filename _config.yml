@@ -149,3 +149,26 @@ markdown_it_plus:
         enable: true
         options:
 
+# 洪墨AI - 文章摘要 + AI 对话
+## Docs: https://ai.zhheo.com/docs/plugin/hexo.html
+## 获取 key: https://ai.tianli0.top/ 或 https://summary.zhheo.com/
+postchat:
+  account:
+    key: 'S-M6N0LS5VUCQZLPJE'
+  summary:
+    enableSummary: true
+    postSelector: '.post-body'
+    postURL: 'https://(ttzc\.github\.io|zaochen\.netlify\.app)/.+'
+    wordLimit: '1000'
+    typingAnimate: true
+  chat:
+    enableAI: false
+    frameWidth: 340
+    frameHeight: 650
+    backgroundColor: '#ffffff'
+    fill: '#ffffff'
+    bottom: 20
+    left: 20
+    width: 60
+    defaultInput: '你好，我是这篇文章的AI助手，有什么可以帮你的吗？'
+
