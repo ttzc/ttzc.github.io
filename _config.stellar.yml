@@ -8,6 +8,9 @@ plugins:
     inject: |
       <link rel="stylesheet" href="/css/callout.css">
 
+logo:
+  avatar: '[{config.avatar}](/social/)'
+
 footer:
   content: |
     本站由 [{author.name}](/) 使用 [{theme.name} {theme.version}]({theme.tree}) 主题创建。
@@ -24,11 +27,11 @@ menubar:
       icon: solar:documents-bold-duotone
       title: 博客
       url: /
-    - id: friends
-      theme: '#F44336'
-      icon: solar:chat-square-like-bold-duotone
-      title: 友链
-      url: /friends/
+    - id: social
+      theme: '#FF8F2C'
+      icon: solar:planet-bold-duotone
+      title: 社交
+      url: /social/
 
 # # 侧边栏主功能导航菜单
 # menubar:
