@@ -144,3 +144,14 @@
 #post-ai .ai-title > svg path {
   fill: var(--text-p2, #ccc) !important;
 }
+
+/* 未开启 chat 功能，隐藏无用的按钮和语音框 */
+#post-ai .ai-btn-item:nth-child(n+3) {
+  display: none !important;
+}
+#post-ai .ai-speech-box {
+  display: none !important;
+}
+#post-ai .ai-Toggle {
+  display: none !important;
+}
