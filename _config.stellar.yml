@@ -1,12 +1,14 @@
 plugins:
   katex:
-    enable: true
-    inject: |
-      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16/dist/katex.min.css">
+    enable: false
   callout:
     enable: true
     inject: |
       <link rel="stylesheet" href="/css/callout.css">
+  mathjax:
+    enable: true
+    v3: false
+    js: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 logo:
   avatar: '[{config.avatar}](/social/)'

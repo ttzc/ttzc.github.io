@@ -148,4 +148,7 @@ markdown_it_plus:
         name: markdown-it-obsidian-images
         enable: true
         options:
+    - plugin:
+        name: '@iktakahiro/markdown-it-katex'
+        enable: false
 
