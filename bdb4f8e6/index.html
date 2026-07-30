@@ -20,12 +20,12 @@
   <title>代码模板-树状数组 - zaochen's blog</title>
 
   
-    <meta name="description" content="树状数组基于二进制拆分，用 $c[i]$ 维护以 $i$ 结尾、长度为 $lowbit(i)$ 的区间 $[i-lowbit(i)+1,,i]$ 的和。树深 $O(\log n)$，修改与查询均为 $O(\log n)$。 1#define lowbit(x) ((x)&amp;(-(x)))   单点修改 + 区间查询（维护前缀和） 12345678910111213141516const in">
+    <meta name="description" content="汇总树状数组的常用代码模板：单点修改区间查询、逆序对（含离散化）、区间修改单点查询（差分）、区间修改区间查询（维护 b[i] 与 i·b[i]），并给出相关学习笔记链接。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码模板-树状数组">
 <meta property="og:url" content="http://ttzc.github.io/bdb4f8e6/">
 <meta property="og:site_name" content="zaochen&#39;s blog">
-<meta property="og:description" content="树状数组基于二进制拆分，用 $c[i]$ 维护以 $i$ 结尾、长度为 $lowbit(i)$ 的区间 $[i-lowbit(i)+1,,i]$ 的和。树深 $O(\log n)$，修改与查询均为 $O(\log n)$。 1#define lowbit(x) ((x)&amp;(-(x)))   单点修改 + 区间查询（维护前缀和） 12345678910111213141516const in">
+<meta property="og:description" content="汇总树状数组的常用代码模板：单点修改区间查询、逆序对（含离散化）、区间修改单点查询（差分）、区间修改区间查询（维护 b[i] 与 i·b[i]），并给出相关学习笔记链接。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/58620217">
 <meta property="article:published_time" content="2026-07-15T16:00:00.000Z">
@@ -41,7 +41,7 @@
   
   
   
-  <meta name="keywords" content="树状数组,前缀和,差分,逆序对,代码模板">
+  <meta name="keywords" content="代码模板,树状数组,前缀和,差分,逆序对">
 
   <!-- feed -->
   
@@ -57,7 +57,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-16T00:00:00+08:00","dateModified":"2026-07-31T05:24:00+08:00","datePublished":"2026-07-16T00:00:00+08:00","description":"","headline":"代码模板-树状数组","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/bdb4f8e6/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/bdb4f8e6/","keywords":"树状数组, 前缀和, 差分, 逆序对, 代码模板","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-16T00:00:00+08:00","dateModified":"2026-07-31T05:24:00+08:00","datePublished":"2026-07-16T00:00:00+08:00","description":"","headline":"代码模板-树状数组","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/bdb4f8e6/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/bdb4f8e6/","keywords":"代码模板, 树状数组, 前缀和, 差分, 逆序对","image":[]}</script>
   
 </head>
 <body>
@@ -131,7 +131,7 @@
 
 </div>
 
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/34b10f95/">【数据结构】线段树（一） 学习笔记</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/ea7f282e/">代码模板-线段树</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/a7fba9f3/">代码模板-并查集</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/ea7f282e/">代码模板-线段树</a></div></section></div>
 
 
 
