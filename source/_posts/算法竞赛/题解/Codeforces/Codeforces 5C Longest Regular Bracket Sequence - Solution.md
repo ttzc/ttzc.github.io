@@ -11,6 +11,7 @@ tags:
 author: zaochen
 abbrlink: f5402e91
 date: 2026-07-20
+description: 给出最长合法括号子串的三种解法：DP 法 O(n)、栈匹配法 O(n) 与双向贪心+set 去重法，对比分析各自的适用场景与代码实现。
 ---
 ## 1. 题目数据 (Problem Metadata)
 

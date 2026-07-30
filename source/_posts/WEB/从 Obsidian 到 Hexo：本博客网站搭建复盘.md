@@ -11,6 +11,7 @@ author: zaochen
 abbrlink: d566f658
 date: 2026-07-24
 updated: 2026-07-27
+description: 记录从零搭建 Hexo + Stellar 博客的完整过程，涵盖三次架构迭代、Obsidian 双链渲染、KaTeX 公式、favicon 配置、busuanzi 访问统计等踩坑经验与最终落地方案。
 ---
 本文记录了我把 Obsidian 笔记发布为 Hexo 静态博客的完整过程——从 7 月 23 日晚到 24 日上午，大约 12 小时，经历了三次架构迭代，踩了一堆坑，最终落地为一个简洁的方案。
 
