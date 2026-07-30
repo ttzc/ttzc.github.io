@@ -9411,24 +9411,6 @@ a[data-fancybox] {
   margin-right: 1rem;
   border-radius: 8px;
 }
-.md-text p.katex-block {
-  overflow: scroll;
-}
-.md-text p.katex-block::-webkit-scrollbar {
-  height: 0;
-  width: 0;
-}
-.md-text p.katex-block::-webkit-scrollbar-track-piece {
-  background: transparent;
-}
-.md-text p.katex-block::-webkit-scrollbar-thumb {
-  background: var(--text-meta);
-  cursor: pointer;
-  border-radius: 0;
-}
-.md-text p.katex-block::-webkit-scrollbar-thumb:hover {
-  background: var(--text-p3);
-}
 .cmt-body.beaudar {
   margin: 0 -4px;
   width: calc(100% + 8px);
