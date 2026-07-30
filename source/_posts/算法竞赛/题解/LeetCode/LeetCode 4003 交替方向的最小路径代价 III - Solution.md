@@ -1,5 +1,5 @@
 ---
-title: LeetCode 4003 交替方向的最小路径代价 - Solution
+title: LeetCode 4003 交替方向的最小路径代价 III - Solution
 category: 题解
 platform: LeetCode
 tags:
@@ -8,7 +8,7 @@ tags:
   - Dijkstra
   - 优先队列
 author: zaochen
-abbrlink: 5ab76afc
+abbrlink: 94489eec
 description: >-
   本题给出 $m \times n$ 网格，每个格子有入口代价和罚金。从 $(0,0)$ 出发，第 $k$ 步移动方向由 $k$
   的奇偶性决定（奇数步只能右/下，偶数步只能左/上），违反规则或原地等待需支付罚金。分析指出朴素 DFS 因方向奇偶交替导致搜索空间巨大，进而将「位置 +
@@ -16,11 +16,10 @@ description: >-
   即可求解。文章详细推导了状态设计、转移规则，给出了 C++ 参考实现，并总结了 vis 标记时机、罚金归属、整数溢出等避坑要点。
 date: 2026-07-30 15:00:00
 ---
-
 ## 1. 题目数据 (Problem Metadata)
 
 - **题目类型**：传统题
-- **题目链接**：[4003. 交替方向的最小路径代价 - 力扣（LeetCode）](https://leetcode.cn/problems/minimum-path-cost-with-alternating-directions/)
+- **题目链接**：[4003. 交替方向的最小路径代价 III - 力扣（LeetCode）](https://leetcode.cn/problems/minimum-cost-path-with-alternating-directions-iii/description/)
 
 ## 2. 题意简述 (Problem Summary)
 
