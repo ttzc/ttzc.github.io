@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 8.1.2">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,22 +17,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>归档 - zaochen's blog</title>
+  <title>洛谷 P1637 三元上升子序列 - Solution - zaochen's blog</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://ttzc.github.io/archives/2026/07/page/3/">
+    <meta name="description" content="给定长度为 $N$ 的序列，求满足 $i &lt; j &lt; k$ 且 $a[i] &lt; a[j] &lt; a[k]$ 的三元组个数。$N \le 10^5$，$a_i \le 10^9$。通过枚举中间位置 $j$，利用权值树状数组分别统计左右两侧的可行元素个数，$O(N \log N)$ 解决。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷 P1637 三元上升子序列 - Solution">
+<meta property="og:url" content="http://ttzc.github.io/7c4f4089/">
 <meta property="og:site_name" content="zaochen&#39;s blog">
+<meta property="og:description" content="给定长度为 $N$ 的序列，求满足 $i &lt; j &lt; k$ 且 $a[i] &lt; a[j] &lt; a[k]$ 的三元组个数。$N \le 10^5$，$a_i \le 10^9$。通过枚举中间位置 $j$，利用权值树状数组分别统计左右两侧的可行元素个数，$O(N \log N)$ 解决。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/58620217">
+<meta property="article:published_time" content="2026-07-30T12:23:00.000Z">
+<meta property="article:modified_time" content="2026-07-30T12:23:00.000Z">
 <meta property="article:author" content="zaochen">
+<meta property="article:tag" content="Luogu">
+<meta property="article:tag" content="树状数组">
+<meta property="article:tag" content="离散化">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217">
   
   
   
-  
+  <meta name="keywords" content="树状数组,离散化,Luogu">
 
   <!-- feed -->
   
@@ -48,12 +55,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://ttzc.github.io","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"name":"zaochen's blog","description":"","url":"http://ttzc.github.io"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-30T20:23:00+08:00","dateModified":"2026-07-30T20:23:00+08:00","datePublished":"2026-07-30T20:23:00+08:00","description":"","headline":"洛谷 P1637 三元上升子序列 - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/7c4f4089/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/7c4f4089/","keywords":"树状数组, 离散化, Luogu","image":[]}</script>
   
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/social/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/58620217" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">zaochen's blog</div></a></div></header>
@@ -65,24 +72,146 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
+
+
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/7c4f4089/"><span class="title">洛谷 P1637 三元上升子序列 - Solution</span></a><a class="item title" href="/94489eec/"><span class="title">LeetCode 4003 交替方向的最小路径代价 III - Solution</span></a><a class="item title" href="/26daeb5a/"><span class="title">LeetCode 3518 最小回文排列 II - Solution</span></a><a class="item title" href="/df80b11b/"><span class="title">【组合数学】康托展开 学习笔记</span></a><a class="item title" href="/acd7b679/"><span class="title">代码模板-康托展开</span></a><a class="item title" href="/a9a1b994/"><span class="title">Codeforces 670C Cinema - Solution</span></a><a class="item title" href="/33b4e9d9/"><span class="title">代码模板-离散化</span></a><a class="item title" href="/4dac1417/"><span class="title">【基础算法】离散化 学习笔记</span></a><a class="item title" href="/26fd5b5/"><span class="title">洛谷 P1955 程序自动分析 - Solution</span></a><a class="item title" href="/d566f658/"><span class="title">从 Obsidian 到 Hexo：本博客网站搭建复盘</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/social/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/58620217" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">zaochen's blog</div></a></div></header>
-
- 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a class="active" href="/archives/">归档</a></nav></div></div></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2026</div><div class="archive-list"><a class='post fs14' href="/7c4f4089/"><time>07-30</time><span>洛谷 P1637 三元上升子序列 - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/94489eec/"><time>07-30</time><span>LeetCode 4003 交替方向的最小路径代价 III - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/26daeb5a/"><time>07-29</time><span>LeetCode 3518 最小回文排列 II - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/df80b11b/"><time>07-29</time><span>【组合数学】康托展开 学习笔记</span></a></div><div class="archive-list"><a class='post fs14' href="/acd7b679/"><time>07-29</time><span>代码模板-康托展开</span></a></div><div class="archive-list"><a class='post fs14' href="/a9a1b994/"><time>07-28</time><span>Codeforces 670C Cinema - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/33b4e9d9/"><time>07-28</time><span>代码模板-离散化</span></a></div><div class="archive-list"><a class='post fs14' href="/4dac1417/"><time>07-28</time><span>【基础算法】离散化 学习笔记</span></a></div><div class="archive-list"><a class='post fs14' href="/26fd5b5/"><time>07-27</time><span>洛谷 P1955 程序自动分析 - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/a12f0831/"><time>07-26</time><span>AtCoder ABC468 E - Sum of Average - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/fba1a986/"><time>07-26</time><span>LeetCode 4002 统计有效序列数目 - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/d566f658/"><time>07-24</time><span>从 Obsidian 到 Hexo：本博客网站搭建复盘</span></a></div><div class="archive-list"><a class='post fs14' href="/ac6e74e8/"><time>07-23</time><span>洛谷 P14361 社团招新 - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/122ef01b/"><time>07-23</time><span>LeetCode 3501 操作后最大活跃区段数 II  - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/16a27d21/"><time>07-22</time><span>代码模板-ST 表</span></a></div><div class="archive-list"><a class='post fs14' href="/8a401a71/"><time>07-22</time><span>LeetCode 3499 操作后最大活跃区段数 I - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/2983d0b1/"><time>07-22</time><span>洛谷 P8818 策略游戏 - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/f5402e91/"><time>07-20</time><span>Codeforces 5C Longest Regular Bracket Sequence - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/2905f300/"><time>07-20</time><span>Codeforces 26B Regular Bracket Sequence - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/bdb4f8e6/"><time>07-16</time><span>代码模板-树状数组</span></a></div><div class="archive-list"><a class='post fs14' href="/a7fba9f3/"><time>07-16</time><span>代码模板-并查集</span></a></div><div class="archive-list"><a class='post fs14' href="/ea7f282e/"><time>07-16</time><span>代码模板-线段树</span></a></div><div class="archive-list"><a class='post fs14' href="/e8b69da3/"><time>07-16</time><span>【动态规划】背包 DP 学习笔记</span></a></div><div class="archive-list"><a class='post fs14' href="/34b10f95/"><time>07-16</time><span>【数据结构】线段树（一） 学习笔记</span></a></div><div class="archive-list"><a class='post fs14' href="/b2643222/"><time>07-15</time><span>【动态规划】动态规划基础概念 学习笔记</span></a></div><div class="archive-list"><a class='post fs14' href="/ae043577/"><time>07-15</time><span>洛谷 P1048 采药 - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/ad1e1585/"><time>07-15</time><span>洛谷 P2678 跳石头 - Solution</span></a></div><div class="archive-list"><a class='post fs14' href="/8d397a22/"><time>07-14</time><span>【基础算法】二分 学习笔记</span></a></div><div class="archive-list"><a class='post fs14' href="/ad00a84a/"><time>07-13</time><span>代码模板-二分</span></a></div><div class="archive-list"><a class='post fs14' href="/508743e0/"><time>07-11</time><span>洛谷 P1216 数字三角形 Number Triangles - Solution</span></a></div></article><article class="" id="archive"><div class='archive-header h4'>2023</div><div class="archive-list"><a class='post fs14' href="/f410ff37/"><time>07-01</time><span>【图论】图的概念、存储和遍历 学习笔记</span></a></div><div class="archive-list"><a class='post fs14' href="/41e5d11e/"><time>01-20</time><span>【数据结构】树状数组 学习笔记</span></a></div><div class="archive-list"><a class='post fs14' href="/916cb2f0/"><time>01-04</time><span>【数据结构】并查集 学习笔记</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/solution/">题解</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-07-30T12:23:00.000Z">2026-07-30</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-07-30T12:23:00.000Z">2026-07-30</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>洛谷 P1637 三元上升子序列 - Solution</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="1-题目数据"><a class="markdownIt-Anchor" href="#1-题目数据"></a> 1. 题目数据</h2>
+<ul>
+<li><strong>题目类型</strong>：传统题</li>
+<li><strong>题目链接</strong>：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1637">P1637 三元上升子序列 - 洛谷</a></li>
+<li><strong>时间限制</strong>：1.00s</li>
+<li><strong>内存限制</strong>：128.00MB</li>
+</ul>
+<h2 id="2-题意简述"><a class="markdownIt-Anchor" href="#2-题意简述"></a> 2. 题意简述</h2>
+<p>给定长度为 $N$ 的序列 $a$，统计满足 $i &lt; j &lt; k$ 且 $a[i] &lt; a[j] &lt; a[k]$ 的三元组 $(i, j, k)$ 的个数。</p>
+<ul>
+<li>$1 \le N \le 10^5$</li>
+<li>$1 \le a_i \le 10^9$</li>
+</ul>
+<h2 id="3-朴素解法"><a class="markdownIt-Anchor" href="#3-朴素解法"></a> 3. 朴素解法</h2>
+<p>枚举中间位置 $j$，对每个 $j$ 扫描其左侧和右侧。记左侧满足 $a[i] &lt; a[j]$ 的个数为 $L_j$，右侧满足 $a[k] &gt; a[j]$ 的个数为 $R_j$，则以 $j$ 为中间的三元组个数为 $L_j \times R_j$。对每个 $j$ 扫描两侧需要 $O(N)$，总复杂度 $O(N^2)$，在 $N = 10^5$ 时不可行。</p>
+<p>$$<br />
+\text{ans} = \sum_{j=1}^{N} L_j \times R_j<br />
+$$</p>
+<h2 id="4-核心解法"><a class="markdownIt-Anchor" href="#4-核心解法"></a> 4. 核心解法</h2>
+<p>朴素解法的计数框架是正确的——枚举中间位置 $j$，计算左侧小于 $a[j]$ 的个数 $L_j$ 和右侧大于 $a[j]$ 的个数 $R_j$。瓶颈在于对每个 $j$ 都需要 $O(N)$ 时间统计 $L_j$ 和 $R_j$。注意到 $L_j$ 只依赖于 $a[1…j-1]$ 中小于 $a[j]$ 的个数，这是一个典型的前缀计数问题，可以用权值树状数组（Fenwick Tree）在 $O(\log V)$ 时间内完成查询和更新。</p>
+<h3 id="离散化"><a class="markdownIt-Anchor" href="#离散化"></a> 离散化</h3>
+<p>由于 $a_i$ 可达 $10^9$，但 $N \le 10^5$，需要对值域进行离散化。将所有 $a_i$ 排序去重，映射到 $[1, M]$（$M \le N$）。离散化后，树状数组的大小为 $M$，所有操作在 $O(\log M) = O(\log N)$ 内完成。</p>
+<h3 id="计算-l_j"><a class="markdownIt-Anchor" href="#计算-l_j"></a> 计算 $L_j$</h3>
+<p>从左到右遍历，维护一个权值树状数组 $T_L$。遍历到 $j$ 时，$T_L$ 中已加入 $a[1], a[2], \ldots, a[j-1]$。$L_j = T_L.query(\text{rank}(a[j]) - 1)$，即查询值严格小于 $a[j]$ 的元素个数，然后将 $a[j]$ 加入 $T_L$。</p>
+<h3 id="计算-r_j"><a class="markdownIt-Anchor" href="#计算-r_j"></a> 计算 $R_j$</h3>
+<p>从右到左遍历，维护一个权值树状数组 $T_R$。遍历到 $j$ 时，$T_R$ 中已加入 $a[j+1], a[j+2], \ldots, a[N]$。查询 $T_R$ 中值 $\le a[j]$ 的元素个数为 $T_R.query(\text{rank}(a[j]))$（包含刚加入的 $a[j]$ 自身）。位置 $&gt; j$ 的元素总数为 $N - j$，其中值 $\le a[j]$ 的元素有 $T_R.query(\text{rank}(a[j])) - 1$ 个，故右侧严格大于 $a[j]$ 的元素个数为：</p>
+<p>$$<br />
+R_j = (N - j) - (T_R.query(\text{rank}(a[j])) - 1) = N - j - T_R.query(\text{rank}(a[j])) + 1<br />
+$$</p>
+<p>然后将 $a[j]$ 加入 $T_R$。</p>
+<h3 id="推导过程"><a class="markdownIt-Anchor" href="#推导过程"></a> 推导过程</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ans = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to N:</span><br><span class="line">    L_j = TL.query(rank(a[j]) - <span class="number">1</span>)</span><br><span class="line">    TL.add(rank(a[j]), <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> j = N down to <span class="number">1</span>:</span><br><span class="line">    TR.add(rank(a[j]), <span class="number">1</span>)</span><br><span class="line">    R_j = N - j - TR.query(rank(a[j])) + <span class="number">1</span></span><br><span class="line">    ans += L_j * R_j</span><br></pre></td></tr></table></figure>
+<h2 id="5-正确性证明"><a class="markdownIt-Anchor" href="#5-正确性证明"></a> 5. 正确性证明</h2>
+<h3 id="l_j-的正确性"><a class="markdownIt-Anchor" href="#l_j-的正确性"></a> $L_j$ 的正确性</h3>
+<p>$T_L$ 在计算 $L_j$ 时恰好包含 $a[1…j-1]$。$T_L.query(\text{rank}(a[j])-1)$ 统计的是值域中映射到 $[1, \text{rank}(a[j])-1]$ 的元素个数。由于离散化保持大小关系，rank 越小对应原值越小，因此这恰好是值严格小于 $a[j]$ 的元素个数。$L_j$ 正确。</p>
+<h3 id="r_j-的正确性"><a class="markdownIt-Anchor" href="#r_j-的正确性"></a> $R_j$ 的正确性</h3>
+<p>$T_R$ 在计算 $R_j$ 时恰好包含 $a[j+1…N]$。$T_R.query(\text{rank}(a[j]))$ 统计的是值域中映射到 $[1, \text{rank}(a[j])]$ 的元素个数，包含所有值 $\le a[j]$ 的元素（包括刚加入的 $a[j]$ 自身）。因此，值 $\le a[j]$ 的元素个数（含 $a[j]$）为 $T_R.query(\text{rank}(a[j]))$，其中 $a[j]$ 自身占 1 个，剩余 $T_R.query(\text{rank}(a[j])) - 1$ 个是值 $\le a[j]$ 的其他元素（均在位置 $&gt; j$ 处）。位置 $&gt; j$ 的元素总数为 $N - j$，故值 $&gt; a[j]$ 的元素个数：</p>
+<p>$$<br />
+R_j = (N - j) - (T_R.query(\text{rank}(a[j])) - 1) = N - j - T_R.query(\text{rank}(a[j])) + 1<br />
+$$</p>
+<h3 id="乘法原理"><a class="markdownIt-Anchor" href="#乘法原理"></a> 乘法原理</h3>
+<p>对于固定的 $j$，左侧任意一个值 $&lt; a[j]$ 的元素 $a[i]$ 与右侧任意一个值 $&gt; a[j]$ 的元素 $a[k]$ 都能唯一确定一个满足条件的三元组 $(i, j, k)$，且不同 $(i, k)$ 对对应不同的三元组。因此以 $j$ 为中间元素的三元组总数恰为 $L_j \times R_j$。对所有 $j$ 求和即得总数。综上所述，整个计数过程正确。</p>
+<h2 id="6-复杂度分析"><a class="markdownIt-Anchor" href="#6-复杂度分析"></a> 6. 复杂度分析</h2>
+<ul>
+<li><strong>时间复杂度</strong>：$O(N \log N)$。离散化排序 $O(N \log N)$，两次遍历各 $N$ 次 BIT 操作，每次 $O(\log N)$。</li>
+<li><strong>空间复杂度</strong>：$O(N)$，离散化数组 + 树状数组 + $L, R$ 数组。</li>
+</ul>
+<p>$N = 10^5$ 时，$2 \times 10^5$ 次 $\log$ 级别的 BIT 操作完全在时间限制内。</p>
+<h2 id="7-实现细节与避坑指南"><a class="markdownIt-Anchor" href="#7-实现细节与避坑指南"></a> 7. 实现细节与避坑指南</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">坑点</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>离散化去重</strong></td>
+<td style="text-align:left"><code>sort</code> + <code>unique</code> 去重，注意 <code>unique</code> 返回的迭代器与原起点的差值为新长度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>下标从 1 开始</strong></td>
+<td style="text-align:left">树状数组下标从 1 开始，离散化后的 rank 也是从 1 开始，注意 <code>query(rank - 1)</code> 时 rank = 1 时 query(0) 返回 0，不越界。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>long long</strong></td>
+<td style="text-align:left">$N = 10^5$ 时最坏情况下三元组个数可达 $\binom{10^5}{3} \approx 1.67 \times 10^{14}$，需要 <code>long long</code> 存储答案。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>严格不等式</strong></td>
+<td style="text-align:left">左侧用 <code>query(rank - 1)</code>（严格小于），右侧用上述公式（严格大于），相等值不构成三元组。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-参考代码"><a class="markdownIt-Anchor" href="#8-参考代码"></a> 8. 参考代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P1637</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100005</span>], b[<span class="number">100005</span>], m;</span><br><span class="line"><span class="type">int</span> c[<span class="number">100005</span>];</span><br><span class="line"><span class="type">int</span> L[<span class="number">100005</span>], R[<span class="number">100005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123; <span class="keyword">return</span> x &amp; (-x); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> id, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = id; i &lt;= m; i += <span class="built_in">lowbit</span>(i))</span><br><span class="line">        c[i] += x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> id)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = id; i; i -= <span class="built_in">lowbit</span>(i))</span><br><span class="line">        ret += c[i];</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;data.in&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;data.out&quot;</span>, <span class="string">&quot;w&quot;</span>, stdout);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        b[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + n);</span><br><span class="line">    m = <span class="built_in">unique</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + n) - b - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = <span class="built_in">lower_bound</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + m, a[i]) - b;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从左到右：计算 L[j]</span></span><br><span class="line">    <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span> c);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">        L[j] = <span class="built_in">query</span>(a[j] - <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">add</span>(a[j], <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从右到左：计算 R[j]</span></span><br><span class="line">    <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span> c);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = n; j &gt;= <span class="number">1</span>; j--) &#123;</span><br><span class="line">        <span class="built_in">add</span>(a[j], <span class="number">1</span>);</span><br><span class="line">        R[j] = n - j - <span class="built_in">query</span>(a[j]) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">        ans += L[j] * R[j];</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>#define int long long</code> 是 OI 中的常用习惯，统一处理可以避免中间过程溢出，本题最坏情况下答案约为 $1.67 \times 10^{14}$，用 <code>long long</code> 类型最稳妥。</p>
+<h2 id="9-补充说明"><a class="markdownIt-Anchor" href="#9-补充说明"></a> 9. 补充说明</h2>
+<ul>
+<li><strong>相关题目</strong>：类似思路可推广到统计满足 $a[i] &lt; a[j] &lt; a[k]$ 或 $a[i] &gt; a[j] &gt; a[k]$ 的三元组，也可用于统计四元组等更高维的组合计数问题。<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P10589">P10589 楼兰图腾 - 洛谷</a> 是同一思路的变体。</li>
+<li><strong>学习笔记</strong>：树状数组基础与权值树状数组详见 <a   href='/41e5d11e/'>【数据结构】树状数组 学习笔记</a></li>
+</ul>
+<p>这个方法在计数类问题中非常经典，思路清晰且巧妙，是树状数组的重要应用之一，值得掌握。</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/94489eec/">LeetCode 4003 交替方向的最小路径代价 III - Solution</a></div></section></div>
+
+
+
+
+
+
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">zaochen</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br />
 本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。<br />
 全站访问量 <span id="busuanzi_site_pv">-</span> 次 · 访客数 <span id="busuanzi_site_uv">-</span> 人 · 本页面浏览 <span id="busuanzi_page_pv">-</span> 次</p>
 <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A2%98%E7%9B%AE%E6%95%B0%E6%8D%AE"><span class="toc-text"> 1. 题目数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0"><span class="toc-text"> 2. 题意简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9C%B4%E7%B4%A0%E8%A7%A3%E6%B3%95"><span class="toc-text"> 3. 朴素解法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A0%B8%E5%BF%83%E8%A7%A3%E6%B3%95"><span class="toc-text"> 4. 核心解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="toc-text"> 离散化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97-l_j"><span class="toc-text"> 计算 $L_j$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97-r_j"><span class="toc-text"> 计算 $R_j$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B"><span class="toc-text"> 推导过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%AD%A3%E7%A1%AE%E6%80%A7%E8%AF%81%E6%98%8E"><span class="toc-text"> 5. 正确性证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#l_j-%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="toc-text"> $L_j$ 的正确性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#r_j-%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="toc-text"> $R_j$ 的正确性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%98%E6%B3%95%E5%8E%9F%E7%90%86"><span class="toc-text"> 乘法原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-text"> 6. 复杂度分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82%E4%B8%8E%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97"><span class="toc-text"> 7. 实现细节与避坑指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%8F%82%E8%80%83%E4%BB%A3%E7%A0%81"><span class="toc-text"> 8. 参考代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text"> 9. 补充说明</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
