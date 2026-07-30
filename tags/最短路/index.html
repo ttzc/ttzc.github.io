@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  
+  <meta name="robots" content="noindex,follow">
   <meta name="generator" content="Hexo 8.1.2">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,30 +17,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>洛谷 P1216 数字三角形 Number Triangles - Solution - zaochen's blog</title>
+  <title>Tag: 最短路 - zaochen's blog</title>
 
   
-    <meta name="description" content="1. 题目数据 (Problem Metadata)  题目类型：传统题 题目链接：P1216 [IOI 1994 &#x2F; USACO1.5] 数字三角形 Number Triangles - 洛谷 时间限制：1.00s 内存限制：125.00MB   2. 题意简述 (Problem Summary) 给定一个 $r$ 行的数字三角形（$1 \le r \le 1000$），第 $i$ 行有 $i">
-<meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P1216 数字三角形 Number Triangles - Solution">
-<meta property="og:url" content="http://ttzc.github.io/508743e0/">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="zaochen&#39;s blog">
+<meta property="og:url" content="http://ttzc.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">
 <meta property="og:site_name" content="zaochen&#39;s blog">
-<meta property="og:description" content="1. 题目数据 (Problem Metadata)  题目类型：传统题 题目链接：P1216 [IOI 1994 &#x2F; USACO1.5] 数字三角形 Number Triangles - 洛谷 时间限制：1.00s 内存限制：125.00MB   2. 题意简述 (Problem Summary) 给定一个 $r$ 行的数字三角形（$1 \le r \le 1000$），第 $i$ 行有 $i">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/58620217">
-<meta property="article:published_time" content="2026-07-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-10T16:00:00.000Z">
 <meta property="article:author" content="zaochen">
-<meta property="article:tag" content="Luogu">
-<meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="数字三角形">
-<meta property="article:tag" content="线性DP">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217">
   
   
   
-  <meta name="keywords" content="动态规划,线性DP,Luogu,数字三角形">
+  
 
   <!-- feed -->
   
@@ -56,12 +48,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-11T00:00:00+08:00","dateModified":"2026-07-11T00:00:00+08:00","datePublished":"2026-07-11T00:00:00+08:00","description":"","headline":"洛谷 P1216 数字三角形 Number Triangles - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/508743e0/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/508743e0/","keywords":"动态规划, 线性DP, Luogu, 数字三角形","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://ttzc.github.io","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"name":"zaochen's blog","description":"","url":"http://ttzc.github.io"}</script>
   
 </head>
 <body>
 
-<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/social/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/58620217" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">zaochen's blog</div></a></div></header>
@@ -73,164 +65,22 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
 
-
-
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/5ab76afc/"><span class="title">LeetCode 4003 交替方向的最小路径代价 - Solution</span></a><a class="item title" href="/26daeb5a/"><span class="title">LeetCode 3518 最小回文排列 II - Solution</span></a><a class="item title" href="/df80b11b/"><span class="title">【组合数学】康托展开 学习笔记</span></a><a class="item title" href="/acd7b679/"><span class="title">代码模板-康托展开</span></a><a class="item title" href="/a9a1b994/"><span class="title">Codeforces 670C Cinema - Solution</span></a><a class="item title" href="/33b4e9d9/"><span class="title">代码模板-离散化</span></a><a class="item title" href="/4dac1417/"><span class="title">【基础算法】离散化 学习笔记</span></a><a class="item title" href="/26fd5b5/"><span class="title">洛谷 P1955 程序自动分析 - Solution</span></a><a class="item title" href="/d566f658/"><span class="title">从 Obsidian 到 Hexo：本博客网站搭建复盘</span></a><a class="item title" href="/fba1a986/"><span class="title">LeetCode 4002 统计有效序列数目 - Solution</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
+<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/social/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/58620217" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">zaochen's blog</div></a></div></header>
+
+ 
 
 
 
 
-<div class="article banner top">
-  <div class="content">
-    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
-<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/solution/">题解</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2026-07-10T16:00:00.000Z">2026-07-11</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2026-07-10T16:00:00.000Z">2026-07-11</time></span></div></div></div>
-    
-    <div class="bottom only-title">
-      
-      <div class="text-area">
-        <h1 class="text title"><span>洛谷 P1216 数字三角形 Number Triangles - Solution</span></h1>
-        
-      </div>
-    </div>
-    
-  </div>
-  </div><article class="md-text content"><h2 id="1-题目数据-problem-metadata"><a class="markdownIt-Anchor" href="#1-题目数据-problem-metadata"></a> 1. 题目数据 (Problem Metadata)</h2>
-<ul>
-<li><strong>题目类型</strong>：传统题</li>
-<li><strong>题目链接</strong>：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1216">P1216 [IOI 1994 / USACO1.5] 数字三角形 Number Triangles - 洛谷</a></li>
-<li><strong>时间限制</strong>：1.00s</li>
-<li><strong>内存限制</strong>：125.00MB</li>
-</ul>
-<h2 id="2-题意简述-problem-summary"><a class="markdownIt-Anchor" href="#2-题意简述-problem-summary"></a> 2. 题意简述 (Problem Summary)</h2>
-<p>给定一个 $r$ 行的数字三角形（$1 \le r \le 1000$），第 $i$ 行有 $i$ 个整数 $a_{i,j} \in [0, 100]$。从顶点 $a_{1,1}$ 出发，每一步只能走到正下方 $a_{i+1,j}$ 或右下方 $a_{i+1,j+1}$，求一条到达底行的路径，使经过数字之和最大。即：</p>
-<p>$$<br />
-\max_{P \in \text{合法路径}} \sum_{(i,j) \in P} a_{i,j}<br />
-$$</p>
-<h2 id="3-朴素解法-brute-force"><a class="markdownIt-Anchor" href="#3-朴素解法-brute-force"></a> 3. 朴素解法 (Brute-Force)</h2>
-<p>最直接的想法是 <strong>DFS 枚举所有路径</strong>：从 $(1,1)$ 出发，每步尝试向下或向右下，到达底行后更新全局最大值。</p>
-<ul>
-<li>每一步有 2 种选择，路径长度为 $r-1$ 步。</li>
-<li>总路径数：$2^{r-1}$ 条，每条路径需要 $O®$ 求和。</li>
-</ul>
-<p><strong>时间复杂度</strong>：$O(2^r \cdot r)$，$r \ge 30$ 即超时。题目要求 $r = 1000$，$2^{1000}$ 远超宇宙原子数，完全不可行。即使加入最优化剪枝（当前和 + 剩余行最大可能和 $\le$ 当前最优），对于三角形中间数值分布均匀的情况，剪枝效果极差。总而言之，必须换思路。</p>
-<h2 id="4-核心解法-main-solution"><a class="markdownIt-Anchor" href="#4-核心解法-main-solution"></a> 4. 核心解法 (Main Solution)</h2>
-<h3 id="特殊性质"><a class="markdownIt-Anchor" href="#特殊性质"></a> 特殊性质</h3>
-<p>数字三角形具有完美的 <strong>最优子结构</strong> 和 <strong>无后效性</strong>，这是 DP 可解的充要条件。</p>
-<h3 id="关键突破"><a class="markdownIt-Anchor" href="#关键突破"></a> 关键突破</h3>
-<p>注意到：到达 $(i,j)$ 的最大和，只与到达其两个&quot;前驱&quot; $(i-1,j-1)$ 和 $(i-1,j)$ 的最大和有关，与这些前驱自身的路径毫无关系。因此我们可以 <strong>自顶向下逐行递推</strong>，每行每个位置只计算一次，避免指数级重复枚举。这就是动态规划的 <strong>时间换空间</strong>：我们存储了到每个位置的最大和，从而简化了原本重复的搜索过程。</p>
-<h3 id="推导过程"><a class="markdownIt-Anchor" href="#推导过程"></a> 推导过程</h3>
-<p>下面推导动态规划的状态转移方程：</p>
-<p><strong>第 1 步：定义状态</strong></p>
-<p>设 $dp[i][j]$ 表示从顶点 $(1,1)$ 走到 $(i,j)$ 能获得的最大数字和。</p>
-<p><strong>第 2 步：初始状态</strong></p>
-<p>$$<br />
-dp[1][1] = a_{1,1}<br />
-$$</p>
-<p><strong>第 3 步：状态转移</strong></p>
-<p>$(i,j)$ 只能从 $(i-1,j-1)$（左上方）或 $(i-1,j)$（正上方）走来。因此：</p>
-<p>$$<br />
-dp[i][j] = \max\big(dp[i-1][j-1],; dp[i-1][j]\big) + a_{i,j}<br />
-$$</p>
-<p>边界处理：</p>
-<ul>
-<li>$j = 1$（每行最左）：只能从 $(i-1,1)$ 走来，$dp[i][1] = dp[i-1][1] + a_{i,1}$。</li>
-<li>$j = i$（每行最右）：只能从 $(i-1,i-1)$ 走来，$dp[i][i] = dp[i-1][i-1] + a_{i,i}$。</li>
-</ul>
-<p><strong>第 4 步：答案</strong></p>
-<p>底行每个位置都可能成为路径终点：</p>
-<p>$$<br />
-\text{ans} = \max_{1 \le j \le r}; dp[r][j]<br />
-$$</p>
-<h2 id="5-正确性证明-proof-of-correctness"><a class="markdownIt-Anchor" href="#5-正确性证明-proof-of-correctness"></a> 5. 正确性证明 (Proof of Correctness)</h2>
-<p>DP 正确性需证两点：</p>
-<p><strong>（1）最优子结构</strong></p>
-<p>设 $P^<em>$ 是以 $(i,j)$ 为终点的最优路径。若 $P^</em>$ 经过 $(i-1,k)$（其中 $k = j-1$ 或 $k = j$），则 $P^<em>$ 从 $(1,1)$ 到 $(i-1,k)$ 的子路径必然也是到达 $(i-1,k)$ 的最优路径。否则，将该子路径替换为更优者，$P^</em>$ 会变得更优，矛盾。因此，此问题具有<strong>最优子结构</strong>性质。</p>
-<p><strong>（2）无后效性</strong></p>
-<p>$dp[i][j]$ 的值只由 $dp[i-1][j-1]$ 和 $dp[i-1][j]$ 决定，与这两个值从<strong>哪条路径来</strong>完全无关。因此，递推顺序（逐行、行内任意序）不会影响结果的正确性，只需要保证每次递推用到的值已经被计算，问题具有<strong>无后效性</strong>。</p>
-<p>由（1）（2） 可知，本问题可以用动态规划解决，上述递推式正确，证毕。</p>
-<h2 id="6-复杂度分析-complexity"><a class="markdownIt-Anchor" href="#6-复杂度分析-complexity"></a> 6. 复杂度分析 (Complexity)</h2>
-<ul>
-<li>
-<p><strong>时间复杂度</strong>：$O(r^2)$。共 $r$ 行，第 $i$ 行 $i$ 个状态，每个状态 $O(1)$ 转移。$r \le 1000$ 时约 $5 \times 10^5$ 次运算，在 1s 时限内轻松通过。</p>
-</li>
-<li>
-<p><strong>空间复杂度</strong>：$O(r^2)$。二维数组 $dp[1005][1005]$ 占约 4 MB（int 型），远低于典型内存限制。</p>
-</li>
-<li>
-<p><strong>滚动数组优化</strong>：观察到 $dp[i][\cdot]$ 只依赖 $dp[i-1][\cdot]$，可以用两个一维数组交替滚动，将空间降至 $O®$。但对 $r=1000$ 来说，$O(r^2)$ 已经完全足够，不必为省内存引入额外编码复杂度。</p>
-</li>
-</ul>
-<h2 id="7-实现细节与避坑指南-implementation-details"><a class="markdownIt-Anchor" href="#7-实现细节与避坑指南-implementation-details"></a> 7. 实现细节与避坑指南 (Implementation Details)</h2>
-<table>
-<thead>
-<tr>
-<th>坑点</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>边界条件</strong></td>
-<td>每行最左 ($j=1$) 和最右 ($j=i$) 只有一条入边，不能访问 $dp[i-1][0]$ 或 $dp[i-1][i]$（越界或读到未初始化值）。代码中需显式 <code>if</code> 判断。</td>
-</tr>
-<tr>
-<td><strong>数组下标从 1 开始</strong></td>
-<td>用 $1$-based 索引可以自然地避免 $dp[0][\cdot]$ 的边界检查，代码更简洁。</td>
-</tr>
-<tr>
-<td><strong>整数范围</strong></td>
-<td>$a_{i,j} \le 100$，$r \le 1000$，最大路径和 $\le 100 \times 1000 = 10^5$，<code>int</code> 完全够用，无需 <code>long long</code>。</td>
-</tr>
-<tr>
-<td><strong>答案初始值</strong></td>
-<td>求最大值时初始化为 $0$ 即可，因为所有 $a_{i,j} \ge 0$。若题目允许负数，则应初始化为 $-\infty$。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="8-参考代码-reference-code"><a class="markdownIt-Anchor" href="#8-参考代码-reference-code"></a> 8. 参考代码 (Reference Code)</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1005</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[N][N], dp[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= i; j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始状态</span></span><br><span class="line">    dp[<span class="number">1</span>][<span class="number">1</span>] = a[<span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 逐行递推</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">1</span>)</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j] + a[i][j];          <span class="comment">// 最左列</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j == i)</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + a[i][j];      <span class="comment">// 最右列</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - <span class="number">1</span>]) + a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取底行最大值</span></span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">        ans = <span class="built_in">max</span>(ans, dp[n][j]);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="9-补充说明-additional-notes"><a class="markdownIt-Anchor" href="#9-补充说明-additional-notes"></a> 9. 补充说明 (Additional Notes)</h2>
-<ul>
-<li>
-<p><strong>题目渊源</strong>：本题出自 <strong>IOI 1994</strong>（国际信息学奥林匹克竞赛第 6 届），是 DP 首次作为 IOI 考点进入竞赛界的标志性题目。彼时动态规划刚被引入信息学竞赛，从这道&quot;数字三角形&quot;开始，DP 逐渐成为 OI/ICPC 的核心方法论之一。这也是为什么它始终是 DP 入门教学的首选例题——它足够纯粹，完美展示了 DP 的&quot;最优子结构 + 无后效性&quot;两个本质特征，没有任何多余技巧。</p>
-</li>
-<li>
-<p><strong>与 DAG 的关系</strong>：从更抽象的视角看，数字三角形可视为一种 <strong>DAG 最长路</strong> 问题。将每个格子看作节点，向下/右下走看作有向边，边权为目标格子的值，问题等价于求 DAG 上源点到任意汇点的最长路径。这类问题的统一解法即拓扑序 DP。事实上，DP 与 DAG 拓扑有密切关系。</p>
-</li>
-<li>
-<p><strong>反向递推（自底向上）</strong>：也可以定义 $dp[i][j]$ 为从 $(i,j)$ 走到底行的最大和，转移为 $dp[i][j] = a_{i,j} + \max(dp[i+1][j], dp[i+1][j+1])$，答案是 $dp[1][1]$。这种写法不需要最后扫描底行取 $\max$，代码更短，但本质相同。</p>
-</li>
-<li>
-<p><strong>变种题目</strong>：</p>
-<ul>
-<li>求最小路径和（将 $\max$ 改为 $\min$，注意初始化）。</li>
-<li>输出具体路径（DP 时额外记录前驱，最后从底行最优终点回溯）。</li>
-<li>三角形变为矩形网格（经典「最小路径和」/「不同路径」问题）。</li>
-<li>允许多次跳跃或带权重的走法（图论最短路模型）。</li>
-</ul>
-</li>
-</ul>
-</article>
-<div class="article-footer">
-    <section id="license">
-      <div class="header"><span>License</span></div>
-      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
-</div>
-    </section>
-    
-
-</div>
-
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/ad00a84a/">代码模板-二分</a></div><div class="item" id="next"><div class="note">Older</div><a href="/f410ff37/">【图论】图的概念、存储和遍历 学习笔记</a></div></section></div>
-
-
-
-
+<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">Recent</a><a href="/categories/">Categories</a><a class="active" href="/tags/">Tag: 最短路</a><a href="/archives/">Archives</a></nav></div></div></div>
+<div class="post-list post"><a class="post-card post" href="/5ab76afc/">
+<article class="md-text"><h2 class="post-title">LeetCode 4003 交替方向的最小路径代价 - Solution</h2><div class="excerpt"><p>本题给出 $m \times n$ 网格，每个格子有入口代价和罚金。从 $(0,0)$ 出发，第 $k$ 步移动方向由 $k$ 的奇偶性决定（奇数步只能右/下，偶数步只能左/上），违反规则或原地等待需支付罚金。分析指出朴素 DFS 因方向奇偶交替导致搜索空间巨大，进而将「位置 + 步数奇偶性」纳入状态，转化为 $2mn$ 个节点的隐式图，每条合法移动（含等待）建有权边，跑 Dijkstra 即可求解。文章详细推导了状态设计、转移规则，给出了 C++ 参考实现，并总结了 vis 标记时机、罚金归属、整数溢出等避坑要点。</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2026-07-30T07:00:00.000Z">2026-07-30</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>题解</span></span></div></article>
+</a></div>
 
 
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">zaochen</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br />
@@ -239,12 +89,7 @@ $$</p>
 <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-<div class="widgets">
-
-
-
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A2%98%E7%9B%AE%E6%95%B0%E6%8D%AE-problem-metadata"><span class="toc-text"> 1. 题目数据 (Problem Metadata)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0-problem-summary"><span class="toc-text"> 2. 题意简述 (Problem Summary)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9C%B4%E7%B4%A0%E8%A7%A3%E6%B3%95-brute-force"><span class="toc-text"> 3. 朴素解法 (Brute-Force)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A0%B8%E5%BF%83%E8%A7%A3%E6%B3%95-main-solution"><span class="toc-text"> 4. 核心解法 (Main Solution)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%80%A7%E8%B4%A8"><span class="toc-text"> 特殊性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%AA%81%E7%A0%B4"><span class="toc-text"> 关键突破</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B"><span class="toc-text"> 推导过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%AD%A3%E7%A1%AE%E6%80%A7%E8%AF%81%E6%98%8E-proof-of-correctness"><span class="toc-text"> 5. 正确性证明 (Proof of Correctness)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-complexity"><span class="toc-text"> 6. 复杂度分析 (Complexity)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82%E4%B8%8E%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97-implementation-details"><span class="toc-text"> 7. 实现细节与避坑指南 (Implementation Details)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%8F%82%E8%80%83%E4%BB%A3%E7%A0%81-reference-code"><span class="toc-text"> 8. 参考代码 (Reference Code)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E-additional-notes"><span class="toc-text"> 9. 补充说明 (Additional Notes)</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
-</div></aside><div class='float-panel'>
+</aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
