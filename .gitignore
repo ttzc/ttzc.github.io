@@ -6,6 +6,7 @@ db.json
 
 # Obsidian
 source/_posts/**/.obsidian/
+source/_posts/**/.claudian/
 
 # 系统文件
 .DS_Store
