@@ -41,7 +41,7 @@
   
   
   
-  <meta name="keywords" content="贪心,ST表,字符串,LeetCode,离线查询">
+  <meta name="keywords" content="ST表,贪心,字符串,LeetCode,离线查询">
 
   <!-- feed -->
   
@@ -57,7 +57,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-23T00:00:00+08:00","dateModified":"2026-07-23T00:00:00+08:00","datePublished":"2026-07-23T00:00:00+08:00","description":"","headline":"LeetCode 3501 操作后最大活跃区段数 II  - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/122ef01b/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/122ef01b/","keywords":"贪心, ST表, 字符串, LeetCode, 离线查询","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-23T00:00:00+08:00","dateModified":"2026-07-23T00:00:00+08:00","datePublished":"2026-07-23T00:00:00+08:00","description":"","headline":"LeetCode 3501 操作后最大活跃区段数 II  - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/122ef01b/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/122ef01b/","keywords":"ST表, 贪心, 字符串, LeetCode, 离线查询","image":[]}</script>
   
 </head>
 <body>
@@ -238,7 +238,7 @@ $$</p>
 <h2 id="9-补充说明-additional-notes"><a class="markdownIt-Anchor" href="#9-补充说明-additional-notes"></a> 9. 补充说明 (Additional Notes)</h2>
 <ul>
 <li><strong>题目背景</strong>：本题是 LeetCode 3501（难度分 2941，Hard），与 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximize-active-section-with-trade-i/">I 版 3499</a> 同属「操作后最大活跃区段数」系列。I 版是单次查询 $O(n)$ 线性扫描；II 版引入 $q \le 10^5$ 个查询，需要 ST 表（或线段树）将单次查询降至 $O(\log n)$。两者的核心思想一脉相承：交易的净效果是合并两个相邻 $\texttt{0}$ 块。</li>
-<li><strong>ST 表 vs 线段树</strong>：本题无修改操作，ST 表 $O(1)$ 查询优于线段树 $O(\log n)$，且常数更小、实现更短。当 $q = 10^5$ 时，ST 表的优势更加明显。线段树实现可作为替代方案，思路相同：维护区间内相邻 $\texttt{0}$ 块长度之和的最大值，处理 RMQ。</li>
+<li><strong>ST 表 vs 线段树</strong>：本题无修改操作，ST 表 $O(1)$ 查询优于线段树 $O(\log n)$，且常数更小、实现更短。当 $q = 10^5$ 时，ST 表的优势更加明显。线段树实现可作为替代方案，思路相同：维护区间内相邻 $\texttt{0}$ 块长度之和的最大值，处理 RMQ。如果对 ST 表不够熟悉的读者，可以参考我的 ST 表笔记：<a   href='/draft_post/'>【数据结构】ST 表 学习笔记</a>。</li>
 <li><strong>官方 Hint</strong>：此题官方给出了 5 条 Hint 作为解题引导——分段编号、答案公式为相邻段长度和、$\texttt{0}$ 段定义 $ans[i] = 0$、三段均需完全在区间内、用线段树做区间最值并单独处理首尾。我上面的实现正是这条路径的完整版本，只是我觉得用 ST 表处理本题更合适。</li>
 <li><strong>码风说明</strong>：1-based 索引（字符串前补空格）、全局数组、<code>pow2</code> 宏是 OI 赛制下的常见习惯，避免频繁传参和重复计算。在 LeetCode 上使用全局数组时只需注意：每次调用会覆盖使用到的下标区域，无需额外清空。</li>
 </ul>
