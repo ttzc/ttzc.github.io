@@ -177,10 +177,10 @@ $$</p>
 <p>这是 Patience Sorting 最重要的不变式（Invariant）。下面用<strong>数学归纳法</strong>严格证明。</p>
 <p><strong>初始状态</strong>：空数组或单元素数组，显然严格递增。</p>
 <p><strong>归纳假设</strong>：在处理当前元素 <code>x</code> 之前，<code>tails</code> 数组严格递增。</p>
-<p><strong>执行操作</strong>：用 <code>lower_bound</code> 找到第一个满足 <code>tails[pos] \ge x</code> 的位置 <code>pos</code>，将 <code>tails[pos]</code> 替换为 <code>x</code>（若 <code>pos</code> 越界则追加）。需证明替换后严格递增性不变：</p>
+<p><strong>执行操作</strong>：用 <code>lower_bound</code> 找到第一个满足 <code>tails[pos] &gt;= x</code> 的位置 <code>pos</code>，将 <code>tails[pos]</code> 替换为 <code>x</code>（若 <code>pos</code> 越界则追加）。需证明替换后严格递增性不变：</p>
 <ul>
 <li>
-<p><strong>左侧</strong>（$pos &gt; 0$）：<code>lower_bound</code> 保证了 <code>tails[pos-1] &lt; x</code>（否则 <code>pos-1</code> 才是第一个 <code>\ge x</code> 的位置）。替换后 <code>tails[pos-1] &lt; tails'[pos]</code> 成立。</p>
+<p><strong>左侧</strong>（$pos &gt; 0$）：<code>lower_bound</code> 保证了 <code>tails[pos-1] &lt; x</code>（否则 <code>pos-1</code> 才是第一个 <code>&gt;= x</code> 的位置）。替换后 <code>tails[pos-1] &lt; tails'[pos]</code> 成立。</p>
 </li>
 <li>
 <p><strong>右侧</strong>（$pos &lt; \text{len}-1$）：由归纳假设，替换前有 <code>tails[pos] &lt; tails[pos+1]</code>。又因 <code>pos</code> 是第一个 <code>\ge x</code> 的位置，故 <code>x \le tails[pos]</code>，从而：</p>
