@@ -170,16 +170,30 @@ $$</p>
 <p><img src="https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png" alt="接龙游戏举例" /></p>
 <hr />
 <h4 id="核心性质"><a class="markdownIt-Anchor" href="#核心性质"></a> 核心性质</h4>
-<p>下面证明<code>tails</code> 数组是<strong>严格递增</strong>的，即证：$$ \text{tails}[0] &lt; \text{tails}[1] &lt; \text{tails}[2] &lt; \dots $$</p>
-<p>这是 Patience Sorting 最重要的不变式（Invariant）。下面用<strong>反证法</strong>证明它为什么永远成立：</p>
+<p><code>tails</code> 数组始终保持<strong>严格递增</strong>，即：</p>
+<p>$$<br />
+\text{tails}[0] &lt; \text{tails}[1] &lt; \text{tails}[2] &lt; \dots<br />
+$$</p>
+<p>这是 Patience Sorting 最重要的不变式（Invariant）。下面用<strong>数学归纳法</strong>严格证明。</p>
+<p><strong>初始状态</strong>：空数组或单元素数组，显然严格递增。</p>
+<p><strong>归纳假设</strong>：在处理当前元素 <code>x</code> 之前，<code>tails</code> 数组严格递增。</p>
+<p><strong>执行操作</strong>：用 <code>lower_bound</code> 找到第一个满足 <code>tails[pos] \ge x</code> 的位置 <code>pos</code>，将 <code>tails[pos]</code> 替换为 <code>x</code>（若 <code>pos</code> 越界则追加）。需证明替换后严格递增性不变：</p>
 <ul>
-<li>假设在某个时刻，存在 <code>i</code> 使得 <code>tails[i] &gt;= tails[i+1]</code>。</li>
-<li>根据定义，<code>tails[i+1]</code> 是第 <code>i+1</code> 堆的牌顶。</li>
-<li>因为第 <code>i+1</code> 堆是由某张牌 <code>v</code> 作为牌顶新建或更新而来的，这张牌 <code>v</code> 当初<strong>为什么没有放到第 <code>i</code> 堆</strong>？</li>
-<li>根据游戏规则（从左到右找第一个牌顶 &gt;= x 的堆），如果 <code>v</code> 能成为第 <code>i+1</code> 堆的牌顶，说明它一定 <strong>大于</strong> 第 <code>i</code> 堆当时的牌顶，否则它就会被放入第 <code>i</code> 堆。</li>
-<li>既然插入保证了从左到右的严格递增，之后的替换操作又会怎样？当我们用 <code>x</code> 替换掉某个位置时，<code>x</code> 一定<strong>大于前一个位置</strong>（因为 <code>lower_bound</code> 定位到了第一个 <code>&gt;= x</code> 的位置），并且<strong>小于后一个位置</strong>（因为替换后要保持顺序）。</li>
-<li>所以，无论怎么更新，<strong>严格递增性</strong>始终被维持。</li>
+<li>
+<p><strong>左侧</strong>（$pos &gt; 0$）：<code>lower_bound</code> 保证了 <code>tails[pos-1] &lt; x</code>（否则 <code>pos-1</code> 才是第一个 <code>\ge x</code> 的位置）。替换后 <code>tails[pos-1] &lt; tails'[pos]</code> 成立。</p>
+</li>
+<li>
+<p><strong>右侧</strong>（$pos &lt; \text{len}-1$）：由归纳假设，替换前有 <code>tails[pos] &lt; tails[pos+1]</code>。又因 <code>pos</code> 是第一个 <code>\ge x</code> 的位置，故 <code>x \le tails[pos]</code>，从而：</p>
+</li>
 </ul>
+<p>$$<br />
+x \le \text{tails}[pos] &lt; \text{tails}[pos+1]<br />
+$$</p>
+<p>即 <code>x &lt; tails[pos+1]</code>，替换后 <code>tails'[pos] &lt; tails'[pos+1]</code> 成立。</p>
+<ul>
+<li><strong>其他位置</strong>：未涉及 <code>pos</code> 的相邻关系保持不变。</li>
+</ul>
+<p>综上，无论追加还是原地替换，<code>tails</code> 的严格递增性始终维持。</p>
 <hr />
 <h4 id="数学定义"><a class="markdownIt-Anchor" href="#数学定义"></a> 数学定义</h4>
 <p><code>tails[i]</code> 实际上代表：<strong>在所有长度为 <code>i+1</code> 的严格递增子序列中，最小的末尾元素值是多少？</strong></p>
