@@ -112,31 +112,32 @@
 a = [1, 5, 2, 3, 4]<br />
 $$</p>
 <p>其中最长上升子序列为 $[1, 2, 3, 4]$，长度为 $4$。</p>
+<hr />
 <h3 id="朴素-dp时间复杂度-on2"><a class="markdownIt-Anchor" href="#朴素-dp时间复杂度-on2"></a> 朴素 DP（时间复杂度 $O(n^2)$）</h3>
 <h4 id="推导过程"><a class="markdownIt-Anchor" href="#推导过程"></a> 推导过程</h4>
 <p>下面以 LIS 为例，对照动态规划的一般步骤：</p>
 <ol>
 <li>
-<p><strong>找子问题，把问题划分为各个阶段。</strong><br />
+<p>找子问题，把问题划分为各个阶段。<br />
 子问题：以 $a[i]$ 结尾的最长上升子序列。将原问题按元素位置划分为 $n$ 个阶段。</p>
 </li>
 <li>
-<p><strong>根据阶段划分确定动态规划的状态。</strong><br />
+<p>根据阶段划分确定动态规划的<strong>状态</strong>。<br />
 定义 $f[i]$ 表示以 $a[i]$ 结尾的最长上升子序列的长度。</p>
 </li>
 <li>
-<p><strong>找到初始状态。</strong><br />
+<p>找到初始状态。<br />
 对于任意位置 $i$，仅包含 $a[i]$ 的子序列长度为 $1$，即初始值 $f[i] = 1$。</p>
 </li>
 <li>
-<p><strong>通过阶段之间的决策找出状态转移方程。</strong><br />
+<p>通过阶段之间的<strong>决策</strong>找出<strong>状态转移方程</strong>。<br />
 若已知以 $a[j]$ 结尾的 LIS 长度为 $f[j]$ 且 $a[j] &lt; a[i]$，则将 $a[i]$ 接在后面，得到长度为 $f[j] + 1$ 的上升子序列。对所有满足条件的 $j$ 取最大值：</p>
 <p>$$<br />
 f[i] = \max_{j &lt; i,, a[j] &lt; a[i]} { f[j] } + 1<br />
 $$</p>
 </li>
 <li>
-<p><strong>通过状态转移方程，通过递推或者记忆化搜索写出代码、优化，求出问题的解。</strong><br />
+<p>通过<strong>状态转移方程</strong>，通过递推或者记忆化搜索写出代码、优化，求出问题的解。<br />
 全局最优解为 $\max f[i]$。按 $i = 1$ 到 $n$ 的顺序递推，时间复杂度 $O(n^2)$。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lis</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = a.<span class="built_in">size</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(n, <span class="number">1</span>)</span></span>;          <span class="comment">// 初始状态：每个元素自身构成一个 LIS</span></span><br><span class="line">    <span class="type">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123; <span class="comment">// 按顺序递推</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &lt; a[i]) &#123;</span><br><span class="line">                f[i] = <span class="built_in">max</span>(f[i], f[j] + <span class="number">1</span>); <span class="comment">// 状态转移</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans, f[i]);       <span class="comment">// 记录全局最优解</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -147,6 +148,7 @@ $$</p>
 <p>全局最优解可以通过子问题的最优解递推得到。各个以 $a[j]$ 结尾的最优子序列组合起来，便得到了原问题的最优解。</p>
 <h4 id="无后效性"><a class="markdownIt-Anchor" href="#无后效性"></a> 无后效性</h4>
 <p>一旦 $f[i]$ 被确定，其值便固定下来，不会再被后续的计算改变。在计算 $f[k]$（$k &gt; i$）时，只需用到 $f[i]$ 的最终值，而不关心 $f[i]$ 是通过怎样的顺序、怎样的路径计算出来的。即&quot;未来和过去无关&quot;——后续状态只依赖于之前状态的值，与这些状态的历史无关。</p>
+<hr />
 <h4 id="例题noip-2004-提高组-合唱队形"><a class="markdownIt-Anchor" href="#例题noip-2004-提高组-合唱队形"></a> 例题：[NOIP 2004 提高组] 合唱队形</h4>
 <p>给定 $n$ 位同学的身高序列 $t_1, t_2, \dots, t_n$，从中选取一个子序列（保持原顺序）形成&quot;合唱队形&quot;：存在某个峰值位置 $i$，使得身高严格递增至 $t_i$，再严格递减至末尾，即：</p>
 <p>$$<br />
@@ -158,16 +160,17 @@ $$</p>
 n - \max_{1 \le i \le n} \left( L_i + R_i - 1 \right)<br />
 $$</p>
 <p>求解 LDS 的方法和 LIS 类似，相信理解了前文推导过程读者可以自行思考出解法。同理还有各种常见变形，比如不下降/不上升等等。</p>
+<hr />
 <h3 id="二分贪心patience-sortingon-log-n"><a class="markdownIt-Anchor" href="#二分贪心patience-sortingon-log-n"></a> 二分+贪心（Patience Sorting，$O(n \log n)$）</h3>
 <p>$\text{tails}$ 数组的单调性是整个算法的核心。下面从纸牌游戏类比出发，逐步介绍其定义，并推导其单调性与更新逻辑。</p>
 <h4 id="直观理解"><a class="markdownIt-Anchor" href="#直观理解"></a> 直观理解</h4>
 <p>想象你在玩一个接龙游戏纸牌游戏（Patience Solitaire）：</p>
 <ul>
-<li>桌面上有若干<strong>牌堆</strong>。</li>
-<li>规则：对于新来的一张牌 $x$，你<strong>从左到右</strong>找到第一张 <strong>牌顶 $\ge x$</strong> 的牌堆，把 $x$ 放在该牌堆的<strong>最上面</strong>（覆盖旧的牌顶）。</li>
+<li>桌面上有若干牌堆。</li>
+<li>规则：对于新来的一张牌 $x$，你从左到右找到第一张 牌顶 $\ge x$ 的牌堆，把 $x$ 放在该牌堆的最上面（覆盖旧的牌顶）。</li>
 <li>如果所有牌堆的牌顶都 $&lt; x$，那么就在最右边新建一个牌堆，$x$ 就是新牌堆的牌顶。</li>
 </ul>
-<p>在代码中，$\text{tails}$ 数组按从左到右的顺序，存储的就是<strong>每个牌堆当前的牌顶值</strong>。</p>
+<p>在代码中，$\text{tails}$ 数组按从左到右的顺序，存储的就是每个牌堆当前的牌顶值。</p>
 <p><img src="https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png" alt="接龙游戏举例" /></p>
 <hr />
 <h4 id="核心性质"><a class="markdownIt-Anchor" href="#核心性质"></a> 核心性质</h4>
@@ -209,16 +212,18 @@ $$</p>
 <h4 id="单调性与二分查找"><a class="markdownIt-Anchor" href="#单调性与二分查找"></a> 单调性与二分查找</h4>
 <p>由于 $\text{tails}$ <strong>严格递增</strong>，当新元素 $x$ 到来时：</p>
 <ul>
-<li>我们要找第一个 $\ge x$ 的位置（<code>lower_bound</code>）。</li>
+<li>我们要先找到位置 $pos$，是第一个满足 $\text{tails}[pos] \ge x$ 的下标值（使用 <code>lower_bound</code>）。</li>
 <li>位置 $pos$ 的意义：
 <ul>
-<li>如果 $pos = tails.size()$（即 $x$ 比所有牌顶都大），说明 $x$ 可以接在<strong>当前最长</strong>的子序列后面，形成更长的 LIS，所以新建堆（<code>push_back</code>）。</li>
-<li>如果 $pos &lt; tails.size()$，说明 $x$ 可以接在长度为 $pos$ 的子序列后面（因为 $x$ 小于等于原来的 $\text{tails}[pos]$，但大于 $\text{tails}[pos-1]$）。我们将 $\text{tails}[pos]$ 替换为 $x$，使得<strong>长度为 $pos+1$ 的子序列末尾变得更小了</strong>，这对未来更有利。</li>
+<li>如果 <code>pos == tails.size()</code>（即 $x$ 比所有牌顶都大），说明 $x$ 可以接在当前最长的子序列后面，形成更长的 LIS，所以新建堆（<code>push_back</code>）。</li>
+<li>如果 <code>pos &lt; tails.size()</code>，说明 $x$ 可以接在长度为 $pos$ 的子序列后面（因为 $x$ 小于等于原来的 $\text{tails}[pos]$，但大于 $\text{tails}[pos-1]$）。我们将 $\text{tails}[pos]$ 替换为 $x$，使得长度为 $pos+1$ 的子序列末尾变得更小了，这对未来更有利。</li>
 </ul>
 </li>
 </ul>
+<hr />
 <p><strong>画个图理解更新过程：</strong></p>
 <p><img src="https://bee-reg-ab.imagency.cn/p/fa2434bc66c196b841f5c6e9b0ab54de.png" alt="单调性与二分查找" /></p>
+<hr />
 <p>假设当前 $\text{tails} = [2, 6, 8]$，新来 $x = 5$。</p>
 <ul>
 <li><code>lower_bound</code> 找到第一个 $\ge 5$ 的位置是 $index = 1$（值为 6）。</li>
@@ -258,7 +263,7 @@ $$</p>
 <h4 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h4>
 <ul>
 <li><strong>单调递增</strong> 使得我们可以用 $O(\log N)$ 的二分查找快速定位更新位置。</li>
-<li>每次更新都是用<strong>当前元素</strong>去<strong>尽可能降低</strong>某个牌堆的顶部值，为后面的元素创造更多”接上去”的机会。</li>
+<li>每次更新都是用当前元素去尽可能降低某个牌堆的顶部值，为后面的元素创造更多”接上去”的机会。</li>
 <li>这是一种<strong>在线算法</strong>，扫描一遍数据即可，空间仅需维护 $\text{tails}$ 数组。</li>
 </ul>
 <p>如果读者此前接触过树状数组做法（基于值域 DP），那里维护的是”以某个值结尾的最佳长度”，是另一种完全不同的视角（动态规划）。而 Patience Sorting 是从”维护最优末尾集合”的角度出发的贪心，这也是它代码极其精妙的原因。</p>
