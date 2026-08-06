@@ -3,9 +3,7 @@ title: 【动态规划】背包 DP 学习笔记
 category: 学习笔记
 tags:
   - 动态规划
-  - 背包
-  - 0/1背包
-  - 完全背包
+  - 背包DP
 author: zaochen
 abbrlink: e8b69da3
 date: 2026-07-16

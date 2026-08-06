@@ -6,7 +6,6 @@ tags:
   - AtCoder
   - 贪心
   - LIS
-  - 前缀最大值
 author: zaochen
 abbrlink: 776526af
 date: 2026-08-03 19:59:00

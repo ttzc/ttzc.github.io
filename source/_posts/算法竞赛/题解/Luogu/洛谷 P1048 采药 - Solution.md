@@ -4,12 +4,12 @@ category: 题解
 platform: Luogu
 tags:
   - Luogu
-  - 背包
-  - 0/1背包
+  - 背包DP
   - 动态规划
 author: zaochen
 abbrlink: ae043577
 date: 2026-07-15
+description: 经典 0/1 背包入门题，给出状态定义、转移方程推导、空间优化（倒序滚动）全过程，时间复杂度 O(MT)。
 ---
 ## 1. 题目数据 (Problem Metadata)
 

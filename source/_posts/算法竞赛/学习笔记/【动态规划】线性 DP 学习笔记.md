@@ -3,11 +3,8 @@ title: 【动态规划】线性 DP 学习笔记
 category: 学习笔记
 tags:
   - 动态规划
-  - DP
   - LIS
-  - 最长上升子序列
   - 线性DP
-  - 耐心排序
   - 二分查找
   - 贪心
 author: zaochen

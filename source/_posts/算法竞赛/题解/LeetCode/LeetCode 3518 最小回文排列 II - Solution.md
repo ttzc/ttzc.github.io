@@ -5,7 +5,7 @@ tags:
   - LeetCode
   - 组合数学
   - 康托展开
-  - 可重集排列
+  - 可重集的排列组合
 author: zaochen
 abbrlink: 26daeb5a
 date: 2026-07-29 20:45:00
