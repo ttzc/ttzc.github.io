@@ -20,27 +20,26 @@
   <title>洛谷 P1048 采药 - Solution - zaochen's blog</title>
 
   
-    <meta name="description" content="1. 题目数据 (Problem Metadata)  题目类型：传统题 题目链接：https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;problem&#x2F;P1048 时间限制：1.00s 内存限制：125.00MB   2. 题意简述 (Problem Summary) 给定总时间 $T$（$1 \le T \le 1000$）和 $M$ 株草药（$1 \le M \le 100$）。每株草药 $i">
+    <meta name="description" content="经典 0&#x2F;1 背包入门题，给出状态定义、转移方程推导、空间优化（倒序滚动）全过程，时间复杂度 O(MT)。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷 P1048 采药 - Solution">
 <meta property="og:url" content="http://ttzc.github.io/ae043577/">
 <meta property="og:site_name" content="zaochen&#39;s blog">
-<meta property="og:description" content="1. 题目数据 (Problem Metadata)  题目类型：传统题 题目链接：https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;problem&#x2F;P1048 时间限制：1.00s 内存限制：125.00MB   2. 题意简述 (Problem Summary) 给定总时间 $T$（$1 \le T \le 1000$）和 $M$ 株草药（$1 \le M \le 100$）。每株草药 $i">
+<meta property="og:description" content="经典 0&#x2F;1 背包入门题，给出状态定义、转移方程推导、空间优化（倒序滚动）全过程，时间复杂度 O(MT)。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/58620217">
 <meta property="article:published_time" content="2026-07-14T16:00:00.000Z">
 <meta property="article:modified_time" content="2026-07-14T16:00:00.000Z">
 <meta property="article:author" content="zaochen">
-<meta property="article:tag" content="0&#x2F;1背包">
 <meta property="article:tag" content="Luogu">
 <meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="背包">
+<meta property="article:tag" content="背包DP">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217">
   
   
   
-  <meta name="keywords" content="动态规划,背包,0/1背包,Luogu">
+  <meta name="keywords" content="动态规划,背包DP,Luogu">
 
   <!-- feed -->
   
@@ -56,7 +55,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-15T00:00:00+08:00","dateModified":"2026-07-15T00:00:00+08:00","datePublished":"2026-07-15T00:00:00+08:00","description":"","headline":"洛谷 P1048 采药 - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/ae043577/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/ae043577/","keywords":"动态规划, 背包, 0/1背包, Luogu","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-15T00:00:00+08:00","dateModified":"2026-07-15T00:00:00+08:00","datePublished":"2026-07-15T00:00:00+08:00","description":"","headline":"洛谷 P1048 采药 - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/ae043577/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/ae043577/","keywords":"动态规划, 背包DP, Luogu","image":[]}</script>
   
 </head>
 <body>
@@ -75,7 +74,7 @@
 
 
 
-<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/776526af/"><span class="title">AtCoder ABC468 F - Chmax - Solution</span></a><a class="item title" href="/428bd345/"><span class="title">【动态规划】线性 DP 学习笔记</span></a><a class="item title" href="/bdb4f8e6/"><span class="title">代码模板-树状数组</span></a><a class="item title" href="/7c4f4089/"><span class="title">洛谷 P1637 三元上升子序列 - Solution</span></a><a class="item title" href="/94489eec/"><span class="title">LeetCode 4003 交替方向的最小路径代价 III - Solution</span></a><a class="item title" href="/26daeb5a/"><span class="title">LeetCode 3518 最小回文排列 II - Solution</span></a><a class="item title" href="/df80b11b/"><span class="title">【组合数学】康托展开 学习笔记</span></a><a class="item title" href="/acd7b679/"><span class="title">代码模板-康托展开</span></a><a class="item title" href="/a9a1b994/"><span class="title">Codeforces 670C Cinema - Solution</span></a><a class="item title" href="/33b4e9d9/"><span class="title">代码模板-离散化</span></a></div></widget>
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/a1377ca2/"><span class="title">从凌晨灵感到发布：一个 AI 可读的人脉图谱 Skill 开发全记录</span></a><a class="item title" href="/776526af/"><span class="title">AtCoder ABC468 F - Chmax - Solution</span></a><a class="item title" href="/428bd345/"><span class="title">【动态规划】线性 DP 学习笔记</span></a><a class="item title" href="/bdb4f8e6/"><span class="title">代码模板-树状数组</span></a><a class="item title" href="/7c4f4089/"><span class="title">洛谷 P1637 三元上升子序列 - Solution</span></a><a class="item title" href="/94489eec/"><span class="title">LeetCode 4003 交替方向的最小路径代价 III - Solution</span></a><a class="item title" href="/26daeb5a/"><span class="title">LeetCode 3518 最小回文排列 II - Solution</span></a><a class="item title" href="/df80b11b/"><span class="title">【组合数学】康托展开 学习笔记</span></a><a class="item title" href="/acd7b679/"><span class="title">代码模板-康托展开</span></a><a class="item title" href="/a9a1b994/"><span class="title">Codeforces 670C Cinema - Solution</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">

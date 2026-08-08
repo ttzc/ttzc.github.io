@@ -20,28 +20,25 @@
   <title>【数据结构】并查集 学习笔记 - zaochen's blog</title>
 
   
-    <meta name="description" content="基础知识 并查集是一种树形数据结构。在全国青少年信息学奥林匹克系列竞赛大纲中难度为 6，是提高级中学习的数据结构。 并查集的基本操作：  查询一个元素在哪个集合。 合并两个集合。  使用一个森林来存储并查集，一个元素是一个结点，每棵树是一个集合。用一个数组 f 来记录父亲表示法。即 f[x] 表示元素节点 x 的父亲。这样，查询一个元素在哪个集合就是查询节点所在树的根节点，合并两个集合，就是把一">
+    <meta name="description" content="从并查集基础概念出发，介绍路径压缩与启发式合并两种优化，讲解维护传递关系、集合计数、带权并查集等核心用法，配合代码模板与例题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【数据结构】并查集 学习笔记">
 <meta property="og:url" content="http://ttzc.github.io/916cb2f0/">
 <meta property="og:site_name" content="zaochen&#39;s blog">
-<meta property="og:description" content="基础知识 并查集是一种树形数据结构。在全国青少年信息学奥林匹克系列竞赛大纲中难度为 6，是提高级中学习的数据结构。 并查集的基本操作：  查询一个元素在哪个集合。 合并两个集合。  使用一个森林来存储并查集，一个元素是一个结点，每棵树是一个集合。用一个数组 f 来记录父亲表示法。即 f[x] 表示元素节点 x 的父亲。这样，查询一个元素在哪个集合就是查询节点所在树的根节点，合并两个集合，就是把一">
+<meta property="og:description" content="从并查集基础概念出发，介绍路径压缩与启发式合并两种优化，讲解维护传递关系、集合计数、带权并查集等核心用法，配合代码模板与例题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/58620217">
 <meta property="article:published_time" content="2023-01-03T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-01-03T16:00:00.000Z">
 <meta property="article:author" content="zaochen">
-<meta property="article:tag" content="带权并查集">
 <meta property="article:tag" content="并查集">
-<meta property="article:tag" content="拓展域并查集">
 <meta property="article:tag" content="数据结构">
-<meta property="article:tag" content="路径压缩">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217">
   
   
   
-  <meta name="keywords" content="并查集,路径压缩,带权并查集,数据结构,拓展域并查集">
+  <meta name="keywords" content="并查集,数据结构">
 
   <!-- feed -->
   
@@ -57,7 +54,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2023-01-04T00:00:00+08:00","dateModified":"2023-01-04T00:00:00+08:00","datePublished":"2023-01-04T00:00:00+08:00","description":"","headline":"【数据结构】并查集 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/916cb2f0/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/916cb2f0/","keywords":"并查集, 路径压缩, 带权并查集, 数据结构, 拓展域并查集","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2023-01-04T00:00:00+08:00","dateModified":"2023-01-04T00:00:00+08:00","datePublished":"2023-01-04T00:00:00+08:00","description":"","headline":"【数据结构】并查集 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/916cb2f0/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/916cb2f0/","keywords":"并查集, 数据结构","image":[]}</script>
   
 </head>
 <body>
@@ -76,7 +73,7 @@
 
 
 
-<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/776526af/"><span class="title">AtCoder ABC468 F - Chmax - Solution</span></a><a class="item title" href="/428bd345/"><span class="title">【动态规划】线性 DP 学习笔记</span></a><a class="item title" href="/bdb4f8e6/"><span class="title">代码模板-树状数组</span></a><a class="item title" href="/7c4f4089/"><span class="title">洛谷 P1637 三元上升子序列 - Solution</span></a><a class="item title" href="/94489eec/"><span class="title">LeetCode 4003 交替方向的最小路径代价 III - Solution</span></a><a class="item title" href="/26daeb5a/"><span class="title">LeetCode 3518 最小回文排列 II - Solution</span></a><a class="item title" href="/df80b11b/"><span class="title">【组合数学】康托展开 学习笔记</span></a><a class="item title" href="/acd7b679/"><span class="title">代码模板-康托展开</span></a><a class="item title" href="/a9a1b994/"><span class="title">Codeforces 670C Cinema - Solution</span></a><a class="item title" href="/33b4e9d9/"><span class="title">代码模板-离散化</span></a></div></widget>
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/a1377ca2/"><span class="title">从凌晨灵感到发布：一个 AI 可读的人脉图谱 Skill 开发全记录</span></a><a class="item title" href="/776526af/"><span class="title">AtCoder ABC468 F - Chmax - Solution</span></a><a class="item title" href="/428bd345/"><span class="title">【动态规划】线性 DP 学习笔记</span></a><a class="item title" href="/bdb4f8e6/"><span class="title">代码模板-树状数组</span></a><a class="item title" href="/7c4f4089/"><span class="title">洛谷 P1637 三元上升子序列 - Solution</span></a><a class="item title" href="/94489eec/"><span class="title">LeetCode 4003 交替方向的最小路径代价 III - Solution</span></a><a class="item title" href="/26daeb5a/"><span class="title">LeetCode 3518 最小回文排列 II - Solution</span></a><a class="item title" href="/df80b11b/"><span class="title">【组合数学】康托展开 学习笔记</span></a><a class="item title" href="/acd7b679/"><span class="title">代码模板-康托展开</span></a><a class="item title" href="/a9a1b994/"><span class="title">Codeforces 670C Cinema - Solution</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
