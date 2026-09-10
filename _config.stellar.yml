@@ -10,6 +10,14 @@ plugins:
     v3: false
     js: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
+# 本地搜索：结果按章节拆分、点击直达锚点并高亮关键词，支持 Ctrl+K 聚焦
+search:
+  service: local_search
+
+# 文章页显示字数与预计阅读时长
+article:
+  reading_time: true
+
 logo:
   avatar: '[{config.avatar}](/social/)'
 
