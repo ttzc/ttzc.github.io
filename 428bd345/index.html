@@ -39,7 +39,7 @@
 <meta name="twitter:image" content="https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png"><meta name="twitter:title" content="【动态规划】线性 DP 学习笔记">
   
   
-  <meta name="keywords" content="动态规划,线性DP,LIS,二分查找,贪心">
+  <meta name="keywords" content="二分查找,动态规划,LIS,线性DP,贪心">
 
   <!-- feed -->
   
@@ -62,7 +62,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-08-02T13:59:00+08:00","dateModified":"2026-08-02T13:59:00+08:00","datePublished":"2026-08-02T13:59:00+08:00","description":" 最长上升子序列（LIS）\n 问题描述\n给定一个长度为 $n$ 的序列 $a[1 \\dots n]$，求其中最长的严格上升子序列的长度。\n一个子序列是从原序列中删除若干元素（可以不连续）后剩余的元素保持原有顺序组成的序列。称该子序列是\"上升\"的，当且仅当对于序列中任意两个位置 $i &lt; j$，都有 $a[i] &lt; a[j]$。\n 示例\n$$\na = [1, 5, 2, 3, 4]...","headline":"【动态规划】线性 DP 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/428bd345/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/428bd345/","keywords":"动态规划, 线性DP, LIS, 二分查找, 贪心","thumbnailUrl":"https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png","image":["https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-08-02T13:59:00+08:00","dateModified":"2026-08-02T13:59:00+08:00","datePublished":"2026-08-02T13:59:00+08:00","description":" 最长上升子序列（LIS）\n 问题描述\n给定一个长度为 $n$ 的序列 $a[1 \\dots n]$，求其中最长的严格上升子序列的长度。\n一个子序列是从原序列中删除若干元素（可以不连续）后剩余的元素保持原有顺序组成的序列。称该子序列是\"上升\"的，当且仅当对于序列中任意两个位置 $i &lt; j$，都有 $a[i] &lt; a[j]$。\n 示例\n$$\na = [1, 5, 2, 3, 4]...","headline":"【动态规划】线性 DP 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/428bd345/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/428bd345/","keywords":"二分查找, 动态规划, LIS, 线性DP, 贪心","thumbnailUrl":"https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png","image":["https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -150,31 +150,13 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
   
   
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -204,13 +186,31 @@
 
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">代码模板-矩阵</span>
+      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
       
       
     </span>
@@ -348,7 +348,7 @@
     
     <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/study-notes/">学习笔记</a>
-</div></div><div class="meta-row">
+</div><div class="right"><span class="cap reading">2469 字 · 预计阅读 9 分钟</span></div></div><div class="meta-row">
 <div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-08-02T05:59:00.000Z">2026-08-02</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-08-02T05:59:00.000Z">2026-08-02</time></span></div>
 </div></div>
     
@@ -534,7 +534,7 @@ $$</p>
 <p>未完待续…</p>
 </article>
 
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7DP/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>线性DP</a><a class="tag" href="/tags/LIS/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>LIS</a><a class="tag" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>二分查找</a><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>贪心</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>二分查找</a><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/LIS/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>LIS</a><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7DP/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>线性DP</a><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>贪心</a></div>
 
 <div class="article-footer slide-up">
     <section id="license">
