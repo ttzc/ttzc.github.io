@@ -26,12 +26,12 @@ menubar:
   items:
     - id: post
       theme: '#1BCDFC'
-      icon: solar:documents-bold-duotone
+      icon: default:documents
       title: 博客
       url: /
     - id: social
       theme: '#FF8F2C'
-      icon: solar:planet-bold-duotone
+      icon: example:planet
       title: 社交
       url: /social/
 
@@ -41,11 +41,11 @@ menubar:
 #   items:
 #     - id: post
 #       theme: '#1BCDFC'
-#       icon: solar:documents-bold-duotone
+#       icon: default:documents
 #       title: 博客
 #       url: /
 #     - id: about
 #       theme: '#FF8F2C'
-#       icon: solar:user-bold-duotone
+#       icon: https://api.iconify.design/solar:user-bold-duotone.svg
 #       title: 关于
 #       url: /about/
