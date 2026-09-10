@@ -40,7 +40,7 @@
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217"><meta name="twitter:title" content="【线性代数】矩阵 学习笔记">
   
   
-  <meta name="keywords" content="线性代数,矩阵乘法,快速幂,最短路,动态规划,Fibonacci数列">
+  <meta name="keywords" content="动态规划,线性代数,矩阵乘法,快速幂,最短路,Fibonacci数列">
 
   <!-- feed -->
   
@@ -63,7 +63,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-09-07T06:35:00+08:00","dateModified":"2026-09-10T00:00:00+08:00","datePublished":"2026-09-07T06:35:00+08:00","description":"矩阵相关内容是线性代数的基础知识，在算法竞赛中最主要的应用是矩阵快速幂加速递推。本文从矩阵乘法的定义与实现细节讲起，介绍矩阵快速幂的原理，并通过斐波那契数列等经典例题展示转移矩阵的构造方法；随后延伸到图论中的应用——邻接矩阵的幂计数定长路径，以及用 $(\\min, +)$ 广义矩阵乘法处理恰好经过 $k$ 条边的最短路。\n 矩阵乘法\n一个 $m \\times n$ 的矩阵是由 $m$ 行 $...","headline":"【线性代数】矩阵 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/492e958b/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/492e958b/","keywords":"线性代数, 矩阵乘法, 快速幂, 最短路, 动态规划, Fibonacci数列","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-09-07T06:35:00+08:00","dateModified":"2026-09-10T00:00:00+08:00","datePublished":"2026-09-07T06:35:00+08:00","description":"矩阵相关内容是线性代数的基础知识，在算法竞赛中最主要的应用是矩阵快速幂加速递推。本文从矩阵乘法的定义与实现细节讲起，介绍矩阵快速幂的原理，并通过斐波那契数列等经典例题展示转移矩阵的构造方法；随后延伸到图论中的应用——邻接矩阵的幂计数定长路径，以及用 $(\\min, +)$ 广义矩阵乘法处理恰好经过 $k$ 条边的最短路。\n 矩阵乘法\n一个 $m \\times n$ 的矩阵是由 $m$ 行 $...","headline":"【线性代数】矩阵 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/492e958b/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/492e958b/","keywords":"动态规划, 线性代数, 矩阵乘法, 快速幂, 最短路, Fibonacci数列","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -151,42 +151,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -212,6 +176,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -365,9 +365,12 @@
   </div></div>
 <article class="md-text content slide-up"><p>矩阵相关内容是线性代数的基础知识，在算法竞赛中最主要的应用是矩阵快速幂加速递推。本文从矩阵乘法的定义与实现细节讲起，介绍矩阵快速幂的原理，并通过斐波那契数列等经典例题展示转移矩阵的构造方法；随后延伸到图论中的应用——邻接矩阵的幂计数定长路径，以及用 $(\min, +)$ 广义矩阵乘法处理恰好经过 $k$ 条边的最短路。</p>
 <h2 id="矩阵乘法"><a class="markdownIt-Anchor" href="#矩阵乘法"></a> 矩阵乘法</h2>
-<p>一个 $m \times n$ 的矩阵是由 $m$ 行 $n$ 列元素排列成的矩形阵列，记作 $A = (a_{i,j})$。两个大小分别为 $m \times n$ 和 $n \times p$ 的矩阵 $A, B$ 相乘的结果是一个 $m \times p$ 的矩阵 $C$，其中<br>
-$$C_{i,j} = \sum_{k = 1}^{n} A_{i,k} B_{k,j}$$<br>
-通俗地，$C$ 第 $i$ 行第 $j$ 列的元素，就是 $A$ 的第 $i$ 行与 $B$ 的第 $j$ 列对应相乘再相加，口诀是"左行右列"。如果 $A$ 的列数与 $B$ 的行数不相等，则无法进行乘法。</p>
+<p>一个 $m \times n$ 的矩阵是由 $m$ 行 $n$ 列元素排列成的矩形阵列，记作 $A = (a_{i,j})$。两个大小分别为 $m \times n$ 和 $n \times p$ 的矩阵 $A, B$ 相乘的结果是一个 $m \times p$ 的矩阵 $C$，其中</p>
+$$
+C_{i,j} = \sum_{k = 1}^{n} A_{i,k} B_{k,j}
+
+$$
+<p>通俗地，$C$ 第 $i$ 行第 $j$ 列的元素，就是 $A$ 的第 $i$ 行与 $B$ 的第 $j$ 列对应相乘再相加，口诀是"左行右列"。如果 $A$ 的列数与 $B$ 的行数不相等，则无法进行乘法。</p>
 <p>矩阵乘法满足结合律，即 $(AB)C = A(BC)$，却不满足交换律。结合律是矩阵快速幂的理论基础，而交换律不成立意味着用行向量乘转移矩阵递推时，矩阵必须放在向量的右侧，顺序不能随意交换。</p>
 <p>计算一次矩阵乘法的时间复杂度为 $O(mnp)$，对 $n \times n$ 的方阵即 $O(n^3)$。</p>
 <p>循环顺序对实际运行速度的影响很大。对比下面两种写法：</p>
@@ -381,36 +384,57 @@ $$C_{i,j} = \sum_{k = 1}^{n} A_{i,k} B_{k,j}$$<br>
 <p>例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3390">P3390 【模板】矩阵快速幂 - 洛谷</a>。注意本题 $k \le 10^{12}$，指数需要用 <code>long long</code> 存储，取模用 <code>int</code> 也有溢出风险。代码见 <a href="/4951afbf/#矩阵快速幂">代码模板-矩阵</a>。</p>
 <h3 id="基本应用斐波那契数列"><a class="markdownIt-Anchor" href="#基本应用斐波那契数列"></a> 基本应用：斐波那契数列</h3>
 <p>例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1962">P1962 斐波那契数列 - 洛谷</a>。数列满足 $F_1 = F_2 = 1$，$F_n = F_{n-1} + F_{n-2}$（$n \ge 3$），求 $F_n \bmod 10^9 + 7$，其中 $n &lt; 2^{63}$。朴素递推是 $O(n)$ 的，在 $10^{18}$ 级别的数据范围下无法通过，考虑用矩阵快速幂加速递推。</p>
-<p>构造转移矩阵，使相邻两项可以递推：<br>
-$$\begin{bmatrix} F_{i-1} &amp; F_i \end{bmatrix} A = \begin{bmatrix} F_i &amp; F_{i+1} \end{bmatrix}, \quad A = \begin{bmatrix} 0 &amp; 1 \ 1 &amp; 1 \end{bmatrix}$$<br>
-规定 $F_0 = 0$，用数学归纳法可以证明<br>
-$$A^n = \begin{bmatrix} F_{n-1} &amp; F_n \ F_n &amp; F_{n+1} \end{bmatrix} \quad (n \ge 1)$$<br>
-$n = 1$ 时 $A = \begin{bmatrix} F_0 &amp; F_1 \ F_1 &amp; F_2 \end{bmatrix}$ 成立；假设上式对 $n$ 成立，则 $A^{n+1} = A^n \cdot A = \begin{bmatrix} F_n &amp; F_{n-1} + F_n \ F_{n+1} &amp; F_n + F_{n+1} \end{bmatrix} = \begin{bmatrix} F_n &amp; F_{n+1} \ F_{n+1} &amp; F_{n+2} \end{bmatrix}$，依然成立。<br>
+<p>构造转移矩阵，使相邻两项可以递推：</p>
+$$
+\begin{bmatrix} F_{i-1} &amp; F_i \end{bmatrix} A = \begin{bmatrix} F_i &amp; F_{i+1} \end{bmatrix}, \quad A = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 1 \end{bmatrix}
+
+$$
+<p>规定 $F_0 = 0$，用数学归纳法可以证明</p>
+$$
+A^n = \begin{bmatrix} F_{n-1} &amp; F_n \\ F_n &amp; F_{n+1} \end{bmatrix} \quad (n \ge 1)
+
+$$
+<p>$n = 1$ 时 $A = \begin{bmatrix} F_0 &amp; F_1 \\ F_1 &amp; F_2 \end{bmatrix}$ 成立；假设上式对 $n$ 成立，则 $A^{n+1} = A^n \cdot A = \begin{bmatrix} F_n &amp; F_{n-1} + F_n \\ F_{n+1} &amp; F_n + F_{n+1} \end{bmatrix} = \begin{bmatrix} F_n &amp; F_{n+1} \\ F_{n+1} &amp; F_{n+2} \end{bmatrix}$，依然成立。<br>
 所以 $F_n$ 就是 $A^n$ 第 1 行第 2 列的元素，直接计算 $A^n$ 读出即可，$n \ge 1$ 恒成立，不需要特判边界。时间复杂度 $O(k^3 \log n)$，本题 $k = 2$。</p>
 <h3 id="拓展矩阵加速数列"><a class="markdownIt-Anchor" href="#拓展矩阵加速数列"></a> 拓展：矩阵加速数列</h3>
 <p>同样的方法可以推广到更一般的线性递推。例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1939">P1939 矩阵加速（数列） - 洛谷</a>，数列满足 $a_1 = a_2 = a_3 = 1$，$a_n = a_{n-1} + a_{n-3}$（$n \ge 4$），$T \le 100$ 组询问，每组 $n \le 2 \times 10^9$。</p>
-<p>此时递推需要用到最近三项，构造 $3 \times 3$ 的转移矩阵，使连续三项递推：<br>
-$$\begin{bmatrix} a_i &amp; a_{i+1} &amp; a_{i+2} \end{bmatrix} M = \begin{bmatrix} a_{i+1} &amp; a_{i+2} &amp; a_{i+3} \end{bmatrix}, \quad M = \begin{bmatrix} 0 &amp; 0 &amp; 1 \ 1 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 1 \end{bmatrix}$$<br>
-对每组询问计算 $\begin{bmatrix} a_1 &amp; a_2 &amp; a_3 \end{bmatrix} M^{n-1}$，$a_n$ 就是结果的第 1 个元素，$n \ge 1$ 恒成立，不需要特判边界，单组询问的复杂度是 $O(3^3 \log n)$。</p>
+<p>此时递推需要用到最近三项，构造 $3 \times 3$ 的转移矩阵，使连续三项递推：</p>
+$$
+\begin{bmatrix} a_i &amp; a_{i+1} &amp; a_{i+2} \end{bmatrix} M = \begin{bmatrix} a_{i+1} &amp; a_{i+2} &amp; a_{i+3} \end{bmatrix}, \quad M = \begin{bmatrix} 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 \end{bmatrix}
+
+$$
+<p>对每组询问计算 $\begin{bmatrix} a_1 &amp; a_2 &amp; a_3 \end{bmatrix} M^{n-1}$，$a_n$ 就是结果的第 1 个元素，$n \ge 1$ 恒成立，不需要特判边界，单组询问的复杂度是 $O(3^3 \log n)$。</p>
 <p>综上所述，矩阵快速幂加速递推适用于形如 $f_n = \sum c_i f_{n-i}$ 的线性递推：把状态打包成向量，把递推关系写成转移矩阵，答案就是转移矩阵的某次幂与初始向量的乘积中的某个元素。转移矩阵的规模等于状态包含的项数，总复杂度 $O(k^3 \log n)$。</p>
 <h2 id="矩阵快速幂在图论中的应用"><a class="markdownIt-Anchor" href="#矩阵快速幂在图论中的应用"></a> 矩阵快速幂在图论中的应用</h2>
 <h3 id="应用定长路径计数"><a class="markdownIt-Anchor" href="#应用定长路径计数"></a> 应用：定长路径计数</h3>
-<p>矩阵幂在图论中还有一个经典应用。设 $S$ 是有向图的邻接矩阵，$S_{i,j}$ 表示 $i \to j$ 的边数，则 $(S^k)<em>{i,j}$ 等于从 $i$ 到 $j$ 恰好走 $k$ 步的方案数（允许重复经过点和边）。用数学归纳法证明：$k = 1$ 时 $(S^1)</em>{i,j} = S_{i,j}$ 就是边数；假设结论对 $k - 1$ 成立，展开<br>
-$$(S^k)<em>{i,j} = \sum</em>{t = 1}^{n} S_{i,t} (S^{k-1})<em>{t,j}$$<br>
-组合意义是从 $i$ 先走一步到 $t$（$S</em>{i,t}$ 种选择），再从 $t$ 走 $k - 1$ 步到 $j$（$(S^{k-1})_{t,j}$ 种方案），对所有中间点 $t$ 求和，不重不漏地枚举了所有长度为 $k$ 的路径。</p>
+<p>矩阵幂在图论中还有一个经典应用。设 $S$ 是有向图的邻接矩阵，$S_{i,j}$ 表示 $i \to j$ 的边数，则 $(S^k)_{i,j}$ 等于从 $i$ 到 $j$ 恰好走 $k$ 步的方案数（允许重复经过点和边）。用数学归纳法证明：$k = 1$ 时 $(S^1)_{i,j} = S_{i,j}$ 就是边数；假设结论对 $k - 1$ 成立，展开</p>
+$$
+(S^k)_{i,j} = \sum_{t = 1}^{n} S_{i,t} (S^{k-1})_{t,j}
+
+$$
+<p>组合意义是从 $i$ 先走一步到 $t$（$S_{i,t}$ 种选择），再从 $t$ 走 $k - 1$ 步到 $j$（$(S^{k-1})_{t,j}$ 种方案），对所有中间点 $t$ 求和，不重不漏地枚举了所有长度为 $k$ 的路径。</p>
 <p>于是"从 $a$ 到 $b$ 恰好走 $k$ 步的方案数"就是 $(S^k)_{a,b}$，直接用矩阵快速幂计算即可，时间复杂度 $O(n^3 \log k)$。这里的 $S$ 不必是 $0/1$ 矩阵，重边记成边数即可。</p>
 <p>把这套框架中的"乘积求和"换成"求和取 $\min$"，还能进一步处理定长最短路问题（见下文）。</p>
 <h3 id="拓展恰好经过-k-条边的最短路"><a class="markdownIt-Anchor" href="#拓展恰好经过-k-条边的最短路"></a> 拓展：恰好经过 $k$ 条边的最短路</h3>
-<p>设 $G$ 是"走恰好 1 条边"的距离矩阵：$G_{i,j}$ 为 $i \to j$ 的最小边权（重边取最小），无直接边则为 $+\infty$，对角线同样保持 $+\infty$。记 $L_k[i][j]$ 为 $i \to j$ 恰好走 $k$ 条边的最短路，有转移<br>
-$$L_{k+1}[i][j] = \min_{1 \le p \le n} { L_k[i][p] + G[p][j] }$$<br>
-把普通矩阵乘法中"乘积求和"换成"求和取 $\min$"，定义 $(\min, +)$ 广义乘法<br>
-$$(A \odot B)<em>{i,j} = \min</em>{1 \le p \le n} { A_{i,p} + B_{p,j} }$$<br>
-则 $L_{k+1} = L_k \odot G$，归纳可得 $L_k = G^{\odot k}$。$\min$ 与 $+$ 组合满足结合律，"先走 $a$ 条边再走 $b$ 条边"可以任意分段，所以同样能用二进制快速幂计算 $G^{\odot k}$，$(G^{\odot k})_{a,b}$ 即答案，时间复杂度 $O(n^3 \log k)$。代码实现见 <a href="/4951afbf/#定长最短路">代码模板-矩阵</a>。</p>
+<p>设 $G$ 是"走恰好 1 条边"的距离矩阵：$G_{i,j}$ 为 $i \to j$ 的最小边权（重边取最小），无直接边则为 $+\infty$，对角线同样保持 $+\infty$。记 $L_k[i][j]$ 为 $i \to j$ 恰好走 $k$ 条边的最短路，有转移</p>
+$$
+L_{k+1}[i][j] = \min_{1 \le p \le n} \{ L_k[i][p] + G[p][j] \}
+
+$$
+<p>把普通矩阵乘法中"乘积求和"换成"求和取 $\min$"，定义 $(\min, +)$ 广义乘法</p>
+$$
+(A \odot B)_{i,j} = \min_{1 \le p \le n} \{ A_{i,p} + B_{p,j} \}
+
+$$
+<p>则 $L_{k+1} = L_k \odot G$，归纳可得 $L_k = G^{\odot k}$。$\min$ 与 $+$ 组合满足结合律，"先走 $a$ 条边再走 $b$ 条边"可以任意分段，所以同样能用二进制快速幂计算 $G^{\odot k}$，$(G^{\odot k})_{a,b}$ 即答案，时间复杂度 $O(n^3 \log k)$。代码实现见 <a href="/4951afbf/#定长最短路">代码模板-矩阵</a>。</p>
 <p>两个细节要注意：对角线若设成 $0$，相当于加入"原地停留"的假边，“恰好 $k$ 条边"会退化成"不超过 $k$ 条边”；快速幂累乘器的单位元是对角线为 $0$、其余为 $+\infty$ 的"0 条边"矩阵，而不是全 $0$ 矩阵。</p>
 <h4 id="例题洛谷-p2886-usaco07nov-cow-relays-g"><a class="markdownIt-Anchor" href="#例题洛谷-p2886-usaco07nov-cow-relays-g"></a> 例题：洛谷 P2886 [USACO07NOV] Cow Relays G</h4>
-<p>题意：给定一个无向图，共 $T$ 条边，第 $i$ 条边连接交叉路口 $I_{1,i}$ 与 $I_{2,i}$、长度为 $\text{len}<em>i$；求从起点 $S$ 到终点 $E$ 恰好经过 $N$ 条边的最短行走（walk，允许重复经过点和边）长度：<br>
-$$\min</em>{v_0=S,; v_N=E,; \forall k,(v_{k-1},v_k)\in E}\ \sum_{k=1}^{N} \text{len}(v_{k-1},v_k)$$<br>
-数据范围：$1\le N\le 10^6$，$2\le T\le 100$，点编号 $\le 1000$，$1\le \text{len}_i\le 1000$，无重边无自环，每个点至少是两条边的端点。</p>
+<p>题意：给定一个无向图，共 $T$ 条边，第 $i$ 条边连接交叉路口 $I_{1,i}$ 与 $I_{2,i}$、长度为 $\text{len}_i$；求从起点 $S$ 到终点 $E$ 恰好经过 $N$ 条边的最短行走（walk，允许重复经过点和边）长度：</p>
+$$
+\min_{v_0=S,\; v_N=E,\; \forall k\,(v_{k-1},v_k)\in E}\ \sum_{k=1}^{N} \text{len}(v_{k-1},v_k)
+
+$$
+<p>数据范围：$1\le N\le 10^6$，$2\le T\le 100$，点编号 $\le 1000$，$1\le \text{len}_i\le 1000$，无重边无自环，每个点至少是两条边的端点。</p>
 <p>这正是上文 $(\min,+)$ 框架的直接应用：把无向边写成对称的"恰好 1 条边"距离矩阵，答案即 $(G^{\odot N})_{S,E}$。一个实现细节是点编号到 $1000$ 但实际出现的路口至多 $2T\le 200$ 个，需要离散化压缩，否则 $O(1000^3\log N)$ 会超时，压缩后为 $O(T^3\log N)$。</p>
 <h2 id="参考资料-拓展阅读-推荐题目"><a class="markdownIt-Anchor" href="#参考资料-拓展阅读-推荐题目"></a> 参考资料 &amp;&amp; 拓展阅读 &amp;&amp; 推荐题目</h2>
 <ul>
@@ -429,7 +453,7 @@ $$\min</em>{v_0=S,; v_N=E,; \forall k,(v_{k-1},v_k)\in E}\ \sum_{k=1}^{N} \text{
 </ul>
 </article>
 
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>线性代数</a><a class="tag" href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>矩阵乘法</a><a class="tag" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>快速幂</a><a class="tag" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>最短路</a><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/Fibonacci%E6%95%B0%E5%88%97/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>Fibonacci数列</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>线性代数</a><a class="tag" href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>矩阵乘法</a><a class="tag" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>快速幂</a><a class="tag" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>最短路</a><a class="tag" href="/tags/Fibonacci%E6%95%B0%E5%88%97/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>Fibonacci数列</a></div>
 
 <div class="article-footer slide-up">
     <section id="license">

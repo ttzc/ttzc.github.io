@@ -150,42 +150,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -211,6 +175,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -348,7 +348,7 @@
     
     <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/solution/">题解</a>
-</div><div class="right"><span class="cap reading">2037 字 · 预计阅读 7 分钟</span></div></div><div class="meta-row">
+</div><div class="right"><span class="cap reading">2038 字 · 预计阅读 7 分钟</span></div></div><div class="meta-row">
 <div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-07-19T16:00:00.000Z">2026-07-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-07-19T16:00:00.000Z">2026-07-20</time></span></div>
 </div></div>
     
@@ -388,20 +388,22 @@
 </ul>
 <h2 id="5-正确性证明-proof-of-correctness"><a class="markdownIt-Anchor" href="#5-正确性证明-proof-of-correctness"></a> 5. 正确性证明 (Proof of Correctness)</h2>
 <h3 id="方法一交换论证"><a class="markdownIt-Anchor" href="#方法一交换论证"></a> 方法一：交换论证</h3>
-<p>设贪心算法匹配对数为 $k$，任意合法子序列的最大匹配对数为 $k^<em>$。显然贪心解合法，故 $k \le k^</em>$。下面证明贪心策略不会让结果变得更劣，即证明 $k \ge k^*$</p>
-<p>假设存在最优解在某个扫描位置（遇到 <code>)</code> 且 <code>left&gt;0</code>）选择跳过该右括号，而贪心选择匹配。由于所有左括号在配对中仅提供“一个可用名额”，彼此等价，跳过当前右括号所保留的那个左括号，至多只能与后续某个右括号再配对一次，获得最多 $1$ 对，恰好弥补放弃当前右括号所损失的 $1$ 对，绝不可能带来额外收益。因此将最优解中该处的“跳过”替换为“匹配”，并保持后续配对不变（若这个左括号后续没有被匹配），或将后续匹配前移（相当于去掉了原本匹配这个左括号的右括号），匹配对数必定不会减少，且仍合法。重复替换，可将任意最优解转化为贪心解，故 $k \ge k^<em>$。综上 $k = k^</em>$。</p>
+<p>设贪心算法匹配对数为 $k$，任意合法子序列的最大匹配对数为 $k^*$。显然贪心解合法，故 $k \le k^*$。下面证明贪心策略不会让结果变得更劣，即证明 $k \ge k^*$</p>
+<p>假设存在最优解在某个扫描位置（遇到 <code>)</code> 且 <code>left&gt;0</code>）选择跳过该右括号，而贪心选择匹配。由于所有左括号在配对中仅提供“一个可用名额”，彼此等价，跳过当前右括号所保留的那个左括号，至多只能与后续某个右括号再配对一次，获得最多 $1$ 对，恰好弥补放弃当前右括号所损失的 $1$ 对，绝不可能带来额外收益。因此将最优解中该处的“跳过”替换为“匹配”，并保持后续配对不变（若这个左括号后续没有被匹配），或将后续匹配前移（相当于去掉了原本匹配这个左括号的右括号），匹配对数必定不会减少，且仍合法。重复替换，可将任意最优解转化为贪心解，故 $k \ge k^*$。综上 $k = k^*$。</p>
 <p>直观地，把左括号看作“资源”，右括号看作“机会”。每当有闲置资源时，遇上机会就抓住，肯定不会亏——因为就算这次不用，资源留着以后也只能再换一次机会，最多扯平，不可能赚。所以“能配就配”永远是最优策略。</p>
 <h3 id="方法二上界法"><a class="markdownIt-Anchor" href="#方法二上界法"></a> 方法二：上界法</h3>
-<p>定义前缀差<br>
-$$<br>
-p_i=#{(1\le j\le i)😒_j=\text{<code>('}\}-\#\{(1\le j\le i):s_j=\text{</code>)'}},\quad p_0=0,<br>
-$$<br>
-令 $m=\min_{0\le i\le n} p_i$，$R$ 为全串右括号总数。</p>
-<p><strong>上界</strong>：设最长 RBS 的长度为 $L$。任一合法括号子序列中左右括号数相等，长度 $L=2\times \text{（子序列中右括号数）}$。若 $m&lt;0$，则在前缀 $i$ 处右括号比左括号多 $-m$ 个，任何合法子序列在该前缀内必须至少丢弃 $-m$ 个右括号，因此最多保留 $R+m$ 个右括号；若 $m\ge0$，最多保留 $R$ 个。总而言之，有<br>
-$$<br>
-L \le 2\cdot\bigl(R+\min(0,m)\bigr)<br>
-$$<br>
-<strong>可达性</strong>：贪心算法丢弃右括号的时刻恰是 <code>left=0</code>，即当前前缀差达到新的最小值（为负）。整个过程中丢弃的右括号总数恰好等于 $-\min(0,m)$，故保留的右括号数为 $R+\min(0,m)$。这些保留的右括号都能与之前的左括号配对，构成合法子序列。所以贪心达到上界，必为最优。</p>
+<p>定义前缀差</p>
+$$
+p_i=\#\{(1\le j\le i):s_j=\text{`('}\}-\#\{(1\le j\le i):s_j=\text{`)'}\},\quad p_0=0,
+
+$$
+<p>令 $m=\min_{0\le i\le n} p_i$，$R$ 为全串右括号总数。</p>
+<p><strong>上界</strong>：设最长 RBS 的长度为 $L$。任一合法括号子序列中左右括号数相等，长度 $L=2\times \text{（子序列中右括号数）}$。若 $m&lt;0$，则在前缀 $i$ 处右括号比左括号多 $-m$ 个，任何合法子序列在该前缀内必须至少丢弃 $-m$ 个右括号，因此最多保留 $R+m$ 个右括号；若 $m\ge0$，最多保留 $R$ 个。总而言之，有</p>
+$$
+L \le 2\cdot\bigl(R+\min(0,m)\bigr)
+
+$$
+<p><strong>可达性</strong>：贪心算法丢弃右括号的时刻恰是 <code>left=0</code>，即当前前缀差达到新的最小值（为负）。整个过程中丢弃的右括号总数恰好等于 $-\min(0,m)$，故保留的右括号数为 $R+\min(0,m)$。这些保留的右括号都能与之前的左括号配对，构成合法子序列。所以贪心达到上界，必为最优。</p>
 <p>直观地，把右括号总数看作“可用需求”。前缀差的最小值 $m$ 刻画了全局资源最紧缺的程度——如果某段前缀右括号过多，那这些多余的右括号无论如何都要被扔掉。贪心算法只在实在没有左括号时才扔右括号，所以它扔掉的正好是必须扔的最少数，剩下的全部都能配成对，自然就是最长。</p>
 <h3 id="两种方法总结对比"><a class="markdownIt-Anchor" href="#两种方法总结对比"></a> 两种方法总结对比</h3>
 <div class="md-table-scroll"><table>
@@ -481,7 +483,7 @@ $$<br>
 
 </div>
 
-<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2983d0b1/">洛谷 P8818 策略游戏 - Solution</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/f5402e91/">Codeforces 5C Longest Regular Bracket Sequence - Solution</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/8a401a71/">LeetCode 3499 操作后最大活跃区段数 I - Solution</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/f5402e91/">Codeforces 5C Longest Regular Bracket Sequence - Solution</a></div></section></div>
 
 
 

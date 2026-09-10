@@ -150,42 +150,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -211,6 +175,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -386,7 +386,7 @@
 <li><strong>直接配对</strong>：$s_{i-1} =$ <code>(</code>。<br>
 此情况下，$s_{i-1},s_i$ 自身构成一段 <code>()</code>。它前面还可能紧贴一个以 $i-2$ 结尾的合法段，两段通过拼接的方式组合，有 $$dp[i] = dp[i-2] + 2.$$</li>
 <li><strong>跨段配对</strong>：$s_{i-1} =$ <code>)</code> 且 $dp[i-1] &gt; 0$。<br>
-此情况下，设以 $i-1$ 结尾的合法段为 $s[i-dp[i-1],…,i-1]$，则与 $s_i$ 配对的那个 <code>(</code> 必须落在位置 $j = i - dp[i-1] - 1$。若 $s_j =$ <code>(</code>，则 $s_j$ 与 $s_i$ 把中间的合法段包住，整体合法，长度为 $dp[i-1] + 2$；此外 $j$ 之前还可能紧贴一个以 $j-1$ 结尾的合法段，于是 $$dp[i] = dp[i-1] + 2 + dp[i - dp[i-1] - 2].$$<br>
+此情况下，设以 $i-1$ 结尾的合法段为 $s[i-dp[i-1]\,..\,i-1]$，则与 $s_i$ 配对的那个 <code>(</code> 必须落在位置 $j = i - dp[i-1] - 1$。若 $s_j =$ <code>(</code>，则 $s_j$ 与 $s_i$ 把中间的合法段包住，整体合法，长度为 $dp[i-1] + 2$；此外 $j$ 之前还可能紧贴一个以 $j-1$ 结尾的合法段，于是 $$dp[i] = dp[i-1] + 2 + dp[i - dp[i-1] - 2].$$<br>
 若 $s_j \neq$ <code>(</code>，则 $s_i$ 找不到配对的 <code>(</code>，$dp[i] = 0$。</li>
 </ol>
 </li>
@@ -401,7 +401,7 @@
 <li><strong>最优子结构（对结尾为 <code>)</code> 的两种情况）</strong>：
 <ul>
 <li>情况 1 中，$s_{i-1}s_i =$ <code>()</code> 是以 $i$ 结尾的最短合法后缀。任何以 $i$ 结尾的合法子串若长度 $&gt; 2$，其倒数第二个字符只能是 <code>)</code> 或 <code>(</code>；前者归入情况 2，后者意味着紧邻的 <code>()</code> 前面还有合法段，长度恰为 $dp[i-2]+2$。由于 $dp[i-2]$ 已是以 $i-2$ 结尾的最长值，$dp[i-2]+2$ 即此情形下的最优。</li>
-<li>情况 2 中，以 $i-1$ 结尾的合法段 $T = s[i-dp[i-1],…,i-1]$ 是<strong>最长</strong>的，故与 $s_i$ 配对的 <code>(</code> 只可能在 $j = i - dp[i-1] - 1$（更靠左则 $T$ 不再是以 $i-1$ 结尾的最长段）。若 $s_j =$ <code>(</code>，则 $s_j,T,s_i$ 整体合法；其左侧以 $j-1$ 结尾的最长合法段长度为 $dp[j-1]$，拼接后得到 $dp[i-1]+2+dp[j-1]$，由 $dp[j-1]$ 的最优性知此即以 $i$ 结尾的最长值。若 $s_j \neq$ <code>(</code>，则不存在以 $s_i$ 配对的 <code>(</code>，$dp[i]=0$。</li>
+<li>情况 2 中，以 $i-1$ 结尾的合法段 $T = s[i-dp[i-1]\,..\,i-1]$ 是<strong>最长</strong>的，故与 $s_i$ 配对的 <code>(</code> 只可能在 $j = i - dp[i-1] - 1$（更靠左则 $T$ 不再是以 $i-1$ 结尾的最长段）。若 $s_j =$ <code>(</code>，则 $s_j\,T\,s_i$ 整体合法；其左侧以 $j-1$ 结尾的最长合法段长度为 $dp[j-1]$，拼接后得到 $dp[i-1]+2+dp[j-1]$，由 $dp[j-1]$ 的最优性知此即以 $i$ 结尾的最长值。若 $s_j \neq$ <code>(</code>，则不存在以 $s_i$ 配对的 <code>(</code>，$dp[i]=0$。</li>
 </ul>
 </li>
 <li>两种情况穷尽了"<code>)</code> 能否成为某合法子串结尾"的所有可能，综上所述 DP 算法正确。</li>
@@ -454,7 +454,7 @@
 
 </div>
 
-<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2905f300/">Codeforces 26B Regular Bracket Sequence - Solution</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/a7fba9f3/">代码模板-并查集</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2905f300/">Codeforces 26B Regular Bracket Sequence - Solution</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/e8b69da3/">【动态规划】背包 DP 学习笔记</a></div></section></div>
 
 
 

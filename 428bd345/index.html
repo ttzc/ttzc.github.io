@@ -39,7 +39,7 @@
 <meta name="twitter:image" content="https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png"><meta name="twitter:title" content="【动态规划】线性 DP 学习笔记">
   
   
-  <meta name="keywords" content="二分查找,动态规划,线性DP,LIS,贪心">
+  <meta name="keywords" content="动态规划,线性DP,LIS,二分查找,贪心">
 
   <!-- feed -->
   
@@ -62,7 +62,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-08-02T13:59:00+08:00","dateModified":"2026-08-02T13:59:00+08:00","datePublished":"2026-08-02T13:59:00+08:00","description":" 最长上升子序列（LIS）\n 问题描述\n给定一个长度为 $n$ 的序列 $a[1 \\dots n]$，求其中最长的严格上升子序列的长度。\n一个子序列是从原序列中删除若干元素（可以不连续）后剩余的元素保持原有顺序组成的序列。称该子序列是\"上升\"的，当且仅当对于序列中任意两个位置 $i &lt; j$，都有 $a[i] &lt; a[j]$。\n 示例\n$$\na = [1, 5, 2, 3, 4]...","headline":"【动态规划】线性 DP 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/428bd345/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/428bd345/","keywords":"二分查找, 动态规划, 线性DP, LIS, 贪心","thumbnailUrl":"https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png","image":["https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-08-02T13:59:00+08:00","dateModified":"2026-08-02T13:59:00+08:00","datePublished":"2026-08-02T13:59:00+08:00","description":" 最长上升子序列（LIS）\n 问题描述\n给定一个长度为 $n$ 的序列 $a[1 \\dots n]$，求其中最长的严格上升子序列的长度。\n一个子序列是从原序列中删除若干元素（可以不连续）后剩余的元素保持原有顺序组成的序列。称该子序列是\"上升\"的，当且仅当对于序列中任意两个位置 $i &lt; j$，都有 $a[i] &lt; a[j]$。\n 示例\n$$\na = [1, 5, 2, 3, 4]...","headline":"【动态规划】线性 DP 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/428bd345/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/428bd345/","keywords":"动态规划, 线性DP, LIS, 二分查找, 贪心","thumbnailUrl":"https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png","image":["https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -150,42 +150,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -211,6 +175,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -367,9 +367,10 @@
 <p>给定一个长度为 $n$ 的序列 $a[1 \dots n]$，求其中最长的<strong>严格上升子序列</strong>的长度。</p>
 <p>一个子序列是从原序列中删除若干元素（可以不连续）后剩余的元素保持原有顺序组成的序列。称该子序列是"上升"的，当且仅当对于序列中任意两个位置 $i &lt; j$，都有 $a[i] &lt; a[j]$。</p>
 <h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
-<p>$$<br>
-a = [1, 5, 2, 3, 4]<br>
-$$</p>
+$$
+a = [1, 5, 2, 3, 4]
+
+$$
 <p>其中最长上升子序列为 $[1, 2, 3, 4]$，长度为 $4$。</p>
 <hr>
 <h3 id="朴素-dp时间复杂度-on2"><a class="markdownIt-Anchor" href="#朴素-dp时间复杂度-on2"></a> 朴素 DP（时间复杂度 $O(n^2)$）</h3>
@@ -391,9 +392,10 @@ $$</p>
 <li>
 <p>通过阶段之间的<strong>决策</strong>找出<strong>状态转移方程</strong>。<br>
 若已知以 $a[j]$ 结尾的 LIS 长度为 $f[j]$ 且 $a[j] &lt; a[i]$，则将 $a[i]$ 接在后面，得到长度为 $f[j] + 1$ 的上升子序列。对所有满足条件的 $j$ 取最大值：</p>
-<p>$$<br>
-f[i] = \max_{j &lt; i,, a[j] &lt; a[i]} { f[j] } + 1<br>
-$$</p>
+$$
+f[i] = \max_{j &lt; i,\, a[j] &lt; a[i]} \{ f[j] \} + 1
+
+$$
 </li>
 <li>
 <p>通过<strong>状态转移方程</strong>，通过递推或者记忆化搜索写出代码、优化，求出问题的解。<br>
@@ -410,14 +412,16 @@ $$</p>
 <hr>
 <h4 id="例题noip-2004-提高组-合唱队形"><a class="markdownIt-Anchor" href="#例题noip-2004-提高组-合唱队形"></a> 例题：[NOIP 2004 提高组] 合唱队形</h4>
 <p>给定 $n$ 位同学的身高序列 $t_1, t_2, \dots, t_n$，从中选取一个子序列（保持原顺序）形成"合唱队形"：存在某个峰值位置 $i$，使得身高严格递增至 $t_i$，再严格递减至末尾，即：</p>
-<p>$$<br>
-t_{j_1} &lt; t_{j_2} &lt; \cdots &lt; t_i &gt; t_{k_1} &gt; t_{k_2} &gt; \cdots &gt; t_{k_m}<br>
-$$</p>
+$$
+t_{j_1} &lt; t_{j_2} &lt; \cdots &lt; t_i &gt; t_{k_1} &gt; t_{k_2} &gt; \cdots &gt; t_{k_m}
+
+$$
 <p>求最少需要出列的人数。数据范围：$2 \le n \le 100$，$130 \le t_i \le 230$。</p>
 <p>问题等价于 $n$ 减去最长「先增后减」子序列的长度。即若以每个位置 $i$ 为峰值，定义 $L_i$ 为以 $i$ 结尾的最长上升子序列（LIS）长度、$R_i$ 为以 $i$ 开头的最长下降子序列（LDS）长度，则答案为：</p>
-<p>$$<br>
-n - \max_{1 \le i \le n} \left( L_i + R_i - 1 \right)<br>
-$$</p>
+$$
+n - \max_{1 \le i \le n} \left( L_i + R_i - 1 \right)
+
+$$
 <p>求解 LDS 的方法和 LIS 类似，相信理解了前文推导过程读者可以自行思考出解法。同理还有各种常见变形，比如不下降/不上升等等。</p>
 <hr>
 <h3 id="二分贪心patience-sortingon-log-n"><a class="markdownIt-Anchor" href="#二分贪心patience-sortingon-log-n"></a> 二分+贪心（Patience Sorting，$O(n \log n)$）</h3>
@@ -435,9 +439,10 @@ $$</p>
 <hr>
 <h4 id="核心性质"><a class="markdownIt-Anchor" href="#核心性质"></a> 核心性质</h4>
 <p>$\text{tails}$ 数组始终保持<strong>严格递增</strong>，即：</p>
-<p>$$<br>
-\text{tails}[0] &lt; \text{tails}[1] &lt; \text{tails}[2] &lt; \dots<br>
-$$</p>
+$$
+\text{tails}[0] &lt; \text{tails}[1] &lt; \text{tails}[2] &lt; \dots
+
+$$
 <p>这是 Patience Sorting 最重要的不变式（Invariant），下面用<strong>数学归纳法</strong>严格证明。</p>
 <p><strong>初始状态</strong>：空数组或单元素数组，显然严格递增。</p>
 <p><strong>归纳假设</strong>：在处理当前元素 $x$ 之前，$\text{tails}$ 数组严格递增。</p>
@@ -450,10 +455,11 @@ $$</p>
 <p><strong>右侧</strong>（$pos &lt; \text{len}-1$）：由归纳假设，替换前有 $\text{tails}[pos] &lt; \text{tails}[pos+1]$。又因 $pos$ 是第一个 $\ge x$ 的位置，故 $x \le tails[pos]$，从而：</p>
 </li>
 </ul>
-<p>$$<br>
-x \le \text{tails}[pos] &lt; \text{tails}[pos+1]<br>
-$$</p>
-<p>即 $x &lt; \text{tails}[pos+1]$，替换后 $\text{tails}‘[pos] &lt; \text{tails}’[pos+1]$ 成立。</p>
+$$
+x \le \text{tails}[pos] &lt; \text{tails}[pos+1]
+
+$$
+<p>即 $x &lt; \text{tails}[pos+1]$，替换后 $\text{tails}'[pos] &lt; \text{tails}'[pos+1]$ 成立。</p>
 <ul>
 <li><strong>其他位置</strong>：未涉及 $pos$ 的相邻关系保持不变。</li>
 </ul>
@@ -534,7 +540,7 @@ $$</p>
 <p>未完待续…</p>
 </article>
 
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>二分查找</a><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7DP/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>线性DP</a><a class="tag" href="/tags/LIS/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>LIS</a><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>贪心</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7DP/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>线性DP</a><a class="tag" href="/tags/LIS/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>LIS</a><a class="tag" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>二分查找</a><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>贪心</a></div>
 
 <div class="article-footer slide-up">
     <section id="license">

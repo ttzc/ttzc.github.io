@@ -148,42 +148,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -209,6 +173,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -346,7 +346,7 @@
     
     <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/solution/">题解</a>
-</div><div class="right"><span class="cap reading">2126 字 · 预计阅读 8 分钟</span></div></div><div class="meta-row">
+</div><div class="right"><span class="cap reading">2135 字 · 预计阅读 8 分钟</span></div></div><div class="meta-row">
 <div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-08-03T11:59:00.000Z">2026-08-03</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-08-03T11:59:00.000Z">2026-08-03</time></span></div>
 </div></div>
     
@@ -379,21 +379,24 @@
 <li><strong>同一变量内的贡献位置值严格上升</strong>。某位置贡献后，该变量变为 $P_i$，下一个贡献位置的值必须更大。</li>
 </ul>
 <h3 id="关键突破"><a class="markdownIt-Anchor" href="#关键突破"></a> 关键突破</h3>
-<p>把贡献位置分成两类：前缀最大值（必贡献）与非前缀最大值。可以证明：<strong>非前缀最大值的贡献位置按时间序，其值必然严格上升</strong>，于是它们构成"删除全部前缀最大值后的序列 $R$“的一个上升子序列，数量至多为 $\mathrm{LIS}®$。反过来，构造一组方案恰好达到"前缀最大值个数 $p$ 加上 $\mathrm{LIS}®$”。由此得出答案</p>
-<p>$$\text{ans}=p+\mathrm{LIS}®$$</p>
+<p>把贡献位置分成两类：前缀最大值（必贡献）与非前缀最大值。可以证明：<strong>非前缀最大值的贡献位置按时间序，其值必然严格上升</strong>，于是它们构成"删除全部前缀最大值后的序列 $R$"的一个上升子序列，数量至多为 $\mathrm{LIS}(R)$。反过来，构造一组方案恰好达到"前缀最大值个数 $p$ 加上 $\mathrm{LIS}(R)$"。由此得出答案</p>
+$$
+\text{ans}=p+\mathrm{LIS}(R)
+
+$$
 <h3 id="推导过程"><a class="markdownIt-Anchor" href="#推导过程"></a> 推导过程</h3>
 <p>删除所有前缀最大值，剩下按原顺序排成 $R$，任取 $R$ 的一条最长上升子序列 $S$。构造如下分配方案：</p>
 <ul>
 <li>所有前缀最大值分给 $x$。由引理 1，它们恰好贡献 $p$ 次；</li>
-<li>$S$ 中的元素分给 $y$。$S$ 严格上升，$y$ 的当前值恒等于上一个 $S$ 元素，故 $S$ 中每个元素都贡献，共 $|S|=\mathrm{LIS}®$ 次；</li>
+<li>$S$ 中的元素分给 $y$。$S$ 严格上升，$y$ 的当前值恒等于上一个 $S$ 元素，故 $S$ 中每个元素都贡献，共 $|S|=\mathrm{LIS}(R)$ 次；</li>
 <li>$R$ 中其余元素分给 $x$。时刻 $k$ 时 $x$ 的当前值等于此前前缀最大值中的最大者，即 $\max_{j&lt;k}P_j$；而 $P_k$ 非前缀最大值意味着 $\max_{j&lt;k}P_j&gt;P_k$，故它们不产生贡献。</li>
 </ul>
-<p>于是该方案总贡献恰为 $p+\mathrm{LIS}®$，达到上界。</p>
+<p>于是该方案总贡献恰为 $p+\mathrm{LIS}(R)$，达到上界。</p>
 <h2 id="5-正确性证明-proof-of-correctness"><a class="markdownIt-Anchor" href="#5-正确性证明-proof-of-correctness"></a> 5. 正确性证明 (Proof of Correctness)</h2>
-<p><strong>引理 1（前缀最大值必贡献）</strong>：设所有前缀最大值构成的集合为$\mathrm{PM}$，对 $i\in\mathrm{PM}$，$P_i$ 大于所有 $j&lt;i$ 的 $P_j$，即 $\mathrm{PM}={i|\forall j &lt; i,P_j&lt;P_i}$，而 $x,y$ 在时刻 $i$ 前的值只能来自某个 $P_j$（$j&lt;i$）或 $0$，故均小于 $P_i$。无论分给谁，该变量当前值小于 $P_i$，$c$ 必加 $1$。</p>
+<p><strong>引理 1（前缀最大值必贡献）</strong>：设所有前缀最大值构成的集合为$\mathrm{PM}$，对 $i\in\mathrm{PM}$，$P_i$ 大于所有 $j&lt;i$ 的 $P_j$，即 $\mathrm{PM}=\{i|\forall j &lt; i,P_j&lt;P_i\}$，而 $x,y$ 在时刻 $i$ 前的值只能来自某个 $P_j$（$j&lt;i$）或 $0$，故均小于 $P_i$。无论分给谁，该变量当前值小于 $P_i$，$c$ 必加 $1$。</p>
 <p><strong>引理 2（非前缀最大值的贡献位置值严格上升）</strong>：设 $i&lt;j$ 均为非前缀最大值的贡献位置，且 $i$ 分给 $x$、$j$ 分给 $y$（同变量时由基本事实直接得 $P_i&lt;P_j$）。反设 $P_i&gt;P_j$。因 $i\notin\mathrm{PM}$，存在 $k&lt;i$ 使 $P_k&gt;P_i$。若 $k$ 分给 $x$，则 $x$ 在时刻 $i$ 前已不小于 $P_k&gt;P_i$，$i$ 不贡献，矛盾；故 $k$ 必分给 $y$，但 $k&lt;j$，于是 $y$ 在时刻 $j$ 前已不小于 $P_k&gt;P_i&gt;P_j$，$j$ 不贡献，矛盾。所以 $P_i&lt;P_j$。</p>
-<p><strong>上界</strong>：任意策略的贡献 $=|\mathrm{PM}|+|\text{非 }\mathrm{PM}\text{ 贡献}|\le p+\mathrm{LIS}®$。由引理 2，非前缀最大值的贡献位置构成 $R$ 的上升子序列，其长度不超过 $\mathrm{LIS}®$。</p>
-<p><strong>构造可达</strong>：§4 已给出达到 $p+\mathrm{LIS}®$ 的方案。综上所述，$\text{ans}=p+\mathrm{LIS}®$，贪心策略正确。</p>
+<p><strong>上界</strong>：任意策略的贡献 $=|\mathrm{PM}|+|\text{非 }\mathrm{PM}\text{ 贡献}|\le p+\mathrm{LIS}(R)$。由引理 2，非前缀最大值的贡献位置构成 $R$ 的上升子序列，其长度不超过 $\mathrm{LIS}(R)$。</p>
+<p><strong>构造可达</strong>：§4 已给出达到 $p+\mathrm{LIS}(R)$ 的方案。综上所述，$\text{ans}=p+\mathrm{LIS}(R)$，贪心策略正确。</p>
 <p>通俗地，前缀最大值是"怎么分都躲不掉"的贡献，必须全部计入；剩下的元素里，只有能形成一条严格上升链的那些才有机会额外贡献，而两条变量链不可能同时占便宜——跨链的下降会被某一边的前驱大元素堵死，这正是引理 2 反证抓住的本质。</p>
 <h2 id="6-复杂度分析-complexity"><a class="markdownIt-Anchor" href="#6-复杂度分析-complexity"></a> 6. 复杂度分析 (Complexity)</h2>
 <ul>
@@ -403,7 +406,7 @@
 <h2 id="7-实现细节与避坑指南-implementation-details"><a class="markdownIt-Anchor" href="#7-实现细节与避坑指南-implementation-details"></a> 7. 实现细节与避坑指南 (Implementation Details)</h2>
 <ul>
 <li><strong>$R$ 的顺序</strong>：非前缀最大值的元素要按原顺序压入 $R$，LIS 依赖子序列的相对顺序，打乱顺序会错。</li>
-<li><strong>二分细节</strong>：$P$ 是排列（元素互异），严格上升 LIS 用 $\texttt{lower_bound}$ 与 $\texttt{upper_bound}$ 等价；若 $P$ 允许重复值，则求非降子序列需要用 $\texttt{upper_bound}$。</li>
+<li><strong>二分细节</strong>：$P$ 是排列（元素互异），严格上升 LIS 用 $\texttt{lower\_bound}$ 与 $\texttt{upper\_bound}$ 等价；若 $P$ 允许重复值，则求非降子序列需要用 $\texttt{upper\_bound}$。</li>
 <li><strong>边界情况</strong>：$N=1$ 时 $P_1$ 是前缀最大值，答案 $1$；全递增序列所有元素都是前缀最大值，答案 $N$；全递减序列答案恰为 $2$（首元素加任意一个剩余元素）。</li>
 <li><strong>整数范围</strong>：答案不超过 $N\le5\times10^5$，$32$ 位整数足够，无需 $\texttt{long long}$。</li>
 </ul>

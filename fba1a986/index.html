@@ -148,42 +148,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -209,6 +173,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -374,11 +374,17 @@
 <p><strong>关键突破</strong>：两类计数均可通过隔板法闭式求解，无需枚举。</p>
 <p><strong>推导过程</strong>：<br>
 正整数序列满足 $\sum_{i=1}^k a_i = n$ 的个数是隔板法的标准模型。将 $n$ 个不可区分的球放入 $k$ 个有标号盒子且每个盒子至少一个，等价于在 $n-1$ 个间隙中选 $k-1$ 个放隔板，共 $\binom{n-1}{k-1}$ 种方案。</p>
-<p>接下来计算全奇序列数。若每个 $a_i$ 均为奇数，令 $a_i = 2b_i - 1$（$b_i \ge 1$），则<br>
-$$\sum_{i=1}^k (2b_i - 1) = n \implies \sum_{i=1}^k b_i = \frac{n+k}{2}$$<br>
-此方程有非负整数解当且仅当 $n+k$ 为偶数。此时再用隔板法，方案数为 $\binom{\frac{n+k}{2} - 1}{k - 1}$。若 $n+k$ 为奇数，则不存在全奇序列，对应项为 $0$。</p>
-<p>由容斥原理，最终答案为<br>
-$$\text{ans} = \binom{n-1}{k-1} - \begin{cases} \binom{\frac{n+k}{2} - 1}{k-1} &amp; n \equiv k \pmod{2} \ 0 &amp; \text{otherwise} \end{cases}$$</p>
+<p>接下来计算全奇序列数。若每个 $a_i$ 均为奇数，令 $a_i = 2b_i - 1$（$b_i \ge 1$），则</p>
+$$
+\sum_{i=1}^k (2b_i - 1) = n \implies \sum_{i=1}^k b_i = \frac{n+k}{2}
+
+$$
+<p>此方程有非负整数解当且仅当 $n+k$ 为偶数。此时再用隔板法，方案数为 $\binom{\frac{n+k}{2} - 1}{k - 1}$。若 $n+k$ 为奇数，则不存在全奇序列，对应项为 $0$。</p>
+<p>由容斥原理，最终答案为</p>
+$$
+\text{ans} = \binom{n-1}{k-1} - \begin{cases} \binom{\frac{n+k}{2} - 1}{k-1} &amp; n \equiv k \pmod{2} \\ 0 &amp; \text{otherwise} \end{cases}
+
+$$
 <h2 id="5-正确性证明"><a class="markdownIt-Anchor" href="#5-正确性证明"></a> 5. 正确性证明</h2>
 <p><strong>总序列计数</strong>：隔板法证明 $\binom{n-1}{k-1}$ 是正整数解总数，无遗漏无重复。</p>
 <p><strong>全奇序列计数</strong>：变换 $a_i = 2b_i - 1$ 是正整数奇序列与正整数序列之间的双射。方程 $\sum b_i = \frac{n+k}{2}$ 有解当且仅当 $n+k$ 为偶数，此时组合数给出精确计数；若无解则计数为 $0$。</p>

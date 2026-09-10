@@ -148,42 +148,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -209,6 +173,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -346,7 +346,7 @@
     
     <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/solution/">题解</a>
-</div><div class="right"><span class="cap reading">1840 字 · 预计阅读 7 分钟</span></div></div><div class="meta-row">
+</div><div class="right"><span class="cap reading">1842 字 · 预计阅读 7 分钟</span></div></div><div class="meta-row">
 <div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-07-10T16:00:00.000Z">2026-07-11</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-07-10T16:00:00.000Z">2026-07-11</time></span></div>
 </div></div>
     
@@ -369,14 +369,15 @@
 </ul>
 <h2 id="2-题意简述-problem-summary"><a class="markdownIt-Anchor" href="#2-题意简述-problem-summary"></a> 2. 题意简述 (Problem Summary)</h2>
 <p>给定一个 $r$ 行的数字三角形（$1 \le r \le 1000$），第 $i$ 行有 $i$ 个整数 $a_{i,j} \in [0, 100]$。从顶点 $a_{1,1}$ 出发，每一步只能走到正下方 $a_{i+1,j}$ 或右下方 $a_{i+1,j+1}$，求一条到达底行的路径，使经过数字之和最大。即：</p>
-<p>$$<br>
-\max_{P \in \text{合法路径}} \sum_{(i,j) \in P} a_{i,j}<br>
-$$</p>
+$$
+\max_{P \in \text{合法路径}} \sum_{(i,j) \in P} a_{i,j}
+
+$$
 <h2 id="3-朴素解法-brute-force"><a class="markdownIt-Anchor" href="#3-朴素解法-brute-force"></a> 3. 朴素解法 (Brute-Force)</h2>
 <p>最直接的想法是 <strong>DFS 枚举所有路径</strong>：从 $(1,1)$ 出发，每步尝试向下或向右下，到达底行后更新全局最大值。</p>
 <ul>
 <li>每一步有 2 种选择，路径长度为 $r-1$ 步。</li>
-<li>总路径数：$2^{r-1}$ 条，每条路径需要 $O®$ 求和。</li>
+<li>总路径数：$2^{r-1}$ 条，每条路径需要 $O(r)$ 求和。</li>
 </ul>
 <p><strong>时间复杂度</strong>：$O(2^r \cdot r)$，$r \ge 30$ 即超时。题目要求 $r = 1000$，$2^{1000}$ 远超宇宙原子数，完全不可行。即使加入最优化剪枝（当前和 + 剩余行最大可能和 $\le$ 当前最优），对于三角形中间数值分布均匀的情况，剪枝效果极差。总而言之，必须换思路。</p>
 <h2 id="4-核心解法-main-solution"><a class="markdownIt-Anchor" href="#4-核心解法-main-solution"></a> 4. 核心解法 (Main Solution)</h2>
@@ -389,14 +390,16 @@ $$</p>
 <p><strong>第 1 步：定义状态</strong></p>
 <p>设 $dp[i][j]$ 表示从顶点 $(1,1)$ 走到 $(i,j)$ 能获得的最大数字和。</p>
 <p><strong>第 2 步：初始状态</strong></p>
-<p>$$<br>
-dp[1][1] = a_{1,1}<br>
-$$</p>
+$$
+dp[1][1] = a_{1,1}
+
+$$
 <p><strong>第 3 步：状态转移</strong></p>
 <p>$(i,j)$ 只能从 $(i-1,j-1)$（左上方）或 $(i-1,j)$（正上方）走来。因此：</p>
-<p>$$<br>
-dp[i][j] = \max\big(dp[i-1][j-1],; dp[i-1][j]\big) + a_{i,j}<br>
-$$</p>
+$$
+dp[i][j] = \max\big(dp[i-1][j-1],\; dp[i-1][j]\big) + a_{i,j}
+
+$$
 <p>边界处理：</p>
 <ul>
 <li>$j = 1$（每行最左）：只能从 $(i-1,1)$ 走来，$dp[i][1] = dp[i-1][1] + a_{i,1}$。</li>
@@ -404,13 +407,14 @@ $$</p>
 </ul>
 <p><strong>第 4 步：答案</strong></p>
 <p>底行每个位置都可能成为路径终点：</p>
-<p>$$<br>
-\text{ans} = \max_{1 \le j \le r}; dp[r][j]<br>
-$$</p>
+$$
+\text{ans} = \max_{1 \le j \le r}\; dp[r][j]
+
+$$
 <h2 id="5-正确性证明-proof-of-correctness"><a class="markdownIt-Anchor" href="#5-正确性证明-proof-of-correctness"></a> 5. 正确性证明 (Proof of Correctness)</h2>
 <p>DP 正确性需证两点：</p>
 <p><strong>（1）最优子结构</strong></p>
-<p>设 $P^<em>$ 是以 $(i,j)$ 为终点的最优路径。若 $P^</em>$ 经过 $(i-1,k)$（其中 $k = j-1$ 或 $k = j$），则 $P^<em>$ 从 $(1,1)$ 到 $(i-1,k)$ 的子路径必然也是到达 $(i-1,k)$ 的最优路径。否则，将该子路径替换为更优者，$P^</em>$ 会变得更优，矛盾。因此，此问题具有<strong>最优子结构</strong>性质。</p>
+<p>设 $P^*$ 是以 $(i,j)$ 为终点的最优路径。若 $P^*$ 经过 $(i-1,k)$（其中 $k = j-1$ 或 $k = j$），则 $P^*$ 从 $(1,1)$ 到 $(i-1,k)$ 的子路径必然也是到达 $(i-1,k)$ 的最优路径。否则，将该子路径替换为更优者，$P^*$ 会变得更优，矛盾。因此，此问题具有<strong>最优子结构</strong>性质。</p>
 <p><strong>（2）无后效性</strong></p>
 <p>$dp[i][j]$ 的值只由 $dp[i-1][j-1]$ 和 $dp[i-1][j]$ 决定，与这两个值从<strong>哪条路径来</strong>完全无关。因此，递推顺序（逐行、行内任意序）不会影响结果的正确性，只需要保证每次递推用到的值已经被计算，问题具有<strong>无后效性</strong>。</p>
 <p>由（1）（2） 可知，本问题可以用动态规划解决，上述递推式正确，证毕。</p>
@@ -423,7 +427,7 @@ $$</p>
 <p><strong>空间复杂度</strong>：$O(r^2)$。二维数组 $dp[1005][1005]$ 占约 4 MB（int 型），远低于典型内存限制。</p>
 </li>
 <li>
-<p><strong>滚动数组优化</strong>：观察到 $dp[i][\cdot]$ 只依赖 $dp[i-1][\cdot]$，可以用两个一维数组交替滚动，将空间降至 $O®$。但对 $r=1000$ 来说，$O(r^2)$ 已经完全足够，不必为省内存引入额外编码复杂度。</p>
+<p><strong>滚动数组优化</strong>：观察到 $dp[i][\cdot]$ 只依赖 $dp[i-1][\cdot]$，可以用两个一维数组交替滚动，将空间降至 $O(r)$。但对 $r=1000$ 来说，$O(r^2)$ 已经完全足够，不必为省内存引入额外编码复杂度。</p>
 </li>
 </ul>
 <h2 id="7-实现细节与避坑指南-implementation-details"><a class="markdownIt-Anchor" href="#7-实现细节与避坑指南-implementation-details"></a> 7. 实现细节与避坑指南 (Implementation Details)</h2>

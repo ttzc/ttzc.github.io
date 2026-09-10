@@ -150,42 +150,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -211,6 +175,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -370,12 +370,13 @@
 <li><strong>内存限制</strong>：512.00MB</li>
 </ul>
 <h2 id="2-题意简述-problem-summary"><a class="markdownIt-Anchor" href="#2-题意简述-problem-summary"></a> 2. 题意简述 (Problem Summary)</h2>
-<p>给定长度为 $n$ 的数组 $A$ 和长度为 $m$ 的数组 $B$（$1 \le n, m, q \le 10^5$，$|a_i|, |b_i| \le 10^9$）。共 $q$ 轮游戏，每轮给定 $l_1, r_1, l_2, r_2$：小 L 先从 $A[l_1…r_1]$ 中选一个数 $a$，小 Q 再从 $B[l_2…r_2]$ 中选一个数 $b$。小 L 要让 $a \cdot b$ 尽可能大，小 Q 要让 $a \cdot b$ 尽可能小。求每轮在双方最优策略下的乘积值：</p>
-<p>$$<br>
-\text{ans} = \max_{a \in A[l_1…r_1]}; \min_{b \in B[l_2…r_2]}; a \cdot b<br>
-$$</p>
+<p>给定长度为 $n$ 的数组 $A$ 和长度为 $m$ 的数组 $B$（$1 \le n, m, q \le 10^5$，$|a_i|, |b_i| \le 10^9$）。共 $q$ 轮游戏，每轮给定 $l_1, r_1, l_2, r_2$：小 L 先从 $A[l_1..r_1]$ 中选一个数 $a$，小 Q 再从 $B[l_2..r_2]$ 中选一个数 $b$。小 L 要让 $a \cdot b$ 尽可能大，小 Q 要让 $a \cdot b$ 尽可能小。求每轮在双方最优策略下的乘积值：</p>
+$$
+\text{ans} = \max_{a \in A[l_1..r_1]}\; \min_{b \in B[l_2..r_2]}\; a \cdot b
+
+$$
 <h2 id="3-朴素解法-brute-force"><a class="markdownIt-Anchor" href="#3-朴素解法-brute-force"></a> 3. 朴素解法 (Brute-Force)</h2>
-<p>最直接的想法是对每个查询枚举 $A[l_1…r_1]$ 中每个 $a$，对每个 $a$ 枚举 $B[l_2…r_2]$ 中每个 $b$ 计算 $a \cdot b$ 取最小值，再对 $a$ 取最大值。</p>
+<p>最直接的想法是对每个查询枚举 $A[l_1..r_1]$ 中每个 $a$，对每个 $a$ 枚举 $B[l_2..r_2]$ 中每个 $b$ 计算 $a \cdot b$ 取最小值，再对 $a$ 取最大值。</p>
 <ul>
 <li>每次查询需 $O\big((r_1-l_1+1)(r_2-l_2+1)\big)$，最坏 $O(nm)$。</li>
 <li>$q$ 次查询总计 $O(qnm) \approx 10^{15}$，完全不可行。</li>
@@ -392,10 +393,11 @@ $$</p>
 <li>若 $a = 0$：乘积恒为 $0$。</li>
 </ul>
 <p>因此无论 $B$  区间是全正、全负还是混合，小 Q 的选择都统一为「$a$ 负选 $b_{\max}$，$a$ 正选 $b_{\min}$」。这就是为什么代码只需要维护 $B$ 的区间最大值与最小值，而不必像后文分析 $A$  那样细分 $B$  的正负。</p>
-<p>下面分析小 L 的选数策略。定义小 L 选定 $a$ 后的最终结果为：<br>
-$$<br>
-g(a) = \begin{cases} a \cdot b_{\min} &amp; a &gt; 0 \ a \cdot b_{\max} &amp; a &lt; 0 \ 0 &amp; a = 0 \end{cases}<br>
-$$</p>
+<p>下面分析小 L 的选数策略。定义小 L 选定 $a$ 后的最终结果为：</p>
+$$
+g(a) = \begin{cases} a \cdot b_{\min} &amp; a &gt; 0 \\ a \cdot b_{\max} &amp; a &lt; 0 \\ 0 &amp; a = 0 \end{cases}
+
+$$
 <p>小 L 要求 $\max g(a)$。注意到 $g(a)$ 在 $a &gt; 0$ 和 $a &lt; 0$ 两段上分别是关于 $a$ 的线性函数（系数 $b_{\min}$ 或 $b_{\max}$ 固定），而线性函数在区间上的最大值只在端点取得。因此小 L 只需考虑 $A$ 区间中的几个极值候选。接下来我们推导各种选择时的结果，以及选择策略。</p>
 <h3 id="推导过程"><a class="markdownIt-Anchor" href="#推导过程"></a> 推导过程</h3>
 <div class="md-table-scroll"><table>
@@ -445,7 +447,7 @@ $$</p>
 <h2 id="5-正确性证明-proof-of-correctness"><a class="markdownIt-Anchor" href="#5-正确性证明-proof-of-correctness"></a> 5. 正确性证明 (Proof of Correctness)</h2>
 <p>需证两点：小 Q 的最优策略，以及小 L 的候选集充分性。</p>
 <p><strong>引理（小 Q 的最优选择）</strong>：设小 L 已选 $a$，小 Q 在 $B$ 中选 $b$ 使 $a \cdot b$ 最小。当 $a &gt; 0$ 时 $a \cdot b$ 关于 $b$ 单调递增，最小值在 $b = b_{\min}$ 取得；当 $a &lt; 0$ 时关于 $b$ 单调递减，最小值在 $b = b_{\max}$ 取得；当 $a = 0$ 时乘积恒为 $0$。这与 $b_{\min}, b_{\max}$ 本身的正负无关，因为 $b_{\min}$ 始终是 $B$ 中最小的、$b_{\max}$ 始终是最大的。</p>
-<p><strong>定理（小 L 候选集充分性）</strong>：小 L 的最优 $a$ 一定在 ${a_p^{\max}, a_p^{\min}, a_n^{\max}, a_n^{\min}, 0}$（若存在）之中。对于 $a &gt; 0$ 的部分，$g(a) = a \cdot b_{\min}$ 是关于 $a$ 的一次函数，$b_{\min}$ 为常数，一次函数在区间上的最大值在端点取得，故只需检查最小正数与最大正数。$a &lt; 0$ 的部分，$g(a) = a \cdot b_{\max}$ 同理只需检查最小负数与最大负数。$a = 0$ 时 $g(0) = 0$。三类候选的并集不重不漏地覆盖了 $a$ 的所有取值，取 $\max$ 即得全局最优。</p>
+<p><strong>定理（小 L 候选集充分性）</strong>：小 L 的最优 $a$ 一定在 $\{a_p^{\max}, a_p^{\min}, a_n^{\max}, a_n^{\min}, 0\}$（若存在）之中。对于 $a &gt; 0$ 的部分，$g(a) = a \cdot b_{\min}$ 是关于 $a$ 的一次函数，$b_{\min}$ 为常数，一次函数在区间上的最大值在端点取得，故只需检查最小正数与最大正数。$a &lt; 0$ 的部分，$g(a) = a \cdot b_{\max}$ 同理只需检查最小负数与最大负数。$a = 0$ 时 $g(0) = 0$。三类候选的并集不重不漏地覆盖了 $a$ 的所有取值，取 $\max$ 即得全局最优。</p>
 <p>综上所述，算法正确。</p>
 <h2 id="6-复杂度分析-complexity"><a class="markdownIt-Anchor" href="#6-复杂度分析-complexity"></a> 6. 复杂度分析 (Complexity)</h2>
 <ul>
@@ -506,7 +508,7 @@ $$</p>
 
 </div>
 
-<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/8a401a71/">LeetCode 3499 操作后最大活跃区段数 I - Solution</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2905f300/">Codeforces 26B Regular Bracket Sequence - Solution</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/16a27d21/">代码模板-ST 表</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/8a401a71/">LeetCode 3499 操作后最大活跃区段数 I - Solution</a></div></section></div>
 
 
 

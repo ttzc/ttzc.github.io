@@ -148,42 +148,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -209,6 +173,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -368,7 +368,7 @@
 <li><strong>内存限制</strong>：256 MB</li>
 </ul>
 <h2 id="2-题意简述-problem-summary"><a class="markdownIt-Anchor" href="#2-题意简述-problem-summary"></a> 2. 题意简述 (Problem Summary)</h2>
-<p>给定 $n$（$1 \le n \le 2 \times 10^5$）位科学家的语言 $a_i$（$1 \le a_i \le 10^9$）及 $m$（$1 \le m \le 2 \times 10^5$）场电影，每场电影 $j$ 有配音语言 $b_j$ 与字幕语言 $c_j$（$1 \le b_j, c_j \le 10^9$，且 $b_j \neq c_j$）。所有科学家必须看同一场电影：能听懂配音者"愉悦"，能看懂字幕者"满意"。定义 $f_j = |{i : a_i = b_j}|$ 为看了场 $j$ 会愉悦的人数，$s_j = |{i : a_i = c_j}|$ 为会满意的人数。求使 $(f_j, s_j)$ 在字典序下最大（先最大化 $f_j$，再最大化 $s_j$）的电影编号 $j$（1-indexed）。</p>
+<p>给定 $n$（$1 \le n \le 2 \times 10^5$）位科学家的语言 $a_i$（$1 \le a_i \le 10^9$）及 $m$（$1 \le m \le 2 \times 10^5$）场电影，每场电影 $j$ 有配音语言 $b_j$ 与字幕语言 $c_j$（$1 \le b_j, c_j \le 10^9$，且 $b_j \neq c_j$）。所有科学家必须看同一场电影：能听懂配音者"愉悦"，能看懂字幕者"满意"。定义 $f_j = |\{i : a_i = b_j\}|$ 为看了场 $j$ 会愉悦的人数，$s_j = |\{i : a_i = c_j\}|$ 为会满意的人数。求使 $(f_j, s_j)$ 在字典序下最大（先最大化 $f_j$，再最大化 $s_j$）的电影编号 $j$（1-indexed）。</p>
 <h2 id="3-朴素解法-brute-force"><a class="markdownIt-Anchor" href="#3-朴素解法-brute-force"></a> 3. 朴素解法 (Brute-Force)</h2>
 <p>对每场电影 $j$，遍历全部 $n$ 位科学家逐一统计 $f_j$ 与 $s_j$，再取字典序最大。复杂度 $O(nm)$，当 $n = m = 2 \times 10^5$ 时约 $4 \times 10^{10}$ 次运算，远超时限。瓶颈在于：每评估一场电影都重复扫描全体科学家，同一语言的人数被反复统计。</p>
 <h2 id="4-核心解法-main-solution"><a class="markdownIt-Anchor" href="#4-核心解法-main-solution"></a> 4. 核心解法 (Main Solution)</h2>

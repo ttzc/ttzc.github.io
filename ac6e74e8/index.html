@@ -150,42 +150,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -211,6 +175,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -370,7 +370,7 @@
 <li><strong>内存限制</strong>：512.00MB</li>
 </ul>
 <h2 id="2-题意简述-problem-summary"><a class="markdownIt-Anchor" href="#2-题意简述-problem-summary"></a> 2. 题意简述 (Problem Summary)</h2>
-<p>给定 $n$（$n$ 为偶数，$2 \le n \le 10^5$）个新成员，每人对 $3$ 个部门的满意度 $a_{i,j} \in [0, 2 \times 10^4]$。为每个成员选择恰好一个部门 $d_i \in {1,2,3}$，最大化满意度之和 $\sum_{i=1}^{n} a_{i,d_i}$，且每个部门分配人数不超过 $\frac{n}{2}$。多组测试数据，$t \le 5$。</p>
+<p>给定 $n$（$n$ 为偶数，$2 \le n \le 10^5$）个新成员，每人对 $3$ 个部门的满意度 $a_{i,j} \in [0, 2 \times 10^4]$。为每个成员选择恰好一个部门 $d_i \in \{1,2,3\}$，最大化满意度之和 $\sum_{i=1}^{n} a_{i,d_i}$，且每个部门分配人数不超过 $\frac{n}{2}$。多组测试数据，$t \le 5$。</p>
 <h2 id="3-朴素解法-brute-force"><a class="markdownIt-Anchor" href="#3-朴素解法-brute-force"></a> 3. 朴素解法 (Brute-Force)</h2>
 <p>最直接的想法是枚举每个成员的部门选择，共 $3^n$ 种方案，对每种方案检查容量约束并计算满意度。$n = 10$ 时约 $6 \times 10^4$ 种，可过测试点 $1 \sim 4$；$n \ge 30$ 时 $3^{30} \approx 2 \times 10^{14}$，完全不可行。</p>
 <p>另一种思路是 DP：设 $dp[i][c_1][c_2]$ 表示前 $i$ 人中部门 $1$ 有 $c_1$ 人、部门 $2$ 有 $c_2$ 人时的最大满意度（部门 $3$ 人数为 $i - c_1 - c_2$）。状态数 $O(n^3)$，$n = 10^5$ 时约 $10^{15}$，同样不可行。瓶颈在于容量约束使得状态空间与 $n$ 的幂次绑定，无法线性递推。</p>
@@ -388,24 +388,26 @@
 <p>下面推导反悔策略的正确性。</p>
 <p><strong>改派人数</strong>：部门 $m$ 超员 $\text{cnt}_m - \frac{n}{2}$ 人，需恰好移出这么多。不能多移（不必要损失），不能少移（仍超员）。</p>
 <p><strong>改派目标</strong>：每个被移出的人应去自己的次优部门（满意度第二高的部门），而非第三优部门。因为次优满意度 $\ge$ 第三优满意度，改派到次优的损失 $\le$ 改派到第三优的损失。</p>
-<p><strong>次优部门不会超员</strong>：设其余两个部门共有 $n - \text{cnt}_m$ 人。最坏情况下所有被改派的人都去同一个次优部门，该部门人数上界为：<br>
-$$<br>
-(n - \text{cnt}_m) + \left(\text{cnt}_m - \frac{n}{2}\right) = n - \frac{n}{2} = \frac{n}{2}<br>
-$$<br>
-恰好等于容量上界，不会超员。</p>
+<p><strong>次优部门不会超员</strong>：设其余两个部门共有 $n - \text{cnt}_m$ 人。最坏情况下所有被改派的人都去同一个次优部门，该部门人数上界为：</p>
+$$
+(n - \text{cnt}_m) + \left(\text{cnt}_m - \frac{n}{2}\right) = n - \frac{n}{2} = \frac{n}{2}
+
+$$
+<p>恰好等于容量上界，不会超员。</p>
 <p><strong>选损失最小的人改派</strong>：每个被改派成员 $i$ 的损失为 $a_{i, \max} - a_{i, \text{sub}}$（最优满意度与次优满意度之差）。将超员部门的成员按此损失升序排序，取前 $\text{cnt}_m - \frac{n}{2}$ 个改派，总损失最小。</p>
-<p>最终答案为：<br>
-$$<br>
-\text{ans} = \text{sum} - \sum_{\text{改派的 } k \text{ 人}} \left(a_{i, \max} - a_{i, \text{sub}}\right)<br>
-$$<br>
-其中 $k = \text{cnt}_m - \frac{n}{2}$，取损失最小的 $k$ 人。</p>
+<p>最终答案为：</p>
+$$
+\text{ans} = \text{sum} - \sum_{\text{改派的 } k \text{ 人}} \left(a_{i, \max} - a_{i, \text{sub}}\right)
+
+$$
+<p>其中 $k = \text{cnt}_m - \frac{n}{2}$，取损失最小的 $k$ 人。</p>
 <h2 id="5-正确性证明-proof-of-correctness"><a class="markdownIt-Anchor" href="#5-正确性证明-proof-of-correctness"></a> 5. 正确性证明 (Proof of Correctness)</h2>
 <p>下面我们总结一下贪心策略的证明要点，共证明了三点：贪心解的无约束最优性、反悔策略的充分性、次优部门的安全性。</p>
 <p><strong>引理 1（贪心最优）</strong>：无容量约束时，每个成员独立选择满意度最高的部门，满意度之和取到全局最大。这是因为 $\sum_{i=1}^{n} a_{i,d_i}$ 中各项独立，$\max_{d_i} \sum a_{i,d_i} = \sum \max_{d_i} a_{i,d_i}$。</p>
-<p><strong>引理 2（至多一个超员部门）</strong>：若部门 $j$ 与 $j’$ 同时超员，$\text{cnt}<em>j + \text{cnt}</em>{j’} &gt; n$，但 $\text{cnt}_1 + \text{cnt}_2 + \text{cnt}_3 = n$，矛盾。故至多一个部门超员。</p>
+<p><strong>引理 2（至多一个超员部门）</strong>：若部门 $j$ 与 $j'$ 同时超员，$\text{cnt}_j + \text{cnt}_{j'} &gt; n$，但 $\text{cnt}_1 + \text{cnt}_2 + \text{cnt}_3 = n$，矛盾。故至多一个部门超员。</p>
 <p><strong>引理 3（次优部门安全）</strong>：改派 $k = \text{cnt}_m - \frac{n}{2}$ 人到次优部门后，任一次优部门的人数上界为 $\frac{n}{2}$（见 §4 推导），不超员。</p>
 <p><strong>定理（反悔最优）</strong>：在全局贪心解的基础上，从唯一超员部门 $m$ 移出恰好 $k$ 人，每人移到次优部门，选损失最小的 $k$ 人，所得方案是容量约束下的最优解。</p>
-<p>设贪心解为 $S^<em>$（无约束最优），任一合法解 $T$ 的满意度 $\le S^</em>$（因为 $S^<em>$ 是无约束最大值）。合法解必须在 $S^</em>$ 基础上调整超员部门 $m$ 的分配：将至少 $k$ 人从部门 $m$ 移出。每人移出后，去次优部门的损失 $\le$ 去第三优部门的损失（$a_{i, \text{sub}} \ge a_{i, \text{third}}$），故最优调整中每人都去次优部门。在所有「移 $k$ 人到次优部门」的方案中，选损失最小的 $k$ 人总损失最小。由引理 3，次优部门不超员，方案合法。因此该反悔策略得到的解是合法解中的最优。</p>
+<p>设贪心解为 $S^*$（无约束最优），任一合法解 $T$ 的满意度 $\le S^*$（因为 $S^*$ 是无约束最大值）。合法解必须在 $S^*$ 基础上调整超员部门 $m$ 的分配：将至少 $k$ 人从部门 $m$ 移出。每人移出后，去次优部门的损失 $\le$ 去第三优部门的损失（$a_{i, \text{sub}} \ge a_{i, \text{third}}$），故最优调整中每人都去次优部门。在所有「移 $k$ 人到次优部门」的方案中，选损失最小的 $k$ 人总损失最小。由引理 3，次优部门不超员，方案合法。因此该反悔策略得到的解是合法解中的最优。</p>
 <p>综上所述，算法正确。</p>
 <h2 id="6-复杂度分析-complexity"><a class="markdownIt-Anchor" href="#6-复杂度分析-complexity"></a> 6. 复杂度分析 (Complexity)</h2>
 <ul>
@@ -443,7 +445,7 @@ $$<br>
 </tr>
 <tr>
 <td style="text-align:left"><strong>特殊性质 A（仅部门 1 有满意度）</strong></td>
-<td style="text-align:left">所有成员 $a_{i,2} = a_{i,3} = 0$，贪心全选部门 1，$\text{cnt}<em>1 = n &gt; \frac{n}{2}$。改派损失 $= a</em>{i,1} - 0 = a_{i,1}$，取损失最小的 $\frac{n}{2}$ 人改派，其余留部门 1。正确。</td>
+<td style="text-align:left">所有成员 $a_{i,2} = a_{i,3} = 0$，贪心全选部门 1，$\text{cnt}_1 = n &gt; \frac{n}{2}$。改派损失 $= a_{i,1} - 0 = a_{i,1}$，取损失最小的 $\frac{n}{2}$ 人改派，其余留部门 1。正确。</td>
 </tr>
 </tbody>
 </table></div>

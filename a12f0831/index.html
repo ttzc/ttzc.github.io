@@ -150,42 +150,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -211,6 +175,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -371,7 +371,10 @@
 </ul>
 <h2 id="2-题意简述-problem-summary"><a class="markdownIt-Anchor" href="#2-题意简述-problem-summary"></a> 2. 题意简述 (Problem Summary)</h2>
 <p>给定正整数 $N$ 和长度-$N$ 的整数序列 $A=(A_1,A_2,\dots,A_N)$，定义子数组 $A_l,A_{l+1},\dots,A_r$ 的算术平均值为 $f(l,r)=\frac{1}{r-l+1}\sum_{i=l}^{r}A_i$。要求计算</p>
-<p>$$\text{Ans}=\sum_{1\le l\le r\le N} f(l,r) \pmod{998244353}$$</p>
+$$
+\text{Ans}=\sum_{1\le l\le r\le N} f(l,r) \pmod{998244353}
+
+$$
 <p>其中模 $998244353$ 下的分数 $\frac{P}{Q}$（$Q\not\equiv0\pmod{998244353}$）转化为 $P\cdot Q^{-1}\pmod{998244353}$ 输出，其中 $Q^{-1}$ 表示在模意义下的逆元 。$1\le N\le 5\times10^5$，$0\le A_i&lt;998244353$。</p>
 <h2 id="3-朴素解法-brute-force"><a class="markdownIt-Anchor" href="#3-朴素解法-brute-force"></a> 3. 朴素解法 (Brute-Force)</h2>
 <p>枚举所有 $O(N^2)$ 个子数组，对每个子数组计算平均值并累加。$N=5\times10^5$ 时子数组数量级为 $10^{11}$，完全无法在规定时间内完成。</p>
@@ -384,33 +387,60 @@
 <h3 id="推导过程"><a class="markdownIt-Anchor" href="#推导过程"></a> 推导过程</h3>
 <p><strong>第 1 步：枚举区间长度，合并分子求和。</strong><br>
 对每个固定的长度 $k$，先计算所有长度为 $k$ 的子数组的分子之和，再乘以 $k^{-1}$ 得到该长度下所有子数组的平均值之和：</p>
-<p>$$\frac1k\text{res}(k)=\frac{1}{k}\sum_{l=1}<sup>{N-k+1}\sum_{i=l}</sup>{l+k-1}A_i$$<br>
-<strong>第 2 步：固定位置 $i$，分析包含它的子数组。</strong> 对固定的 $i$ 与 $k$，满足 $l\le i\le l+k-1$ 的左端点个数为</p>
-<p>$$cnt(i,k)=\min(k,;i,;N-i+1,;N-k+1)$$<br>
-该公式可由区间 $l\in[\max(1,i-k+1),,\min(i,N-k+1)]$ 的长度直接得到。</p>
-<p>交换求和顺序，固定位置 $i$，统计 $i$ 在多少个长度为 $k$ 的子数组中出现：<br>
-$$\frac{1}{k}\sum_{i=1}^{N}A_i\cdot \min(k,i,N-i+1,N-k+1)$$<br>
-对所有 $k$ 累加即得最终答案：<br>
-$$\text{Ans}=\sum_{k=1}<sup>{N}\frac{1}{k}\sum_{i=1}</sup>{N}A_i\cdot \min(k,i,N-i+1,N-k+1)$$<br>
-再交换内外层求和，拆出每个位置 $i$ 的独立贡献 $A_i\cdot W_i$：</p>
-<p>$$\text{Ans}=\sum_{i=1}^{N}A_i\cdot \sum_{k=1}^{N}\frac{\min(k,i,N-i+1,N-k+1)}{k}$$</p>
-<p><strong>第 3 步：定义系数 $W_i$。</strong><br>
-$$W_i=\sum_{k=1}^{N}\frac{cnt(i,k)}{k}$$</p>
+$$
+\frac1k\text{res}(k)=\frac{1}{k}\sum_{l=1}^{N-k+1}\sum_{i=l}^{l+k-1}A_i
+
+$$
+<p><strong>第 2 步：固定位置 $i$，分析包含它的子数组。</strong> 对固定的 $i$ 与 $k$，满足 $l\le i\le l+k-1$ 的左端点个数为</p>
+$$
+cnt(i,k)=\min(k,\;i,\;N-i+1,\;N-k+1)
+
+$$
+<p>该公式可由区间 $l\in[\max(1,i-k+1),\,\min(i,N-k+1)]$ 的长度直接得到。</p>
+<p>交换求和顺序，固定位置 $i$，统计 $i$ 在多少个长度为 $k$ 的子数组中出现：</p>
+$$
+\frac{1}{k}\sum_{i=1}^{N}A_i\cdot \min(k,i,N-i+1,N-k+1)
+
+$$
+<p>对所有 $k$ 累加即得最终答案：</p>
+$$
+\text{Ans}=\sum_{k=1}^{N}\frac{1}{k}\sum_{i=1}^{N}A_i\cdot \min(k,i,N-i+1,N-k+1)
+
+$$
+<p>再交换内外层求和，拆出每个位置 $i$ 的独立贡献 $A_i\cdot W_i$：</p>
+$$
+\text{Ans}=\sum_{i=1}^{N}A_i\cdot \sum_{k=1}^{N}\frac{\min(k,i,N-i+1,N-k+1)}{k}
+
+$$
+<p><strong>第 3 步：定义系数 $W_i$。</strong></p>
+$$
+W_i=\sum_{k=1}^{N}\frac{cnt(i,k)}{k}
+
+$$
 <p><strong>第 4 步：对称性简化。</strong> 注意到 $W_i=W_{N-i+1}$，且 $cnt(i,k)$ 关于 $i$ 与 $k$ 均呈"三段线性"结构。通过枚举 $k$，令 $tp=\min(k,N-k+1)$，可将 $W_i$ 的求和转化为</p>
-<p>$$W_i=\sum_{k=1}^{N}\frac{\min(i,N-i+1,,tp,,N-tp+1)}{k}$$</p>
+$$
+W_i=\sum_{k=1}^{N}\frac{\min(i,N-i+1,\,tp,\,N-tp+1)}{k}
+
+$$
 <p><strong>第 5 步：前缀和优化。</strong> 对枚举变量 $k$，分子部分 $\sum_{j=1}^{N}\min(j,N-j+1,tp,N-tp+1)\cdot A_j$ 可按三段拆分为：</p>
 <ul>
 <li>左段 $[1,tp]$：系数为 $j$，即 $\sum_{j=1}^{tp}j\cdot A_j$</li>
 <li>中段 $[tp+1,N-tp]$：系数为 $tp$，即 $tp\cdot\sum_{j=tp+1}^{N-tp}A_j$</li>
 <li>右段 $[N-tp+1,N]$：系数为 $N-j+1$，即 $\sum_{j=N-tp+1}^{N}(N-j+1)\cdot A_j$</li>
 </ul>
-<p>预处理三个前缀和数组 $f$（普通前缀和）、$g$（左段加权和）、$h$（右段加权和），即可在 $O(1)$ 内算出当前 $k$ 对应的分子值 $\text{res}(k)$。对于 $\sum_{j=1}^{tp}j\cdot A_j$ 这种加权和，我们在使用差分树状数组实现区间修改区间查询时见过，详见：<a href="/41e5d11e/#树状数组与差分">【数据结构】树状数组 学习笔记</a>。最终答案：<br>
-$$\text{Ans}=\sum_{k=1}^{N}\text{res}(k)\cdot k^{-1}\pmod{998244353}$$</p>
+<p>预处理三个前缀和数组 $f$（普通前缀和）、$g$（左段加权和）、$h$（右段加权和），即可在 $O(1)$ 内算出当前 $k$ 对应的分子值 $\text{res}(k)$。对于 $\sum_{j=1}^{tp}j\cdot A_j$ 这种加权和，我们在使用差分树状数组实现区间修改区间查询时见过，详见：<a href="/41e5d11e/#树状数组与差分">【数据结构】树状数组 学习笔记</a>。最终答案：</p>
+$$
+\text{Ans}=\sum_{k=1}^{N}\text{res}(k)\cdot k^{-1}\pmod{998244353}
+
+$$
 <h2 id="5-正确性证明-proof-of-correctness"><a class="markdownIt-Anchor" href="#5-正确性证明-proof-of-correctness"></a> 5. 正确性证明 (Proof of Correctness)</h2>
 <p><strong>交换求和顺序</strong>：所有项均为有限值，且模意义下分母 $Q\not\equiv0\pmod{998244353}$，故逆元存在。由求和交换律，先对 $i$ 求和或先对 $l,r$ 求和结果相同。</p>
-<p><strong>$cnt(i,k)$ 公式</strong>：对固定 $i,k$，左端点 $l$ 需满足 $l\le i\le l+k-1$ 且 $1\le l\le N-k+1$，即 $l\in[\max(1,i-k+1),,\min(i,N-k+1)]$。该区间长度恰为 $\min(k,i,N-i+1,N-k+1)$，证毕。</p>
+<p><strong>$cnt(i,k)$ 公式</strong>：对固定 $i,k$，左端点 $l$ 需满足 $l\le i\le l+k-1$ 且 $1\le l\le N-k+1$，即 $l\in[\max(1,i-k+1),\,\min(i,N-k+1)]$。该区间长度恰为 $\min(k,i,N-i+1,N-k+1)$，证毕。</p>
 <p><strong>前缀和公式</strong>：对枚举变量 $k$，令 $tp=\min(k,N-k+1)$。将数组按 $tp$ 分为左、中、右三段，各段系数分别为下标 $j$、$tp$、$N-j+1$。因此 $\text{res}(k)=\sum_{j=1}^{N}c_j\cdot A_j$，其中</p>
-<p>$$c_j=\begin{cases}j &amp; j\le tp\tp &amp; tp&lt;j\le N-tp\N-j+1 &amp; j&gt;N-tp\end{cases}$$</p>
+$$
+c_j=\begin{cases}j &amp; j\le tp\\tp &amp; tp&lt;j\le N-tp\\N-j+1 &amp; j&gt;N-tp\end{cases}
+
+$$
 <p>该系数恰好等于 $\min(j,N-j+1,tp,N-tp+1)$。预处理 $g$ 与 $h$ 后，$\text{res}(k)$ 的每一段均可 $O(1)$ 合并。综上所述，整个算法正确。</p>
 <p>通俗地，每个位置 $i$ 的贡献权重 $W_i$ 可以看作"以 $i$ 为中心的对称衰减"，而前缀和 $g$ 和 $h$ 分别维护了从左到右和从右到左的加权累积，使得每一轮 $k$ 的分子计算只需三次数组访问。</p>
 <h2 id="6-复杂度分析-complexity"><a class="markdownIt-Anchor" href="#6-复杂度分析-complexity"></a> 6. 复杂度分析 (Complexity)</h2>
@@ -441,7 +471,7 @@ $$\text{Ans}=\sum_{k=1}^{N}\text{res}(k)\cdot k^{-1}\pmod{998244353}$$</p>
 <tbody>
 <tr>
 <td style="text-align:left"><strong>模逆元计算</strong></td>
-<td style="text-align:left">快速幂每次 $O(\log MOD)$，主循环 $N$ 次，总复杂度 $O(N \log MOD)$。$\log_2 998244353 \approx 30$，$N=5\times10^5$ 时约 $1.5\times10^7$ 次运算，可轻松通过。若需严格 $O(N)$，可预处理逆元数组 <code>inv[i] = mod - mod/i * inv[mod%i] % mod</code>（$i=1…N$），$O(N)$ 初始化后每次 $O(1)$ 查询。</td>
+<td style="text-align:left">快速幂每次 $O(\log MOD)$，主循环 $N$ 次，总复杂度 $O(N \log MOD)$。$\log_2 998244353 \approx 30$，$N=5\times10^5$ 时约 $1.5\times10^7$ 次运算，可轻松通过。若需严格 $O(N)$，可预处理逆元数组 <code>inv[i] = mod - mod/i * inv[mod%i] % mod</code>（$i=1..N$），$O(N)$ 初始化后每次 $O(1)$ 查询。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>中间位置处理</strong></td>

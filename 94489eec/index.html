@@ -149,42 +149,6 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-矩阵</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
@@ -210,6 +174,42 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -380,7 +380,7 @@
 <p><strong>状态设计。</strong> 将节点定义为 $(i, j, \text{oe})$，其中 $\text{oe}$ 为到达 $(i,j)$ 后已完成的移动次数（含进入 $(0,0)$ 算第 $1$ 步）。$\text{oe}$ 为奇数时下一步只能右/下，$\text{oe}$ 为偶数时下一步只能左/上。用 $\text{dist}[i][j][\text{oe}]$ 表示从起点到该状态的最小代价。</p>
 <p><strong>转移。</strong> 从状态 $(i,j,\text{oe})$ 出发，有 $5$ 种选择：</p>
 <ul>
-<li><strong>符合规则的移动</strong>（奇偶方向匹配）：支付目标格子的入口代价 $\text{entry}(i’,j’)$，转移至 $(i’,j’,\text{oe}+1)$。</li>
+<li><strong>符合规则的移动</strong>（奇偶方向匹配）：支付目标格子的入口代价 $\text{entry}(i',j')$，转移至 $(i',j',\text{oe}+1)$。</li>
 <li><strong>违反规则的移动</strong>（奇偶方向不匹配）：除目标入口代价外，还需支付离开格子 $(i,j)$ 的 $\text{penalty}[i][j]$。</li>
 <li><strong>原地等待</strong>：支付 $\text{penalty}[i][j]$，转移至 $(i,j,\text{oe}+1)$。</li>
 </ul>
@@ -440,7 +440,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><strong>罚金归属</strong></td>
-<td style="text-align:left">$\text{penalty}[i][j]$ 是「从 $(i,j)$ 违规移动」或「在 $(i,j)$ 等待」的代价，应加到当前所在格子，而非目标格子。违规移动的边权 = $\text{entry}(i’,j’) + \text{penalty}[i][j]$，不是 $\text{penalty}[i’][j’]$。</td>
+<td style="text-align:left">$\text{penalty}[i][j]$ 是「从 $(i,j)$ 违规移动」或「在 $(i,j)$ 等待」的代价，应加到当前所在格子，而非目标格子。违规移动的边权 = $\text{entry}(i',j') + \text{penalty}[i][j]$，不是 $\text{penalty}[i'][j']$。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>等待状态不能漏</strong></td>
@@ -448,7 +448,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><strong>整数溢出</strong></td>
-<td style="text-align:left">入口代价 $(i+1)(j+1)$ 最大 $10<sup>5\times10</sup>5 = 10^{10}$，超过 <code>int</code> 上限。<code>val</code> 必须用 <code>long long</code>。我的实现中 <code>f(i,j)</code> 返回 <code>ll</code>，<code>state.val</code> 为 <code>ll</code>，避免隐式类型转换溢出。</td>
+<td style="text-align:left">入口代价 $(i+1)(j+1)$ 最大 $10^5\times10^5 = 10^{10}$，超过 <code>int</code> 上限。<code>val</code> 必须用 <code>long long</code>。我的实现中 <code>f(i,j)</code> 返回 <code>ll</code>，<code>state.val</code> 为 <code>ll</code>，避免隐式类型转换溢出。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>堆的比较器</strong></td>
