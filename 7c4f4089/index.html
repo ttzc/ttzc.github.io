@@ -37,7 +37,7 @@
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217"><meta name="twitter:title" content="洛谷 P1637 三元上升子序列 - Solution">
   
   
-  <meta name="keywords" content="树状数组,离散化,Luogu">
+  <meta name="keywords" content="离散化,树状数组,Luogu">
 
   <!-- feed -->
   
@@ -60,7 +60,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-30T20:23:00+08:00","dateModified":"2026-07-30T20:23:00+08:00","datePublished":"2026-07-30T20:23:00+08:00","description":" 1. 题目数据\n\n题目类型：传统题\n题目链接：P1637 三元上升子序列 - 洛谷\n时间限制：1.00s\n内存限制：128.00MB\n\n 2. 题意简述\n给定长度为 $N$ 的序列 $a$，统计满足 $i &lt; j &lt; k$ 且 $a[i] &lt; a[j] &lt; a[k]$ 的三元组 $(i, j, k)$ 的个数。\n\n$1 \\le N \\le 10^5$\n$1 \\le ...","headline":"洛谷 P1637 三元上升子序列 - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/7c4f4089/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/7c4f4089/","keywords":"树状数组, 离散化, Luogu","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-30T20:23:00+08:00","dateModified":"2026-07-30T20:23:00+08:00","datePublished":"2026-07-30T20:23:00+08:00","description":" 1. 题目数据\n\n题目类型：传统题\n题目链接：P1637 三元上升子序列 - 洛谷\n时间限制：1.00s\n内存限制：128.00MB\n\n 2. 题意简述\n给定长度为 $N$ 的序列 $a$，统计满足 $i &lt; j &lt; k$ 且 $a[i] &lt; a[j] &lt; a[k]$ 的三元组 $(i, j, k)$ 的个数。\n\n$1 \\le N \\le 10^5$\n$1 \\le ...","headline":"洛谷 P1637 三元上升子序列 - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/7c4f4089/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/7c4f4089/","keywords":"离散化, 树状数组, Luogu","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -94,7 +94,7 @@
     
 <a class="ui-collection__item card-hover card-hover--spotlight is-active is-themed" href="/" title="博客" aria-current="page" style="--item-theme:#1BCDFC;--item-grad:url(#menu-grad-post);">
   
-  <span class="ui-collection__leading">solar:documents-bold-duotone</span>
+  <span class="ui-collection__leading"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></span>
   
     <span class="ui-collection__content">
       
@@ -114,7 +114,7 @@
     
 <a class="ui-collection__item card-hover card-hover--spotlight is-themed" href="/social/" title="社交" style="--item-theme:#FF8F2C;--item-grad:url(#menu-grad-social);">
   
-  <span class="ui-collection__leading">solar:planet-bold-duotone</span>
+  <span class="ui-collection__leading"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></span>
   
     <span class="ui-collection__content">
       
@@ -148,6 +148,24 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
   
   
@@ -155,6 +173,24 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
       
       
     </span>
@@ -238,24 +274,6 @@
 
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/7c4f4089/" title="洛谷 P1637 三元上升子序列 - Solution">
   
   
@@ -299,24 +317,6 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">LeetCode 3518 最小回文排列 II - Solution</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/df80b11b/" title="【组合数学】康托展开 学习笔记">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">【组合数学】康托展开 学习笔记</span>
       
       
     </span>
@@ -375,8 +375,8 @@
 </ul>
 <h2 id="3-朴素解法"><a class="markdownIt-Anchor" href="#3-朴素解法"></a> 3. 朴素解法</h2>
 <p>枚举中间位置 $j$，对每个 $j$ 扫描其左侧和右侧。记左侧满足 $a[i] &lt; a[j]$ 的个数为 $L_j$，右侧满足 $a[k] &gt; a[j]$ 的个数为 $R_j$，则以 $j$ 为中间的三元组个数为 $L_j \times R_j$。对每个 $j$ 扫描两侧需要 $O(N)$，总复杂度 $O(N^2)$，在 $N = 10^5$ 时不可行。</p>
-<p>$$<br />
-\text{ans} = \sum_{j=1}^{N} L_j \times R_j<br />
+<p>$$<br>
+\text{ans} = \sum_{j=1}^{N} L_j \times R_j<br>
 $$</p>
 <h2 id="4-核心解法"><a class="markdownIt-Anchor" href="#4-核心解法"></a> 4. 核心解法</h2>
 <p>朴素解法的计数框架是正确的——枚举中间位置 $j$，计算左侧小于 $a[j]$ 的个数 $L_j$ 和右侧大于 $a[j]$ 的个数 $R_j$。瓶颈在于对每个 $j$ 都需要 $O(N)$ 时间统计 $L_j$ 和 $R_j$。注意到 $L_j$ 只依赖于 $a[1…j-1]$ 中小于 $a[j]$ 的个数，这是一个典型的前缀计数问题，可以用权值树状数组（Fenwick Tree）在 $O(\log V)$ 时间内完成查询和更新。</p>
@@ -386,19 +386,19 @@ $$</p>
 <p>从左到右遍历，维护一个权值树状数组 $T_L$。遍历到 $j$ 时，$T_L$ 中已加入 $a[1], a[2], \ldots, a[j-1]$。$L_j = T_L.query(\text{rank}(a[j]) - 1)$，即查询值严格小于 $a[j]$ 的元素个数，然后将 $a[j]$ 加入 $T_L$。</p>
 <h3 id="计算-r_j"><a class="markdownIt-Anchor" href="#计算-r_j"></a> 计算 $R_j$</h3>
 <p>从右到左遍历，维护一个权值树状数组 $T_R$。遍历到 $j$ 时，$T_R$ 中已加入 $a[j+1], a[j+2], \ldots, a[N]$。查询 $T_R$ 中值 $\le a[j]$ 的元素个数为 $T_R.query(\text{rank}(a[j]))$（包含刚加入的 $a[j]$ 自身）。位置 $&gt; j$ 的元素总数为 $N - j$，其中值 $\le a[j]$ 的元素有 $T_R.query(\text{rank}(a[j])) - 1$ 个，故右侧严格大于 $a[j]$ 的元素个数为：</p>
-<p>$$<br />
-R_j = (N - j) - (T_R.query(\text{rank}(a[j])) - 1) = N - j - T_R.query(\text{rank}(a[j])) + 1<br />
+<p>$$<br>
+R_j = (N - j) - (T_R.query(\text{rank}(a[j])) - 1) = N - j - T_R.query(\text{rank}(a[j])) + 1<br>
 $$</p>
 <p>然后将 $a[j]$ 加入 $T_R$。</p>
 <h3 id="推导过程"><a class="markdownIt-Anchor" href="#推导过程"></a> 推导过程</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ans = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to N:</span><br><span class="line">    L_j = TL.query(rank(a[j]) - <span class="number">1</span>)</span><br><span class="line">    TL.add(rank(a[j]), <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> j = N down to <span class="number">1</span>:</span><br><span class="line">    TR.add(rank(a[j]), <span class="number">1</span>)</span><br><span class="line">    R_j = N - j - TR.query(rank(a[j])) + <span class="number">1</span></span><br><span class="line">    ans += L_j * R_j</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ans = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to N:</span><br><span class="line">    L_j = TL.query(rank(a[j]) - <span class="number">1</span>)</span><br><span class="line">    TL.add(rank(a[j]), <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> j = N down to <span class="number">1</span>:</span><br><span class="line">    TR.add(rank(a[j]), <span class="number">1</span>)</span><br><span class="line">    R_j = N - j - TR.query(rank(a[j])) + <span class="number">1</span></span><br><span class="line">    ans += L_j * R_j</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="5-正确性证明"><a class="markdownIt-Anchor" href="#5-正确性证明"></a> 5. 正确性证明</h2>
 <h3 id="l_j-的正确性"><a class="markdownIt-Anchor" href="#l_j-的正确性"></a> $L_j$ 的正确性</h3>
 <p>$T_L$ 在计算 $L_j$ 时恰好包含 $a[1…j-1]$。$T_L.query(\text{rank}(a[j])-1)$ 统计的是值域中映射到 $[1, \text{rank}(a[j])-1]$ 的元素个数。由于离散化保持大小关系，rank 越小对应原值越小，因此这恰好是值严格小于 $a[j]$ 的元素个数。$L_j$ 正确。</p>
 <h3 id="r_j-的正确性"><a class="markdownIt-Anchor" href="#r_j-的正确性"></a> $R_j$ 的正确性</h3>
 <p>$T_R$ 在计算 $R_j$ 时恰好包含 $a[j+1…N]$。$T_R.query(\text{rank}(a[j]))$ 统计的是值域中映射到 $[1, \text{rank}(a[j])]$ 的元素个数，包含所有值 $\le a[j]$ 的元素（包括刚加入的 $a[j]$ 自身）。因此，值 $\le a[j]$ 的元素个数（含 $a[j]$）为 $T_R.query(\text{rank}(a[j]))$，其中 $a[j]$ 自身占 1 个，剩余 $T_R.query(\text{rank}(a[j])) - 1$ 个是值 $\le a[j]$ 的其他元素（均在位置 $&gt; j$ 处）。位置 $&gt; j$ 的元素总数为 $N - j$，故值 $&gt; a[j]$ 的元素个数：</p>
-<p>$$<br />
-R_j = (N - j) - (T_R.query(\text{rank}(a[j])) - 1) = N - j - T_R.query(\text{rank}(a[j])) + 1<br />
+<p>$$<br>
+R_j = (N - j) - (T_R.query(\text{rank}(a[j])) - 1) = N - j - T_R.query(\text{rank}(a[j])) + 1<br>
 $$</p>
 <h3 id="乘法原理"><a class="markdownIt-Anchor" href="#乘法原理"></a> 乘法原理</h3>
 <p>对于固定的 $j$，左侧任意一个值 $&lt; a[j]$ 的元素 $a[i]$ 与右侧任意一个值 $&gt; a[j]$ 的元素 $a[k]$ 都能唯一确定一个满足条件的三元组 $(i, j, k)$，且不同 $(i, k)$ 对对应不同的三元组。因此以 $j$ 为中间元素的三元组总数恰为 $L_j \times R_j$。对所有 $j$ 求和即得总数。综上所述，整个计数过程正确。</p>
@@ -409,7 +409,7 @@ $$</p>
 </ul>
 <p>$N = 10^5$ 时，$2 \times 10^5$ 次 $\log$ 级别的 BIT 操作完全在时间限制内。</p>
 <h2 id="7-实现细节与避坑指南"><a class="markdownIt-Anchor" href="#7-实现细节与避坑指南"></a> 7. 实现细节与避坑指南</h2>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:left">坑点</th>
@@ -434,19 +434,19 @@ $$</p>
 <td style="text-align:left">左侧用 <code>query(rank - 1)</code>（严格小于），右侧用上述公式（严格大于），相等值不构成三元组。</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="8-参考代码"><a class="markdownIt-Anchor" href="#8-参考代码"></a> 8. 参考代码</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P1637</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100005</span>], b[<span class="number">100005</span>], m;</span><br><span class="line"><span class="type">int</span> c[<span class="number">100005</span>];</span><br><span class="line"><span class="type">int</span> L[<span class="number">100005</span>], R[<span class="number">100005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123; <span class="keyword">return</span> x &amp; (-x); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> id, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = id; i &lt;= m; i += <span class="built_in">lowbit</span>(i))</span><br><span class="line">        c[i] += x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> id)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = id; i; i -= <span class="built_in">lowbit</span>(i))</span><br><span class="line">        ret += c[i];</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;data.in&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;data.out&quot;</span>, <span class="string">&quot;w&quot;</span>, stdout);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        b[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + n);</span><br><span class="line">    m = <span class="built_in">unique</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + n) - b - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = <span class="built_in">lower_bound</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + m, a[i]) - b;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从左到右：计算 L[j]</span></span><br><span class="line">    <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span> c);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">        L[j] = <span class="built_in">query</span>(a[j] - <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">add</span>(a[j], <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从右到左：计算 R[j]</span></span><br><span class="line">    <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span> c);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = n; j &gt;= <span class="number">1</span>; j--) &#123;</span><br><span class="line">        <span class="built_in">add</span>(a[j], <span class="number">1</span>);</span><br><span class="line">        R[j] = n - j - <span class="built_in">query</span>(a[j]) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">        ans += L[j] * R[j];</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P1637</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100005</span>], b[<span class="number">100005</span>], m;</span><br><span class="line"><span class="type">int</span> c[<span class="number">100005</span>];</span><br><span class="line"><span class="type">int</span> L[<span class="number">100005</span>], R[<span class="number">100005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span> </span>{ <span class="keyword">return</span> x &amp; (-x); }</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> id, <span class="type">int</span> x)</span> </span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = id; i &lt;= m; i += <span class="built_in">lowbit</span>(i))</span><br><span class="line">        c[i] += x;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> id)</span> </span>{</span><br><span class="line">    <span class="type">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = id; i; i -= <span class="built_in">lowbit</span>(i))</span><br><span class="line">        ret += c[i];</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">"data.in"</span>, <span class="string">"r"</span>, stdin);</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">"data.out"</span>, <span class="string">"w"</span>, stdout);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        b[i] = a[i];</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">sort</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + n);</span><br><span class="line">    m = <span class="built_in">unique</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + n) - b - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = <span class="built_in">lower_bound</span>(b + <span class="number">1</span>, b + <span class="number">1</span> + m, a[i]) - b;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从左到右：计算 L[j]</span></span><br><span class="line">    <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span> c);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) {</span><br><span class="line">        L[j] = <span class="built_in">query</span>(a[j] - <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">add</span>(a[j], <span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从右到左：计算 R[j]</span></span><br><span class="line">    <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span> c);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = n; j &gt;= <span class="number">1</span>; j--) {</span><br><span class="line">        <span class="built_in">add</span>(a[j], <span class="number">1</span>);</span><br><span class="line">        R[j] = n - j - <span class="built_in">query</span>(a[j]) + <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">        ans += L[j] * R[j];</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><code>#define int long long</code> 是 OI 中的常用习惯，统一处理可以避免中间过程溢出，本题最坏情况下答案约为 $1.67 \times 10^{14}$，用 <code>long long</code> 类型最稳妥。</p>
 <h2 id="9-补充说明"><a class="markdownIt-Anchor" href="#9-补充说明"></a> 9. 补充说明</h2>
 <ul>
 <li><strong>相关题目</strong>：类似思路可推广到统计满足 $a[i] &lt; a[j] &lt; a[k]$ 或 $a[i] &gt; a[j] &gt; a[k]$ 的三元组，也可用于统计四元组等更高维的组合计数问题。<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P10589">P10589 楼兰图腾 - 洛谷</a> 是同一思路的变体。</li>
-<li><strong>学习笔记</strong>：树状数组基础与权值树状数组详见 <a   href='/41e5d11e/'>【数据结构】树状数组 学习笔记</a></li>
+<li><strong>学习笔记</strong>：树状数组基础与权值树状数组详见 <a href="/41e5d11e/">【数据结构】树状数组 学习笔记</a></li>
 </ul>
 <p>这个方法在计数类问题中非常经典，思路清晰且巧妙，是树状数组的重要应用之一，值得掌握。</p>
 </article>
 
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>树状数组</a><a class="tag" href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>离散化</a><a class="tag" href="/tags/Luogu/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>Luogu</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>离散化</a><a class="tag" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>树状数组</a><a class="tag" href="/tags/Luogu/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>Luogu</a></div>
 
 <div class="article-footer slide-up">
     <section id="license">

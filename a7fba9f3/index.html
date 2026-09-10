@@ -36,7 +36,7 @@
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217"><meta name="twitter:title" content="代码模板-并查集">
   
   
-  <meta name="keywords" content="代码模板,并查集">
+  <meta name="keywords" content="并查集,代码模板">
 
   <!-- feed -->
   
@@ -59,7 +59,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-16T00:00:00+08:00","dateModified":"2026-07-16T00:00:00+08:00","datePublished":"2026-07-16T00:00:00+08:00","description":"并查集用森林维护集合归属，f[x] 记 x 的父亲，根节点的父亲是自身。两种优化：路径压缩（查询时把路径上的点直接挂到根，常用）与启发式合并（小树并大树，带权并查集中常用）。\n\n 基本并查集（路径压缩）\n1234567891011121314const int N = 1e5 + 5;int f[N], n;void init() &#123;                        ...","headline":"代码模板-并查集","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/a7fba9f3/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/a7fba9f3/","keywords":"代码模板, 并查集","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-16T00:00:00+08:00","dateModified":"2026-07-16T00:00:00+08:00","datePublished":"2026-07-16T00:00:00+08:00","description":"并查集用森林维护集合归属，f[x] 记 x 的父亲，根节点的父亲是自身。两种优化：路径压缩（查询时把路径上的点直接挂到根，常用）与启发式合并（小树并大树，带权并查集中常用）。\n\n 基本并查集（路径压缩）\n1234567891011121314const int N = 1e5 + 5;int f[N], n;void init() {                          // ...","headline":"代码模板-并查集","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/a7fba9f3/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/a7fba9f3/","keywords":"并查集, 代码模板","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -93,7 +93,7 @@
     
 <a class="ui-collection__item card-hover card-hover--spotlight is-active is-themed" href="/" title="博客" aria-current="page" style="--item-theme:#1BCDFC;--item-grad:url(#menu-grad-post);">
   
-  <span class="ui-collection__leading">solar:documents-bold-duotone</span>
+  <span class="ui-collection__leading"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></span>
   
     <span class="ui-collection__content">
       
@@ -113,7 +113,7 @@
     
 <a class="ui-collection__item card-hover card-hover--spotlight is-themed" href="/social/" title="社交" style="--item-theme:#FF8F2C;--item-grad:url(#menu-grad-social);">
   
-  <span class="ui-collection__leading">solar:planet-bold-duotone</span>
+  <span class="ui-collection__leading"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></span>
   
     <span class="ui-collection__content">
       
@@ -147,6 +147,24 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
   
   
@@ -154,6 +172,24 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
       
       
     </span>
@@ -237,24 +273,6 @@
 
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/7c4f4089/" title="洛谷 P1637 三元上升子序列 - Solution">
   
   
@@ -308,24 +326,6 @@
 </a>
 
   
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/df80b11b/" title="【组合数学】康托展开 学习笔记">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">【组合数学】康托展开 学习笔记</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
 </div></div>
   
 </widget>
@@ -360,25 +360,25 @@
   </div>
   </div></div>
 <article class="md-text content slide-up"><p>并查集用森林维护集合归属，<code>f[x]</code> 记 <code>x</code> 的父亲，根节点的父亲是自身。两种优化：<strong>路径压缩</strong>（查询时把路径上的点直接挂到根，常用）与<strong>启发式合并</strong>（小树并大树，带权并查集中常用）。</p>
-<hr />
+<hr>
 <h2 id="基本并查集路径压缩"><a class="markdownIt-Anchor" href="#基本并查集路径压缩"></a> 基本并查集（路径压缩）</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> f[N], n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;                          <span class="comment">// 初始化：每个元素自成一集合</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) f[i] = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;                       <span class="comment">// 查询（带路径压缩）</span></span><br><span class="line">    <span class="keyword">return</span> f[x] == x ? x : f[x] = <span class="built_in">get</span>(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;             <span class="comment">// 合并</span></span><br><span class="line">    f[<span class="built_in">get</span>(x)] = <span class="built_in">get</span>(y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> f[N], n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>{                          <span class="comment">// 初始化：每个元素自成一集合</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) f[i] = i;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> </span>{                       <span class="comment">// 查询（带路径压缩）</span></span><br><span class="line">    <span class="keyword">return</span> f[x] == x ? x : f[x] = <span class="built_in">get</span>(f[x]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>{             <span class="comment">// 合并</span></span><br><span class="line">    f[<span class="built_in">get</span>(x)] = <span class="built_in">get</span>(y);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>统计集合个数：数根节点个数，即 <code>ans += (get(i) == i)</code>，集合数 = <code>ans</code>（连通分量还需建的路 = <code>ans - 1</code>）。</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="带权并查集维护节点到根的信息"><a class="markdownIt-Anchor" href="#带权并查集维护节点到根的信息"></a> 带权并查集（维护节点到根的信息）</h2>
 <p>把信息记在节点到父亲的边上，路径压缩时累加。下面以维护「到根的距离」、集合大小记在根上为例（P1196 银河英雄传说）。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">30005</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;</span><br><span class="line">    <span class="type">int</span> fa, d, size;      <span class="comment">// fa: 父亲; d: 到根的距离; size: 集合大小（记在根上）</span></span><br><span class="line">&#125; f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N - <span class="number">1</span>; i++) f[i] = &#123;i, <span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (f[x].fa == x) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="type">int</span> root = <span class="built_in">get</span>(f[x].fa);</span><br><span class="line">    f[x].d += f[f[x].fa].d;            <span class="comment">// 路径压缩时累加距离</span></span><br><span class="line">    <span class="keyword">return</span> f[x].fa = root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;             <span class="comment">// 把 y 所在集合接到 x 所在集合后面（y 在后）</span></span><br><span class="line">    <span class="type">int</span> fx = <span class="built_in">get</span>(x), fy = <span class="built_in">get</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (fx == fy) <span class="keyword">return</span>;</span><br><span class="line">    f[fy].d = f[fx].size;              <span class="comment">// fy 到新根的距离 = 原 fx 集合大小</span></span><br><span class="line">    f[fy].fa = fx;</span><br><span class="line">    f[fx].size += f[fy].size;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 查询 x、y 间隔：若 get(x) != get(y) 则不在同一集合；否则为 |d(x) - d(y)| - 1</span></span><br></pre></td></tr></table></figure>
-<hr />
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">30005</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> {</span><br><span class="line">    <span class="type">int</span> fa, d, size;      <span class="comment">// fa: 父亲; d: 到根的距离; size: 集合大小（记在根上）</span></span><br><span class="line">} f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N - <span class="number">1</span>; i++) f[i] = {i, <span class="number">0</span>, <span class="number">1</span>};</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (f[x].fa == x) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="type">int</span> root = <span class="built_in">get</span>(f[x].fa);</span><br><span class="line">    f[x].d += f[f[x].fa].d;            <span class="comment">// 路径压缩时累加距离</span></span><br><span class="line">    <span class="keyword">return</span> f[x].fa = root;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>{             <span class="comment">// 把 y 所在集合接到 x 所在集合后面（y 在后）</span></span><br><span class="line">    <span class="type">int</span> fx = <span class="built_in">get</span>(x), fy = <span class="built_in">get</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (fx == fy) <span class="keyword">return</span>;</span><br><span class="line">    f[fy].d = f[fx].size;              <span class="comment">// fy 到新根的距离 = 原 fx 集合大小</span></span><br><span class="line">    f[fy].fa = fx;</span><br><span class="line">    f[fx].size += f[fy].size;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 查询 x、y 间隔：若 get(x) != get(y) 则不在同一集合；否则为 |d(x) - d(y)| - 1</span></span><br></pre></td></tr></tbody></table></figure>
+<hr>
 <h2 id="拓展域并查集维护多种关系"><a class="markdownIt-Anchor" href="#拓展域并查集维护多种关系"></a> 拓展域并查集（维护多种关系）</h2>
 <p>把每个元素拆成多个域分别建并查集，空间 $O(nk)$（$k$ 为域数）。以食物链为例：原域、捕食域、天敌域共 3 倍空间。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">5e4</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> f[<span class="number">3</span> * N];</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eat(x)   (x + N)       <span class="comment">// 捕食域</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eaten(x) (x + 2 * N)   <span class="comment">// 天敌域</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f[x] == x ? x : f[x] = <span class="built_in">get</span>(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    f[<span class="built_in">get</span>(x)] = <span class="built_in">get</span>(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// X、Y 同类：merge(x,y); merge(eat(x),eat(y)); merge(eaten(x),eaten(y));</span></span><br><span class="line"><span class="comment">// X 吃 Y：   merge(eat(x),y); merge(eaten(y),x); merge(eaten(x),eat(y));</span></span><br></pre></td></tr></table></figure>
-<hr />
-<p>相关笔记：<a   href='/916cb2f0/'>【数据结构】并查集 学习笔记</a></p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">5e4</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> f[<span class="number">3</span> * N];</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eat(x)   (x + N)       <span class="comment">// 捕食域</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eaten(x) (x + 2 * N)   <span class="comment">// 天敌域</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> f[x] == x ? x : f[x] = <span class="built_in">get</span>(f[x]);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>{</span><br><span class="line">    f[<span class="built_in">get</span>(x)] = <span class="built_in">get</span>(y);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// X、Y 同类：merge(x,y); merge(eat(x),eat(y)); merge(eaten(x),eaten(y));</span></span><br><span class="line"><span class="comment">// X 吃 Y：   merge(eat(x),y); merge(eaten(y),x); merge(eaten(x),eat(y));</span></span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p>相关笔记：<a href="/916cb2f0/">【数据结构】并查集 学习笔记</a></p>
 </article>
 
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>代码模板</a><a class="tag" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>并查集</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>并查集</a><a class="tag" href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>代码模板</a></div>
 
 <div class="article-footer slide-up">
     <section id="license">
@@ -390,7 +390,7 @@
 
 </div>
 
-<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/f5402e91/">Codeforces 5C Longest Regular Bracket Sequence - Solution</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/bdb4f8e6/">代码模板-树状数组</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/34b10f95/">【数据结构】线段树（一） 学习笔记</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/bdb4f8e6/">代码模板-树状数组</a></div></section></div>
 
 
 

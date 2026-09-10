@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png">
 <meta property="article:published_time" content="2023-01-20T03:32:00.000Z">
-<meta property="article:modified_time" content="2023-01-20T03:32:00.000Z">
+<meta property="article:modified_time" content="2026-09-09T16:00:00.000Z">
 <meta property="article:author" content="zaochen">
 <meta property="article:tag" content="前缀和">
 <meta property="article:tag" content="差分">
@@ -39,7 +39,7 @@
 <meta name="twitter:image" content="https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png"><meta name="twitter:title" content="【数据结构】树状数组 学习笔记">
   
   
-  <meta name="keywords" content="树状数组,前缀和,差分,逆序对,数据结构">
+  <meta name="keywords" content="数据结构,树状数组,前缀和,差分,逆序对">
 
   <!-- feed -->
   
@@ -62,7 +62,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2023-01-20T11:32:00+08:00","dateModified":"2023-01-20T11:32:00+08:00","datePublished":"2023-01-20T11:32:00+08:00","description":"树状数组是一种基于二进制拆分的思想，用来动态维护序列的前缀和的树形数据结构。在全国青少年信息学奥林匹克竞赛大纲内难度评级为 6，是提高级中开始学习的数据结构。树状数组的基本操作：1. 修改序列中的一个数。2. 查询序列前缀和。\n 基本思想\n树状数组是一种基于二进制拆分的思想，用来动态维护序列的前缀和的树形数据结构。在全国青少年信息学奥林匹克竞赛大纲内难度评级为 6，是提高级中开始学习的数据结...","headline":"【数据结构】树状数组 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/41e5d11e/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/41e5d11e/","keywords":"树状数组, 前缀和, 差分, 逆序对, 数据结构","thumbnailUrl":"https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png","image":["https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2023-01-20T11:32:00+08:00","dateModified":"2026-09-10T00:00:00+08:00","datePublished":"2023-01-20T11:32:00+08:00","description":"树状数组是一种基于二进制拆分的思想，用来动态维护序列的前缀和的树形数据结构。在全国青少年信息学奥林匹克竞赛大纲内难度评级为 6，是提高级中开始学习的数据结构。树状数组的基本操作：1. 修改序列中的一个数。2. 查询序列前缀和。\n 基本思想\n树状数组是一种基于二进制拆分的思想，用来动态维护序列的前缀和的树形数据结构。在全国青少年信息学奥林匹克竞赛大纲内难度评级为 6，是提高级中开始学习的数据结...","headline":"【数据结构】树状数组 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/41e5d11e/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/41e5d11e/","keywords":"数据结构, 树状数组, 前缀和, 差分, 逆序对","thumbnailUrl":"https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png","image":["https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -96,7 +96,7 @@
     
 <a class="ui-collection__item card-hover card-hover--spotlight is-active is-themed" href="/" title="博客" aria-current="page" style="--item-theme:#1BCDFC;--item-grad:url(#menu-grad-post);">
   
-  <span class="ui-collection__leading">solar:documents-bold-duotone</span>
+  <span class="ui-collection__leading"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></span>
   
     <span class="ui-collection__content">
       
@@ -116,7 +116,7 @@
     
 <a class="ui-collection__item card-hover card-hover--spotlight is-themed" href="/social/" title="社交" style="--item-theme:#FF8F2C;--item-grad:url(#menu-grad-social);">
   
-  <span class="ui-collection__leading">solar:planet-bold-duotone</span>
+  <span class="ui-collection__leading"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></span>
   
     <span class="ui-collection__content">
       
@@ -150,6 +150,24 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
   
   
@@ -157,6 +175,24 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
       
       
     </span>
@@ -240,24 +276,6 @@
 
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/7c4f4089/" title="洛谷 P1637 三元上升子序列 - Solution">
   
   
@@ -311,24 +329,6 @@
 </a>
 
   
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/df80b11b/" title="【组合数学】康托展开 学习笔记">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">【组合数学】康托展开 学习笔记</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
 </div></div>
   
 </widget>
@@ -349,7 +349,7 @@
     <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/study-notes/">学习笔记</a>
 </div></div><div class="meta-row">
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-01-20T03:32:00.000Z">2023-01-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2023-01-20T03:32:00.000Z">2023-01-20</time></span></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-01-20T03:32:00.000Z">2023-01-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-09-09T16:00:00.000Z">2026-09-10</time></span></div>
 </div></div>
     
     <div class="bottom only-title">
@@ -372,10 +372,10 @@
 </ul>
 <p>$lowbit(x)$ 表示将 x 写成二进制表示后，最低位的 1 所代表的数值，如 $10 = (1010)_2 , lowbit(10)=(10)_2=2$</p>
 <p>以下是 $lowbit(x)$ 的求法，具体证明可参见 《算法竞赛进阶指南》 0x01 二进制 章节。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> lowbit(x) ((x)&amp;(-(x)))</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> lowbit(x) ((x)&amp;(-(x)))</span></span><br></pre></td></tr></tbody></table></figure>
 <p>对于原序列 $a[n]$，树状数组用一个数组 $c[n]$，其中，$c[i]$ 表示以 $i$ 结尾长度为 $lowbit(i)$ 的区间和，即区间 $[i-lowbit(i)+1,i]$。</p>
 <p>这时如果把整个数组视作一个树型结构（如下图，图来自《算法竞赛进阶指南》），则有以下性质：</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png" alt="image" /></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png" alt="image"></p>
 <ul>
 <li>每个节点表示以这个节点为根的子树中所有节点的和。</li>
 <li>每个节点有 $lowbit(i)$ 个子节点，其中 $i$ 表示这个节点的编号。</li>
@@ -383,29 +383,29 @@
 </ul>
 <p>可以发现，树的深度是 $O(\log n)$，所以树状数组的两种基本操作的时间复杂度都是 $O(\log n)$。</p>
 <h2 id="代码模板"><a class="markdownIt-Anchor" href="#代码模板"></a> 代码模板</h2>
-<p><a   href='/bdb4f8e6/'>代码模板-树状数组</a></p>
+<p><a href="/bdb4f8e6/">代码模板-树状数组</a></p>
 <h2 id="树状数组与逆序对"><a class="markdownIt-Anchor" href="#树状数组与逆序对"></a> 树状数组与逆序对</h2>
 <p>如果把树状数组当作一个桶使用，则可以用树状数组进行求逆序对等操作。</p>
 <p>具体地，因为树状数组可以查询前缀和，所以可以查询比某个数小的数量，据此可统计逆序对数目。</p>
-<p>例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1908">P1908 逆序对 - 洛谷</a>，代码见<a   href='/bdb4f8e6/#逆序对'>代码模板-树状数组</a>。值得注意的是，通常在值域较大的情况下，使用树状数组求逆序对需要对数据进行离散化，可以参考 <a   href='/4dac1417/'>【基础算法】离散化 学习笔记</a>。</p>
+<p>例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1908">P1908 逆序对 - 洛谷</a>，代码见<a href="/bdb4f8e6/#逆序对">代码模板-树状数组</a>。值得注意的是，通常在值域较大的情况下，使用树状数组求逆序对需要对数据进行离散化，可以参考 <a href="/4dac1417/">【基础算法】离散化 学习笔记</a>。</p>
 <p>如果再对当桶使用的树状数组进行拓展，即权值树状数组，可实现一些平衡树的操作，见拓展阅读。</p>
-<p>关于逆序对的应用，再举一个例题： <a   href='/7c4f4089/'>洛谷 P1637 三元上升子序列 - Solution</a>。</p>
-<p>使用树状数组求逆序数的另一个应用是组合数学里，求排列的字典序排名，即康托展开，详见 <a   href='/df80b11b/'>【组合数学】康托展开 学习笔记</a>。</p>
+<p>关于逆序对的应用，再举一个例题： <a href="/7c4f4089/">洛谷 P1637 三元上升子序列 - Solution</a>。</p>
+<p>使用树状数组求逆序数的另一个应用是组合数学里，求排列的字典序排名，即康托展开，详见 <a href="/df80b11b/">【组合数学】康托展开 学习笔记</a>。</p>
 <h2 id="树状数组与差分"><a class="markdownIt-Anchor" href="#树状数组与差分"></a> 树状数组与差分</h2>
 <p>朴素的前缀和区间查询和单点修改的时间复杂度分别是 $O(1)$， $O(n)$。</p>
 <p>树状数组可以将其优化为 $O(\log n)$，$O(\log n)$。</p>
 <p>朴素的差分单点查询和区间修改的时间复杂度分别是 $O(n)$， $O(1)$。</p>
 <p>树状数组同样可以将其优化为 $O(\log n)$，$O(\log n)$。</p>
-<p>代码实现见 <a   href='/bdb4f8e6/#区间修改-单点查询（差分）'>代码模板-树状数组</a>，可以在 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3368">P3368 【模板】树状数组 2 - 洛谷</a>测试。</p>
+<p>代码实现见 <a href="/bdb4f8e6/#区间修改-单点查询差分">代码模板-树状数组</a>，可以在 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3368">P3368 【模板】树状数组 2 - 洛谷</a>测试。</p>
 <p>考虑区间查询，有：$\sum_{i=1}^x a[i]$</p>
 <p>而差分（$b[i]$是差分数组）有： $a[i]=\sum_{j=1}^i b[i]$</p>
 <p>考虑每一个 $b[i]$ 被求和的次数（如图，图来自《算法竞赛进阶指南》），化简一下式子：</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bee-reg-ab.imagency.cn/p/fc30654660f721604d12a95d6ebca3a3.png" alt="image" /></p>
-<p>$$<br />
-\sum_{i=1}^x \sum_{j=1}^i b[i] = \sum_{i=1}^x (x-i+1) * b[i] = \sum_{i=1}^x (x+1) <em>b[i] - i</em>b[i] = \newline (x+1) \sum_{i=1}^x b[i] - \sum_{i=1}^x i*b[i]<br />
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bee-reg-ab.imagency.cn/p/fc30654660f721604d12a95d6ebca3a3.png" alt="image"></p>
+<p>$$<br>
+\sum_{i=1}^x \sum_{j=1}^i b[i] = \sum_{i=1}^x (x-i+1) * b[i] = \sum_{i=1}^x (x+1) <em>b[i] - i</em>b[i] = \newline (x+1) \sum_{i=1}^x b[i] - \sum_{i=1}^x i*b[i]<br>
 $$</p>
 <p>用树状数组分别维护 $b[i]$ 和 $i*b[i]$ 即可维护上面式子，区间查询和区间修改的时间复杂度都是 $O(\log n)$。</p>
-<p>代码实现见 [[代码模板-树状数组#区间修改 + 区间查询（差分 + 维护 i·b[i]）]]，可以在 <a target="_blank" rel="noopener" href="https://loj.ac/p/132">#132. 树状数组 3 ：区间修改，区间查询 - 题目 - LibreOJ</a> 进行练习测试。</p>
+<p>代码实现见 <a href="/bdb4f8e6/#区间修改-区间查询">代码模板-树状数组</a>，可以在 <a target="_blank" rel="noopener" href="https://loj.ac/p/132">#132. 树状数组 3 ：区间修改，区间查询 - 题目 - LibreOJ</a> 进行练习测试。</p>
 <h2 id="参考资料-拓展阅读-推荐题目"><a class="markdownIt-Anchor" href="#参考资料-拓展阅读-推荐题目"></a> 参考资料 &amp;&amp; 拓展阅读 &amp;&amp; 推荐题目</h2>
 <ul>
 <li>《算法竞赛进阶指南》，李煜东著，0x42 树状数组</li>
@@ -421,7 +421,7 @@ $$</p>
 </ul>
 </article>
 
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>树状数组</a><a class="tag" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>前缀和</a><a class="tag" href="/tags/%E5%B7%AE%E5%88%86/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>差分</a><a class="tag" href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>逆序对</a><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>数据结构</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>数据结构</a><a class="tag" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>树状数组</a><a class="tag" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>前缀和</a><a class="tag" href="/tags/%E5%B7%AE%E5%88%86/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>差分</a><a class="tag" href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>逆序对</a></div>
 
 <div class="article-footer slide-up">
     <section id="license">

@@ -40,7 +40,7 @@
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217"><meta name="twitter:title" content="【线性代数】矩阵 学习笔记">
   
   
-  <meta name="keywords" content="动态规划,最短路,线性代数,矩阵乘法,快速幂,Fibonacci数列">
+  <meta name="keywords" content="动态规划,线性代数,矩阵乘法,快速幂,最短路,Fibonacci数列">
 
   <!-- feed -->
   
@@ -63,7 +63,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-09-07T06:35:00+08:00","dateModified":"2026-09-10T00:00:00+08:00","datePublished":"2026-09-07T06:35:00+08:00","description":"矩阵相关内容是线性代数的基础知识，在算法竞赛中最主要的应用是矩阵快速幂加速递推。本文从矩阵乘法的定义与实现细节讲起，介绍矩阵快速幂的原理，并通过斐波那契数列等经典例题展示转移矩阵的构造方法；随后延伸到图论中的应用——邻接矩阵的幂计数定长路径，以及用 $(\\min, +)$ 广义矩阵乘法处理恰好经过 $k$ 条边的最短路。\n 矩阵乘法\n一个 $m \\times n$ 的矩阵是由 $m$ 行 $...","headline":"【线性代数】矩阵 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/492e958b/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/492e958b/","keywords":"动态规划, 最短路, 线性代数, 矩阵乘法, 快速幂, Fibonacci数列","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-09-07T06:35:00+08:00","dateModified":"2026-09-10T00:00:00+08:00","datePublished":"2026-09-07T06:35:00+08:00","description":"矩阵相关内容是线性代数的基础知识，在算法竞赛中最主要的应用是矩阵快速幂加速递推。本文从矩阵乘法的定义与实现细节讲起，介绍矩阵快速幂的原理，并通过斐波那契数列等经典例题展示转移矩阵的构造方法；随后延伸到图论中的应用——邻接矩阵的幂计数定长路径，以及用 $(\\min, +)$ 广义矩阵乘法处理恰好经过 $k$ 条边的最短路。\n 矩阵乘法\n一个 $m \\times n$ 的矩阵是由 $m$ 行 $...","headline":"【线性代数】矩阵 学习笔记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/492e958b/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/492e958b/","keywords":"动态规划, 线性代数, 矩阵乘法, 快速幂, 最短路, Fibonacci数列","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -97,7 +97,7 @@
     
 <a class="ui-collection__item card-hover card-hover--spotlight is-active is-themed" href="/" title="博客" aria-current="page" style="--item-theme:#1BCDFC;--item-grad:url(#menu-grad-post);">
   
-  <span class="ui-collection__leading">solar:documents-bold-duotone</span>
+  <span class="ui-collection__leading"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></span>
   
     <span class="ui-collection__content">
       
@@ -117,7 +117,7 @@
     
 <a class="ui-collection__item card-hover card-hover--spotlight is-themed" href="/social/" title="社交" style="--item-theme:#FF8F2C;--item-grad:url(#menu-grad-social);">
   
-  <span class="ui-collection__leading">solar:planet-bold-duotone</span>
+  <span class="ui-collection__leading"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></span>
   
     <span class="ui-collection__content">
       
@@ -151,6 +151,24 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
   
   
@@ -158,6 +176,24 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
       
       
     </span>
@@ -241,24 +277,6 @@
 
   
     
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/bdb4f8e6/" title="代码模板-树状数组">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/7c4f4089/" title="洛谷 P1637 三元上升子序列 - Solution">
   
   
@@ -302,24 +320,6 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">LeetCode 3518 最小回文排列 II - Solution</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/df80b11b/" title="【组合数学】康托展开 学习笔记">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">【组合数学】康托展开 学习笔记</span>
       
       
     </span>
@@ -429,7 +429,7 @@ $$\min</em>{v_0=S,; v_N=E,; \forall k,(v_{k-1},v_k)\in E}\ \sum_{k=1}^{N} \text{
 </ul>
 </article>
 
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>最短路</a><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>线性代数</a><a class="tag" href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>矩阵乘法</a><a class="tag" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>快速幂</a><a class="tag" href="/tags/Fibonacci%E6%95%B0%E5%88%97/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>Fibonacci数列</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>线性代数</a><a class="tag" href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>矩阵乘法</a><a class="tag" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>快速幂</a><a class="tag" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>最短路</a><a class="tag" href="/tags/Fibonacci%E6%95%B0%E5%88%97/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>Fibonacci数列</a></div>
 
 <div class="article-footer slide-up">
     <section id="license">
