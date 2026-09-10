@@ -29,6 +29,7 @@
     "markdown-it-obsidian-callouts": "^0.3.4",
     "markdown-it-obsidian-images": "^1.0.1",
     "markdown-it-obsidian-imgsize": "^0.1.1",
+    "markdown-it-raw-math": "file:./local-plugins/markdown-it-raw-math",
     "markdown-it-task-lists": "^2.1.1"
   }
 }

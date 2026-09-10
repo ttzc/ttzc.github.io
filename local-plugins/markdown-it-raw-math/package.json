@@ -1,0 +1,6 @@
+{
+  "name": "markdown-it-raw-math",
+  "version": "1.0.0",
+  "description": "Protect $...$ / $$...$$ from markdown-it emphasis & backslash escaping; emit them verbatim for client-side MathJax",
+  "main": "index.js"
+}

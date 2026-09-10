@@ -151,4 +151,10 @@ markdown_it_plus:
     - plugin:
         name: '@iktakahiro/markdown-it-katex'
         enable: false
+    # 只保护、不渲染：把 $...$ / $$...$$ 原样透传给浏览器端 MathJax，
+    # 防止 markdown-it 的 emphasis（_ 配对成 <em>）与反斜杠转义破坏公式
+    - plugin:
+        name: markdown-it-raw-math
+        enable: true
+        options:
 
