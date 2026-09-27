@@ -5,8 +5,6 @@ platform: Codeforces
 tags:
   - Codeforces
   - 动态规划
-  - 二分查找
-  - 贪心
   - 分治
 author: zaochen
 abbrlink: 5b246e40
