@@ -39,7 +39,7 @@
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217"><meta name="twitter:title" content="Codeforces 26B Regular Bracket Sequence - Solution">
   
   
-  <meta name="keywords" content="贪心,字符串,Codeforces,括号序列,栈">
+  <meta name="keywords" content="贪心,Codeforces,字符串,括号序列,栈">
 
   <!-- feed -->
   
@@ -62,7 +62,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-20T00:00:00+08:00","dateModified":"2026-07-20T00:00:00+08:00","datePublished":"2026-07-20T00:00:00+08:00","description":" 1. 题目数据 (Problem Metadata)\n\n题目类型：传统题\n题目链接：Problem - 26B - Codeforces\n时间限制：5 秒\n内存限制：256 MB\n\n 2. 题意简述 (Problem Summary)\n给定长度为 $n$（$1 \\le n \\le 10^6$）的括号串 $s$，仅由 ( 与 ) 组成。求其最长合法括号子序列的长度。合法括号序列定义为可由 (...","headline":"Codeforces 26B Regular Bracket Sequence - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/2905f300/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/2905f300/","keywords":"贪心, 字符串, Codeforces, 括号序列, 栈","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-07-20T00:00:00+08:00","dateModified":"2026-07-20T00:00:00+08:00","datePublished":"2026-07-20T00:00:00+08:00","description":" 1. 题目数据 (Problem Metadata)\n\n题目类型：传统题\n题目链接：Problem - 26B - Codeforces\n时间限制：5 秒\n内存限制：256 MB\n\n 2. 题意简述 (Problem Summary)\n给定长度为 $n$（$1 \\le n \\le 10^6$）的括号串 $s$，仅由 ( 与 ) 组成。求其最长合法括号子序列的长度。合法括号序列定义为可由 (...","headline":"Codeforces 26B Regular Bracket Sequence - Solution","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/2905f300/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/2905f300/","keywords":"贪心, Codeforces, 字符串, 括号序列, 栈","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -168,6 +168,24 @@
 
   
     
+<a class="ui-collection__item card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
+  
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+  
+</a>
+
+  
+    
 <a class="ui-collection__item card-hover card-hover--spotlight" href="/4951afbf/" title="代码模板-矩阵">
   
   
@@ -193,24 +211,6 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
-      
-      
-    </span>
-  
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
-  
-  
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
       
       
     </span>
@@ -471,7 +471,7 @@ $$
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> left = <span class="number">0</span>, res = <span class="number">0</span>, c;</span><br><span class="line">    <span class="keyword">while</span> ((c = <span class="built_in">getchar</span>()) != EOF &amp;&amp; c != <span class="string">'\n'</span> &amp;&amp; c != <span class="string">'\r'</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">'('</span>) left++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">')'</span> &amp;&amp; left) left--, res++;</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </article>
 
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>贪心</a><a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>字符串</a><a class="tag" href="/tags/Codeforces/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>Codeforces</a><a class="tag" href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>括号序列</a><a class="tag" href="/tags/%E6%A0%88/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>栈</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>贪心</a><a class="tag" href="/tags/Codeforces/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>Codeforces</a><a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>字符串</a><a class="tag" href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>括号序列</a><a class="tag" href="/tags/%E6%A0%88/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>栈</a></div>
 
 <div class="article-footer slide-up">
     <section id="license">
@@ -483,7 +483,7 @@ $$
 
 </div>
 
-<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/8a401a71/">LeetCode 3499 操作后最大活跃区段数 I - Solution</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/f5402e91/">Codeforces 5C Longest Regular Bracket Sequence - Solution</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2983d0b1/">洛谷 P8818 策略游戏 - Solution</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/f5402e91/">Codeforces 5C Longest Regular Bracket Sequence - Solution</a></div></section></div>
 
 
 
