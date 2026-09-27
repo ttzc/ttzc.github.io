@@ -6,6 +6,7 @@ tags:
   - Codeforces
   - 动态规划
   - 区间DP
+  - 构造
   - 分治
 author: zaochen
 abbrlink: 5b246e40
