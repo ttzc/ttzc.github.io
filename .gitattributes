@@ -1,0 +1,24 @@
+# 仓库内文本文件统一使用 LF 换行。
+# 本仓库源码运行在 Git Bash / WSL 侧，刻意避免 CRLF 以消除
+# `core.autocrlf=true` 造成的「假改动」（工作区行尾与索引不一致）。
+# 注意：为让 git 正确区分文本与二进制，这里不设置 `* text=auto`。
+* text=auto=false
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.txt text eol=lf
+*.sh text eol=lf
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.zip binary
