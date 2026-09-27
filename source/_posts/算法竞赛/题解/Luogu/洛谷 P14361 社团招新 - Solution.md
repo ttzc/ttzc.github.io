@@ -11,6 +11,7 @@ tags:
 author: zaochen
 abbrlink: ac6e74e8
 date: 2026-07-23
+description: CSP-S 反悔贪心题：按「当前选择收益」排序后贪心选取，若后续出现更优解则用堆回退之前的决策，修正为全局最优，时间复杂度 O(n log n)。
 ---
 ## 1. 题目数据 (Problem Metadata)
 
