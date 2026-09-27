@@ -5,6 +5,7 @@ platform: Codeforces
 tags:
   - Codeforces
   - 动态规划
+  - 区间DP
   - 分治
 author: zaochen
 abbrlink: 5b246e40
