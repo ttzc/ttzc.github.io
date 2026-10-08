@@ -1,15 +1,14 @@
 ---
+---
 title: 洛谷 P2678 跳石头 - Solution
-category: 题解
-platform: Luogu
 tags:
   - Luogu
   - 二分答案
   - 贪心
-author: zaochen
 abbrlink: ad1e1585
-date: 2026-07-15
+date: 2026-07-15T00:00:00.000Z
 description: 经典「最大化最小值」二分答案 + 贪心判定问题，NOIP 2015 提高组，通过二段性将枚举转化为判定，时间复杂度 O(N log L)。
+---
 ---
 ## 1. 题目数据 (Problem Metadata)
 

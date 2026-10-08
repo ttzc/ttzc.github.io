@@ -1,18 +1,18 @@
 ---
+---
 title: 【数据结构】ST 表 学习笔记
-category: 学习笔记
 tags:
   - 数据结构
   - ST表
   - RMQ
   - 倍增
   - 区间最值
-author: zaochen
 permalink: c3e7e194/
 published: false
 abbrlink: 957cf6c7
-date: 2026-07-22
+date: 2026-07-22T00:00:00.000Z
 description: 从 RMQ 问题出发讲解 ST 表（Sparse Table）：倍增预处理区间最值，O(n log n) 建表、O(1) 单次查询，说明其只支持静态、可重复贡献运算的适用边界，并附代码模板。
+---
 ---
 ## RMQ 问题
 

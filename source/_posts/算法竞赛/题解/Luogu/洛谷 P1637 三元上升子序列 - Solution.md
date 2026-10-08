@@ -1,17 +1,14 @@
 ---
+---
 title: 洛谷 P1637 三元上升子序列 - Solution
-category: 题解
-platform: Luogu
 tags:
   - Luogu
   - 树状数组
   - 离散化
-description: >-
-  给定长度为 $N$ 的序列，求满足 $i < j < k$ 且 $a[i] < a[j] < a[k]$ 的三元组个数。$N \le 10^5$，$a_i
-  \le 10^9$。通过枚举中间位置 $j$，利用权值树状数组分别统计左右两侧的可行元素个数，$O(N \log N)$ 解决。
-author: zaochen
+description: 给定长度为 $N$ 的序列，求满足 $i < j < k$ 且 $a[i] < a[j] < a[k]$ 的三元组个数。$N \le 10^5$，$a_i \le 10^9$。通过枚举中间位置 $j$，利用权值树状数组分别统计左右两侧的可行元素个数，$O(N \log N)$ 解决。
 abbrlink: 7c4f4089
-date: 2026-07-30 20:23:00
+date: 2026-07-30T20:23:00.000Z
+---
 ---
 ## 1. 题目数据
 

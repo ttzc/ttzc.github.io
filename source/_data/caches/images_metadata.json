@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "images": {
+    "https://avatars.githubusercontent.com/u/58620217": {
+      "updatedAt": "2026-10-08T03:00:43.960Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 460,
+        "height": 460
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          27.3748,
+          48.3608,
+          82.711,
+          1
+        ]
+      }
+    },
+    "https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png": {
+      "updatedAt": "2026-10-08T03:00:51.843Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1306,
+        "height": 1204
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          150.0967,
+          1.6031,
+          92.9677,
+          1
+        ]
+      }
+    },
+    "https://bee-reg-ab.imagency.cn/p/cb3a75ff5ba885bf155a6702713f958d.png": {
+      "updatedAt": "2026-10-08T03:00:47.265Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 390,
+        "height": 154
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          0,
+          0,
+          95.4748,
+          1
+        ]
+      }
+    },
+    "https://bee-reg-ab.imagency.cn/p/fa2434bc66c196b841f5c6e9b0ab54de.png": {
+      "updatedAt": "2026-10-08T03:00:45.441Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1306,
+        "height": 1204
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          248.354,
+          5.126,
+          94.2086,
+          1
+        ]
+      }
+    },
+    "https://bee-reg-ab.imagency.cn/p/fc30654660f721604d12a95d6ebca3a3.png": {
+      "updatedAt": "2026-10-08T03:00:47.557Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 456,
+        "height": 123
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          0,
+          0,
+          80.3716,
+          1
+        ]
+      }
+    },
+    "https://ls-hower.github.io/assets/gan.png": {
+      "updatedAt": "2026-10-08T03:00:44.522Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1440,
+        "height": 1440
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          0,
+          35.3398,
+          85.6662,
+          1
+        ]
+      }
+    },
+    "https://www.mztlab.net/favicon.ico": {
+      "updatedAt": "2026-10-08T03:00:44.943Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 150,
+        "height": 150
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          190.7729,
+          24.4464,
+          14.1213,
+          1
+        ]
+      }
+    }
+  }
+}

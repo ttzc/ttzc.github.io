@@ -1,15 +1,14 @@
 ---
+---
 title: Codeforces 670C Cinema - Solution
-category: 题解
-platform: Codeforces
 tags:
   - Codeforces
   - 离散化
   - 贪心
-author: zaochen
 abbrlink: a9a1b994
-date: 2026-07-28 12:08:28
+date: 2026-07-28T12:08:28.000Z
 description: 每个人有一种语言，每部电影有语音与字幕两种语言，选择「语音听懂人数最多、并列时字幕听懂人数最多」的电影。先离散化语言编号，用数组统计各语言人数后线性比较，O(n+m) 解决。
+---
 ---
 ## 1. 题目数据 (Problem Metadata)
 

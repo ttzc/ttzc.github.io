@@ -1,59 +1,96 @@
-plugins:
-  katex:
-    enable: false
-  callout:
-    enable: true
-    inject: |
-      <link rel="stylesheet" href="/css/callout.css">
-  mathjax:
-    enable: true
-    v3: false
-    js: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+# Stellar v2 配置（从 v1 迁移，2026-10-08）
+#
+# 迁移映射（v1 → v2）：
+#   plugins.katex/mathjax      → features.math.provider / features.math.mathjax.js
+#   plugins.callout.inject     → inject.head_end
+#   search.service             → search.provider
+#   article.reading_time       → article.show_reading_time
+#   logo.avatar                → leftbar.brand.image.src / leftbar.brand.href
+#   menubar                    → leftbar.menu
+#   footer.content / sitemap   → footer.content / footer.sitemap（字段名不变）
 
-# 本地搜索：结果按章节拆分、点击直达锚点并高亮关键词，支持 Ctrl+K 聚焦
+# -----------------------------------------------------------------
+# 数学公式：MathJax v3 客户端渲染（raw-math 保护 $ 定界符不被 markdown-it 破坏）
+# -----------------------------------------------------------------
+features:
+  math:
+    provider: mathjax
+    mathjax:
+      js: https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js
+
+# -----------------------------------------------------------------
+# 搜索：本地全文搜索（Ctrl+K / Cmd+K）
+# -----------------------------------------------------------------
 search:
-  service: local_search
+  provider: local
 
-# 文章页显示字数与预计阅读时长
+# -----------------------------------------------------------------
+# 文章页
+# -----------------------------------------------------------------
 article:
-  reading_time: true
+  show_reading_time: true
 
-logo:
-  avatar: '[{config.avatar}](/social/)'
-
+# -----------------------------------------------------------------
+# 页脚
+# -----------------------------------------------------------------
 footer:
   content: |
     本站由 [{author.name}](/) 使用 [{theme.name} {theme.version}]({theme.tree}) 主题创建。
     本博客所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。
     全站访问量 <span id="busuanzi_site_pv">-</span> 次 · 访客数 <span id="busuanzi_site_uv">-</span> 人 · 本页面浏览 <span id="busuanzi_page_pv">-</span> 次
     <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
+  sitemap: []
 
-# # 侧边栏主功能导航菜单
-menubar:
-  columns: 4
-  items:
+# -----------------------------------------------------------------
+# 可信内容注入（保留 v1 callout CSS 注入，注入位置从 <head> 末尾改为 </head> 前）
+# -----------------------------------------------------------------
+inject:
+  head_end: |
+    <link rel="stylesheet" href="/css/callout.css">
+
+# -----------------------------------------------------------------
+# 左栏：Brand + 菜单
+# -----------------------------------------------------------------
+leftbar:
+  brand:
+    search: true
+    style: regular
+    ghuser: null
+    image:
+      src: https://avatars.githubusercontent.com/u/58620217
+      variant: avatar
+    name: null
+    tagline: null
+    href: /social/
+  menu_columns: 1
+  menu:
     - id: post
-      theme: '#1BCDFC'
-      icon: default:documents
       title: 博客
+      icon: default:documents
       url: /
-    - id: social
-      theme: '#FF8F2C'
-      icon: example:planet
-      title: 社交
-      url: /social/
-
-# # 侧边栏主功能导航菜单
-# menubar:
-#   columns: 4
-#   items:
-#     - id: post
-#       theme: '#1BCDFC'
-#       icon: default:documents
-#       title: 博客
-#       url: /
-#     - id: about
-#       theme: '#FF8F2C'
-#       icon: https://api.iconify.design/solar:user-bold-duotone.svg
-#       title: 关于
-#       url: /about/
+    - id: categories
+      title: 分类
+      icon: default:category
+      url: /blog/categories/
+    - id: tags
+      title: 标签
+      icon: default:hashtag
+      url: /blog/tags/
+    - id: topic
+      title: 专栏
+      icon: default:pin
+      url: /topic/
+    - id: archives
+      title: 归档
+      icon: default:calendar
+      url: /blog/archives/
+    - id: friends
+      title: 友链
+      icon: default:link
+      url: /friends/
+    - id: about
+      title: 关于
+      icon: default:profile
+      url: /about/
+  footer:
+    actions: []

@@ -1,15 +1,14 @@
 ---
+---
 title: LeetCode 3499 操作后最大活跃区段数 I - Solution
-category: 题解
-platform: LeetCode
 tags:
   - LeetCode
   - 字符串
   - 贪心
-author: zaochen
 abbrlink: 8a401a71
-date: 2026-07-22
+date: 2026-07-22T00:00:00.000Z
 description: 至多进行一次「翻转单个字符」的操作，求能得到的最大连续活跃段长度。枚举分割点，统计左右两侧连续 1 段长度并讨论被 0 隔开的相邻段合并，O(n) 求最大值。
+---
 ---
 ## 1. 题目数据 (Problem Metadata)
 

@@ -1,17 +1,16 @@
 ---
+---
 title: 洛谷 P8818 策略游戏 - Solution
-category: 题解
-platform: Luogu
 tags:
   - Luogu
   - min-max博弈
   - ST表
   - 区间最值
   - 博弈论
-author: zaochen
 abbrlink: 2983d0b1
-date: 2026-07-22
+date: 2026-07-22T00:00:00.000Z
 description: CSP-S 2022 min-max 博弈题，利用符号分类与 ST 表预处理区间极值，将 O(qnm) 枚举优化至 O(q log n)，实现双方最优策略下的乘积值查询。
+---
 ---
 ## 1. 题目数据 (Problem Metadata)
 

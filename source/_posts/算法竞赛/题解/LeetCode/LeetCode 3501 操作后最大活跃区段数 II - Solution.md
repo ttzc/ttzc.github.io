@@ -1,16 +1,15 @@
 ---
+---
 title: LeetCode 3501 操作后最大活跃区段数 II  - Solution
-category: 题解
-platform: LeetCode
 tags:
   - LeetCode
   - 字符串
   - ST表
   - 贪心
-author: zaochen
 description: LeetCode 3501「操作后最大活跃区段数 II」题解，基于 I 版结论将交易转化为相邻 0 块合并，用 Sparse Table 预处理相邻 0 块长度和的区间最大值，支持 O(log n) 单次查询。
 abbrlink: 122ef01b
-date: 2026-07-23
+date: 2026-07-23T00:00:00.000Z
+---
 ---
 ## 1. 题目数据 (Problem Metadata)
 

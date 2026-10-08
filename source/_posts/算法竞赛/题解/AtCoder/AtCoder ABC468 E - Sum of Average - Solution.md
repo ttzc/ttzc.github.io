@@ -1,17 +1,16 @@
 ---
+---
 title: AtCoder ABC468 E - Sum of Average - Solution
-category: 题解
-platform: AtCoder
 tags:
   - AtCoder
   - 前缀和
   - 贡献拆分
   - 数学
   - 模逆元
-author: zaochen
 abbrlink: a12f0831
-date: 2026-07-26
+date: 2026-07-26T00:00:00.000Z
 description: 给定序列，求所有连续子段平均值的总和。把「子段和 ÷ 长度」按每个元素的贡献拆分，转化为带模逆元的系数求和，O(n) 一次扫描即可统计全部子段。
+---
 ---
 
 

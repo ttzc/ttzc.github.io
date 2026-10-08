@@ -1,17 +1,16 @@
 ---
+---
 title: Codeforces 2267D Backrooms Hill - Solution
-category: 题解
-platform: Codeforces
 tags:
   - Codeforces
   - 动态规划
   - 区间DP
   - 构造
   - 分治
-author: zaochen
 abbrlink: 5b246e40
-date: 2026-09-27T09:40:00
+date: 2026-09-27T09:40:00.000Z
 description: 给定 1~n 的排列，每次只能交换下标相差 2 的元素（即同奇偶位置内任意重排），判断能否变成「山形」。关键结构刻画：值 ≥ v 的位置必须构成连续区间。区间 DP 的转移只依赖区间长度与左端奇偶性，故按平移 2 格不变性坍缩成 n 层 × 2 状态，O(n) 判定；文中附「前 m 大值奇偶计数始终不失衡」的等价闭式证明，与官方扫描解法完全等价。
+---
 ---
 ## 1. 题目数据 (Problem Metadata)
 

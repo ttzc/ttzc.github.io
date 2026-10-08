@@ -1,16 +1,15 @@
 ---
+---
 title: 洛谷 P1955 程序自动分析 - Solution
-category: 题解
-platform: Luogu
 tags:
   - Luogu
   - NOI
   - 并查集
   - 离散化
-author: zaochen
 abbrlink: 26fd5b5
-date: 2026-07-27 22:38:38
+date: 2026-07-27T22:38:38.000Z
 description: NOI 2015 约束满足问题，利用并查集维护相等关系的传递性，离散化压缩变量编号后判定不等约束是否冲突，时间复杂度 O(n α(n))。
+---
 ---
 ## 1. 题目数据 (Problem Metadata)
 

@@ -1,17 +1,17 @@
 ---
+---
 title: 【动态规划】线性 DP 学习笔记
-category: 学习笔记
 tags:
   - 动态规划
   - LIS
   - 线性DP
   - 二分查找
   - 贪心
-author: zaochen
 description: LIS 最长上升子序列的线性 DP 学习笔记，涵盖 O(n²) 朴素动态规划推导、最优子结构与无后效性分析、NOIP 2004 合唱队形例题，以及 O(n log n) 的 Patience Sorting（二分贪心）优化与常见误区。
 abbrlink: 428bd345
-date: 2026-08-02 13:59:00
-update: 2026-08-03 17:18:00
+date: 2026-08-02T13:59:00.000Z
+updated: 2026-08-03T17:18:00.000Z
+---
 ---
 ## 最长上升子序列（LIS）
 

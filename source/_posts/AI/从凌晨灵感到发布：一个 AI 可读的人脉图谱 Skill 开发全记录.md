@@ -1,16 +1,16 @@
 ---
+---
 title: 从凌晨灵感到发布：一个 AI 可读的人脉图谱 Skill 开发全记录
-category: AI
 tags:
   - Agent
   - Skill
   - Obsidian
   - CRM
   - WorkBuddy
-author: zaochen
 abbrlink: a1377ca2
-date: 2026-08-08 19:56:00
+date: 2026-08-08T19:56:00.000Z
 description: 记录从凌晨灵感出发，设计并发布一个 AI 可读的人脉图谱 Skill 的全过程：数据模型、独立 Obsidian Vault 架构、三层原子标签体系、图谱净化与审计脚本，以及打包发布到 SkillHub 的关键决策与资源链接。
+---
 ---
 ## 背景
 

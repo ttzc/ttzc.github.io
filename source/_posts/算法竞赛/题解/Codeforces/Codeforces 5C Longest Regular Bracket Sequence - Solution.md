@@ -1,17 +1,16 @@
 ---
+---
 title: Codeforces 5C Longest Regular Bracket Sequence - Solution
-category: 题解
-platform: Codeforces
 tags:
   - Codeforces
   - 括号序列
   - 动态规划
   - 栈
   - 字符串
-author: zaochen
 abbrlink: f5402e91
-date: 2026-07-20
+date: 2026-07-20T00:00:00.000Z
 description: 给出最长合法括号子串的三种解法：DP 法 O(n)、栈匹配法 O(n) 与双向贪心+set 去重法，对比分析各自的适用场景与代码实现。
+---
 ---
 ## 1. 题目数据 (Problem Metadata)
 

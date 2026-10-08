@@ -1,15 +1,14 @@
 ---
+---
 title: LeetCode 4002 统计有效序列数目 - Solution
-category: 题解
-platform: LeetCode
 tags:
   - LeetCode
   - 字符串
   - 贪心
-author: zaochen
 abbrlink: fba1a986
-date: 2026-07-26
+date: 2026-07-26T00:00:00.000Z
 description: 统计满足给定约束的有效序列数目。按位置依赖关系逐位确定取值，配合组合计数与贪心构造，一次线性扫描完成计数。
+---
 ---
 ## 1. 题目数据
 
