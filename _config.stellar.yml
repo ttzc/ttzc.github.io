@@ -62,35 +62,30 @@ leftbar:
     name: null
     tagline: null
     href: /social/
+  # 菜单路径必须是本站真实路由（Hexo 生成在根目录，不带 /blog/ 前缀）
   menu_columns: 1
   menu:
     - id: post
       title: 博客
       icon: default:documents
+      accent: '#1BCDFC'
       url: /
+    - id: social
+      title: 社交
+      icon: example:planet
+      accent: '#FF8F2C'
+      url: /social/
     - id: categories
       title: 分类
       icon: default:category
-      url: /blog/categories/
+      url: /categories/
     - id: tags
       title: 标签
       icon: default:hashtag
-      url: /blog/tags/
-    - id: topic
-      title: 专栏
-      icon: default:pin
-      url: /topic/
+      url: /tags/
     - id: archives
       title: 归档
       icon: default:calendar
-      url: /blog/archives/
-    - id: friends
-      title: 友链
-      icon: default:link
-      url: /friends/
-    - id: about
-      title: 关于
-      icon: default:profile
-      url: /about/
+      url: /archives/
   footer:
     actions: []

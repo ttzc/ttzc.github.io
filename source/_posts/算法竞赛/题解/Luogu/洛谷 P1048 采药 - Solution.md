@@ -1,14 +1,16 @@
 ---
----
 title: 洛谷 P1048 采药 - Solution
+categories:
+  - 题解
 tags:
   - Luogu
   - 背包DP
   - 动态规划
+article:
+  author: zaochen
 abbrlink: ae043577
-date: 2026-07-15T00:00:00.000Z
+date: 2026-07-15
 description: 经典 0/1 背包入门题，给出状态定义、转移方程推导、空间优化（倒序滚动）全过程，时间复杂度 O(MT)。
----
 ---
 ## 1. 题目数据 (Problem Metadata)
 

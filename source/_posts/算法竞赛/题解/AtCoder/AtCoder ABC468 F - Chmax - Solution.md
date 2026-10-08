@@ -1,14 +1,16 @@
 ---
----
 title: AtCoder ABC468 F - Chmax - Solution
+categories:
+  - 题解
 tags:
   - AtCoder
   - 贪心
   - LIS
+article:
+  author: zaochen
 abbrlink: 776526af
-date: 2026-08-03T19:59:00.000Z
+date: 2026-08-03 19:59:00
 description: 将 1~N 的排列依次分配到两个变量上，最大化"当前值小于新值"的计数。核心结论：前缀最大值必贡献，剩余元素的最大贡献数为其 LIS 长度，答案 = 前缀最大值个数 + LIS(剩余序列)，时间复杂度 O(N log N)。
----
 ---
 ## 1. 题目数据 (Problem Metadata)
 

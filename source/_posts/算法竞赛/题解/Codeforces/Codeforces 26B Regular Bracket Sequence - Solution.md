@@ -1,16 +1,18 @@
 ---
----
 title: Codeforces 26B Regular Bracket Sequence - Solution
+categories:
+  - 题解
 tags:
   - Codeforces
   - 括号序列
   - 贪心
   - 栈
   - 字符串
+article:
+  author: zaochen
 abbrlink: 2905f300
-date: 2026-07-20T00:00:00.000Z
+date: 2026-07-20
 description: 求最长合法括号子序列的长度。用栈匹配或计数器维护当前未匹配的左右括号数，贪心地保留每一对可配对括号，O(n) 扫描即可得到答案。
----
 ---
 ## 1. 题目数据 (Problem Metadata)
 

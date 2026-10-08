@@ -1,14 +1,16 @@
 ---
----
 title: 洛谷 P1216 数字三角形 Number Triangles - Solution
+categories:
+  - 题解
 tags:
   - Luogu
   - 动态规划
   - 线性DP
+article:
+  author: zaochen
 abbrlink: "508743e0"
-date: 2026-07-11T00:00:00.000Z
+date: 2026-07-11
 description: 经典线性 DP 入门题，数字三角形最大路径和，利用最优子结构自顶向下递推，时间复杂度 O(r²)。
----
 ---
 ## 1. 题目数据 (Problem Metadata)
 

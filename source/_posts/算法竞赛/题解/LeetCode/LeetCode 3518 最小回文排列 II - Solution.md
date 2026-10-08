@@ -1,15 +1,17 @@
 ---
----
 title: LeetCode 3518 最小回文排列 II - Solution
+categories:
+  - 题解
 tags:
   - LeetCode
   - 组合数学
   - 康托展开
   - 可重集的排列组合
+article:
+  author: zaochen
 abbrlink: 26daeb5a
-date: 2026-07-29T20:45:00.000Z
+date: 2026-07-29 20:45:00
 description: 利用康托展开 + 可重集排列计数，在 O(n·26·log n) 内求回文串所有不同排列按字典序排序后的第 k 个，通过剪枝提前判断无解情况。
----
 ---
 ## 1. 题目数据
 
