@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0" theme-name="Stellar" theme-version="2.0.0">
+  
+  
+  <meta name="generator" content="Hexo 8.1.2">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title data-stellar-page-meta>第20届北京邮电大学程序设计竞赛 游记 - zaochen's blog</title>
+  <script data-stellar-script="core">
+    (function () {
+      var key = 'stellar:v2:leftbar-state';
+      var fallback = "expanded";
+      try {
+        var value = localStorage.getItem(key);
+        document.documentElement.dataset.leftbarState = value === 'collapsed' || value === 'expanded' ? value : fallback;
+      } catch (error) {
+        document.documentElement.dataset.leftbarState = fallback;
+      }
+    })();
+  </script>
+
+  <meta name="description" content="记录北京邮电大学第 20 届程序设计竞赛（网络预选赛 2026-10-11，正式赛 2026-10-18）的备赛与参赛全程：报名突击、队友群聊与「图灵派/冯诺依曼派」网络热梗、体测与疫苗的穿插，以及比赛当日的卡常苦战。复盘了 A/B/E 三题——线性筛判素数子串、快速幂与组合数（范德蒙德卷积）、26 字母前缀和统计，并记下全场 58% 爆零率与赛后补题。" data-stellar-page-meta="">
+<meta property="og:type" content="article" data-stellar-page-meta="">
+<meta property="og:title" content="第20届北京邮电大学程序设计竞赛 游记" data-stellar-page-meta="">
+<meta property="og:url" content="http://ttzc.github.io/991eb47b/" data-stellar-page-meta="">
+<meta property="og:site_name" content="zaochen's blog" data-stellar-page-meta="">
+<meta property="og:description" content="记录北京邮电大学第 20 届程序设计竞赛（网络预选赛 2026-10-11，正式赛 2026-10-18）的备赛与参赛全程：报名突击、队友群聊与「图灵派/冯诺依曼派」网络热梗、体测与疫苗的穿插，以及比赛当日的卡常苦战。复盘了 A/B/E 三题——线性筛判素数子串、快速幂与组合数（范德蒙德卷积）、26 字母前缀和统计，并记下全场 58% 爆零率与赛后补题。" data-stellar-page-meta="">
+<meta property="og:locale" content="zh_CN" data-stellar-page-meta="">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/58620217" data-stellar-page-meta="">
+<meta property="article:author" content="zaochen" data-stellar-page-meta="">
+<meta property="article:published_time" content="2026-10-12T16:00:00.000Z" data-stellar-page-meta="">
+<meta property="article:modified_time" content="2026-10-12T16:00:00.000Z" data-stellar-page-meta="">
+<meta property="article:tag" content="前缀和" data-stellar-page-meta="">
+<meta property="article:tag" content="快速幂" data-stellar-page-meta="">
+<meta property="article:tag" content="排列与组合" data-stellar-page-meta="">
+<meta property="article:tag" content="素数判定" data-stellar-page-meta="">
+<meta name="twitter:card" content="summary" data-stellar-page-meta="">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/58620217" data-stellar-page-meta=""><meta name="twitter:title" content="第20届北京邮电大学程序设计竞赛 游记" data-stellar-page-meta="">
+  
+  
+  <meta name="keywords" content="素数判定,前缀和,快速幂,排列与组合" data-stellar-page-meta="">
+
+  <!-- feed -->
+  
+    
+
+    
+      
+        <link rel="alternate" href="/atom.xml" title="zaochen's blog" type="application/atom+xml">
+      
+    
+  
+
+  <link rel="preload" href="/css/main.css?v=2.0.0" as="style">
+  <link rel="stylesheet" href="/css/main.css?v=2.0.0">
+  <style>:root{--text-loading:"正在加载";--text-loading-error:"加载失败，请稍后重试。"}</style>
+
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217"},"dateCreated":"2026-10-13T00:00:00+08:00","dateModified":"2026-10-13T00:00:00+08:00","datePublished":"2026-10-13T00:00:00+08:00","description":"时间规则：网络（预选）赛（2026/10/11）记作 Day 0，此前每向前一天将天数减去整数 $1$。正式赛日（2026/10/18）记作 Day 1，此后每向后一天将天数加上整数 $1$。中间的每一天，星期 $x$ 称作 Day $\\frac{x}{7}$，保留两位小数。\n Day -3\n招新群里冷不丁发一个：@全体成员 【腾讯文档】第20届北京邮电大学程序设计竞赛报名（截止2026年1...","headline":"第20届北京邮电大学程序设计竞赛 游记","mainEntityOfPage":{"@type":"WebPage","@id":"http://ttzc.github.io/991eb47b/"},"publisher":{"@type":"Organization","name":"zaochen","sameAs":[],"image":"https://avatars.githubusercontent.com/u/58620217","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/58620217"}},"url":"http://ttzc.github.io/991eb47b/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"素数判定, 前缀和, 快速幂, 排列与组合","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
+  <link rel="stylesheet" href="/css/callout.css">
+
+
+  <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
+  <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
+  
+  
+</head>
+<body data-page-type="content" data-page-layout="post" data-article-style="tech"><div data-stellar-runtime-region id="site-cover" class="site-cover"></div><div class="site-shell" id="start" data-regions="leftbar rightbar"><div class="site-workspace">
+<aside data-stellar-runtime-region id="leftbar-region" class="site-region site-region--leftbar" data-region="leftbar" aria-label="Leftbar"><div class="site-region__surface ui-surface"><div class="site-region__decoration" aria-hidden="true"></div><div class="site-region__viewport"><header class="site-region__header site-region__zone site-region__zone--top">
+    <div class="widget-instance widget-instance--brand" data-widget-id="leftbar:fixed:brand" data-presentation="leftbar" data-leftbar-rail>
+<header class="brand-header brand-header--regular brand-header--site"><div class="brand-wrap"><a class="brand-image brand-image--avatar" href="&#x2F;social&#x2F;"><img no-lazy src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;58620217" alt="" onerror="this.onerror&#x3D;null;this.src&#x3D;&quot;&#x2F;images&#x2F;stellar-error.491ee870f4940739.svg&quot;"></a></div><div class="brand-search">
+
+<div class="ui-collection" data-layout="list" data-variant="nav" data-density="auto">
+  
+    
+<button class="ui-collection__item ui-interactive card-hover card-hover--spotlight search-trigger has-hover-surface" type="button" title="搜索" aria-label="搜索" data-shell-action="open-search" data-search-instance="leftbar-brand-search" data-search-domain="blog" data-search-domain-label="博客" data-search-domain-blog="true">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Adapted from Google Material Icons by Material Design Authors - https://github.com/material-icons/material-icons/blob/master/LICENSE --><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h3M3 13h3M3 18h8M16.83 13.83l3.76 3.76"/><circle cx="14" cy="11" r="4"/></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">搜索</span>
+      
+      
+    </span>
+  
+  <kbd class="search-shortcut" aria-hidden="true">⌘K</kbd>
+
+  
+</button>
+
+  
+</div>
+
+
+</div></header>
+</div>
+  </header>
+  <div class="site-region__body site-region__zone site-region__zone--body">
+    <div class="widget-instance widget-instance--menu" data-widget-id="leftbar:fixed:menu" data-presentation="leftbar" data-leftbar-rail>
+
+
+<nav class="menu dis-select">
+<div class="ui-collection" data-layout="list" data-variant="nav" data-density="auto">
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight is-active is-themed" href="&#x2F;" title="博客" aria-current="page" style="--item-theme:#1BCDFC;">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">博客</span>
+      
+      
+    </span>
+  
+  
+  <span class="ui-collection__indicator"></span>
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight is-themed" href="&#x2F;social&#x2F;" title="社交" style="--item-theme:#FF8F2C;">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">社交</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;categories&#x2F;" title="分类">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="currentColor"><path d="M2 6.94975C2 6.06722 2 5.62595 2.06935 5.25839C2.37464 3.64031 3.64031 2.37464 5.25839 2.06935C5.62595 2 6.06722 2 6.94975 2C7.33642 2 7.52976 2 7.71557 2.01738C8.51665 2.09229 9.27652 2.40704 9.89594 2.92051C10.0396 3.03961 10.1763 3.17633 10.4497 3.44975L11 4C11.8158 4.81578 12.2237 5.22367 12.7121 5.49543C12.9804 5.64471 13.2651 5.7626 13.5604 5.84678C14.0979 6 14.6747 6 15.8284 6H16.2021C18.8345 6 20.1506 6 21.0062 6.76946C21.0849 6.84024 21.1598 6.91514 21.2305 6.99383C22 7.84935 22 9.16554 22 11.7979V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V6.94975Z" opacity=".5"/><path d="M20 6.23751C19.9992 5.94016 19.9949 5.76263 19.9746 5.60842C19.7974 4.26222 18.7381 3.2029 17.3919 3.02567C17.1969 3 16.9647 3 16.5003 3H9.98828C10.1042 3.10392 10.2347 3.23445 10.45 3.44975L11.0003 4C11.8161 4.81578 12.2239 5.22367 12.7124 5.49543C12.9807 5.64471 13.2653 5.7626 13.5606 5.84678C14.0982 6 14.675 6 15.8287 6H16.2024C17.9814 6 19.1593 6 20 6.23751Z"/><path fill-rule="evenodd" d="M12.25 10C12.25 9.58579 12.5858 9.25 13 9.25H18C18.4142 9.25 18.75 9.58579 18.75 10C18.75 10.4142 18.4142 10.75 18 10.75H13C12.5858 10.75 12.25 10.4142 12.25 10Z" clip-rule="evenodd"/></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">分类</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;tags&#x2F;" title="标签">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" fill-rule="evenodd" d="M10.7226 3.20068C10.8335 2.80158 10.5998 2.38817 10.2007 2.27731C9.80163 2.16645 9.38822 2.40011 9.27736 2.79921L7.76327 8.24995H4C3.58579 8.24995 3.25 8.58573 3.25 8.99995C3.25 9.41416 3.58579 9.74995 4 9.74995H7.3466L5.81882 15.2499H2C1.58579 15.2499 1.25 15.5857 1.25 15.9999C1.25 16.4142 1.58579 16.7499 2 16.7499H5.40216L4.27736 20.7992C4.1665 21.1983 4.40016 21.6117 4.79927 21.7226C5.19837 21.8334 5.61178 21.5998 5.72264 21.2007L6.95895 16.7499H14.4022L13.2774 20.7992C13.1665 21.1983 13.4002 21.6117 13.7993 21.7226C14.1984 21.8334 14.6118 21.5998 14.7226 21.2007L15.959 16.7499H20C20.4142 16.7499 20.75 16.4142 20.75 15.9999C20.75 15.5857 20.4142 15.2499 20 15.2499H16.3756L17.9034 9.74995H22C22.4142 9.74995 22.75 9.41416 22.75 8.99995C22.75 8.58573 22.4142 8.24995 22 8.24995H18.3201L19.7226 3.20068C19.8335 2.80158 19.5998 2.38817 19.2007 2.27731C18.8016 2.16645 18.3882 2.40011 18.2774 2.79921L16.7633 8.24995H9.32006L10.7226 3.20068ZM14.8188 15.2499L16.3466 9.74995H8.9034L7.37562 15.2499H14.8188Z" clip-rule="evenodd"/></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">标签</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;archives&#x2F;" title="归档">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="currentColor"><path d="M6.94028 2C7.35614 2 7.69326 2.32421 7.69326 2.72414V4.18487C8.36117 4.17241 9.10983 4.17241 9.95219 4.17241H13.9681C14.8104 4.17241 15.5591 4.17241 16.227 4.18487V2.72414C16.227 2.32421 16.5641 2 16.98 2C17.3958 2 17.733 2.32421 17.733 2.72414V4.24894C19.178 4.36022 20.1267 4.63333 20.8236 5.30359C21.5206 5.97385 21.8046 6.88616 21.9203 8.27586L22 9H2.92456H2V8.27586C2.11571 6.88616 2.3997 5.97385 3.09665 5.30359C3.79361 4.63333 4.74226 4.36022 6.1873 4.24894V2.72414C6.1873 2.32421 6.52442 2 6.94028 2Z"/><path d="M21.9995 14.0001V12.0001C21.9995 11.161 21.9963 9.66527 21.9834 9H2.00917C1.99626 9.66527 1.99953 11.161 1.99953 12.0001V14.0001C1.99953 17.7713 1.99953 19.6569 3.1711 20.8285C4.34267 22.0001 6.22829 22.0001 9.99953 22.0001H13.9995C17.7708 22.0001 19.6564 22.0001 20.828 20.8285C21.9995 19.6569 21.9995 17.7713 21.9995 14.0001Z" opacity=".5"/><path d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z"/><path d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z"/><path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z"/><path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z"/><path d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z"/><path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z"/></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">归档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+</div>
+
+</nav>
+
+</div>
+    <div class="widgets widget-stack widget-stack--leftbar widget-stack--body"><div class="widget-instance widget-instance--recent" data-widget-id="leftbar:1:recent" data-presentation="leftbar">
+
+<widget class="widget-wrapper slide-up recent-widget">
+  
+    <div class="widget-header dis-select">
+      <span class="name">最近更新</span>
+      
+    </div>
+  
+  <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;991eb47b&#x2F;" title="第20届北京邮电大学程序设计竞赛 游记">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">第</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">第20届北京邮电大学程序设计竞赛 游记</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;4dac1417&#x2F;" title="【基础算法】离散化 学习笔记">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">【</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【基础算法】离散化 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;33b4e9d9&#x2F;" title="代码模板-离散化">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">代</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-离散化</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;5b246e40&#x2F;" title="Codeforces 2267D Backrooms Hill - Solution">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">C</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">Codeforces 2267D Backrooms Hill - Solution</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;bdb4f8e6&#x2F;" title="代码模板-树状数组">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">代</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-树状数组</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;4951afbf&#x2F;" title="代码模板-矩阵">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">代</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">代码模板-矩阵</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;41e5d11e&#x2F;" title="【数据结构】树状数组 学习笔记">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">【</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;492e958b&#x2F;" title="【线性代数】矩阵 学习笔记">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">【</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;a1377ca2&#x2F;" title="从凌晨灵感到发布：一个 AI 可读的人脉图谱 Skill 开发全记录">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">从</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">从凌晨灵感到发布：一个 AI 可读的人脉图谱 Skill 开发全记录</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;776526af&#x2F;" title="AtCoder ABC468 F - Chmax - Solution">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">A</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">AtCoder ABC468 F - Chmax - Solution</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+</div></div>
+  
+</widget>
+
+
+</div></div>
+  </div>
+  <footer class="site-region__footer">
+    
+    <div class="site-region__system ui-collection" data-layout="inline" data-variant="nav" data-density="compact">
+      <div class="site-region__settings"><div class="widget-instance widget-instance--settings" data-widget-id="leftbar:fixed:settings" data-presentation="leftbar" data-leftbar-rail>
+<a class="settings-widget ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;settings&#x2F;" data-profile-provider="" data-profile-identity-enabled="false" data-profile-fallback-avatar="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;cdn-x&#x2F;placeholder@1.0.12&#x2F;avatar&#x2F;round&#x2F;3442075.svg" data-settings-placement="leftbar" data-settings-label="设置" aria-label="设置" title="设置">
+  <span class="settings-widget__avatar" aria-hidden="true">
+    <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12.4277 2C11.3139 2 10.2995 2.6007 8.27081 3.80211L7.58466 4.20846C5.55594 5.40987 4.54158 6.01057 3.98466 7C3.42773 7.98943 3.42773 9.19084 3.42773 11.5937V12.4063C3.42773 14.8092 3.42773 16.0106 3.98466 17C4.54158 17.9894 5.55594 18.5901 7.58466 19.7915L8.27081 20.1979C10.2995 21.3993 11.3139 22 12.4277 22C13.5416 22 14.5559 21.3993 16.5847 20.1979L17.2708 19.7915C19.2995 18.5901 20.3139 17.9894 20.8708 17C21.4277 16.0106 21.4277 14.8092 21.4277 12.4063V11.5937C21.4277 9.19084 21.4277 7.98943 20.8708 7C20.3139 6.01057 19.2995 5.40987 17.2708 4.20846L16.5847 3.80211C14.5559 2.6007 13.5416 2 12.4277 2Z" clip-rule="evenodd" opacity=".5"/><path d="M12.4277 8.25C10.3567 8.25 8.67773 9.92893 8.67773 12C8.67773 14.0711 10.3567 15.75 12.4277 15.75C14.4988 15.75 16.1777 14.0711 16.1777 12C16.1777 9.92893 14.4988 8.25 12.4277 8.25Z"/></g></svg></span>
+  </span>
+  <span class="settings-widget__name ui-collection__title">设置</span>
+</a>
+</div></div>
+      <button type="button" class="leftbar-state-toggle ui-collection__item ui-interactive card-hover card-hover--spotlight is-icon-only" aria-label="Collapse leftbar" aria-expanded="true" data-shell-action="toggle-leftbar"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.172 4.172C2 5.343 2 7.229 2 11v2c0 3.771 0 5.657 1.172 6.828S6.229 21 10 21h5V3h-5C6.229 3 4.343 3 3.172 4.172" clip-rule="evenodd" opacity=".5"/><path fill="currentColor" d="M5.5 9.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zm1 4a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5zM22 13v-2c0-3.771 0-5.657-1.172-6.828c-.974-.975-3.192-1.139-5.828-1.166v17.988c2.636-.027 4.854-.191 5.828-1.166C22 18.657 22 16.771 22 13"/></svg></span></button>
+    </div>
+  </footer></div></div></aside>
+<main data-stellar-runtime-region class="site-main" id="main">
+
+
+<div class="article-banner-wrap slide-up"><div class="article banner top">
+  <div class="content">
+    
+    <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%B8%B8%E8%AE%B0/">游记</a>
+</div><div class="right"><span class="cap reading">4852 字 · 预计阅读 17 分钟</span></div></div><div class="meta-row">
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-10-12T16:00:00.000Z">2026-10-13</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-10-12T16:00:00.000Z">2026-10-13</time></span></div>
+</div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>第20届北京邮电大学程序设计竞赛 游记</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div></div>
+<article class="md-text content slide-up"><p>时间规则：网络（预选）赛（2026/10/11）记作 Day 0，此前每向前一天将天数减去整数 $1$<span class="has-jax" hidden=""></span>。正式赛日（2026/10/18）记作 Day 1，此后每向后一天将天数加上整数 $1$<span class="has-jax" hidden=""></span>。中间的每一天，星期 $x$<span class="has-jax" hidden=""></span> 称作 Day $\frac{x}{7}$<span class="has-jax" hidden=""></span>，保留两位小数。</p>
+<h2 id="day-3"><a class="markdownIt-Anchor" href="#day-3"></a> Day -3</h2>
+<p>招新群里冷不丁发一个：@全体成员 【腾讯文档】第20届北京邮电大学程序设计竞赛报名（截止2026年10月9日 18:00）<a target="_blank" rel="noopener" href="https://docs.qq.com/form/page/XXX" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>https://docs.qq.com/form/page/XXX</a><br>
+都说北京等通知大学，没想到通知这么突然吧，只给你这几个小时报名，哈哈。<br>
+本来还在和队友商量周末训练的，然后突然就：</p>
+<blockquote>
+<p>天天早晨: 10-08 23:09:10<br>
+你们周六晚上有空不<br>
+天天早晨: 10-08 23:09:15<br>
+要不来打个vp<br>
+霍希: 10-08 23:10:04<br>
+有空我要去观摩[我想开了][我想开了]<br>
+justice: 10-08 23:10:36<br>
+我五点多有团委面试<br>
+justice: 10-08 23:10:42<br>
+晚上应该可以<br>
+天天早晨: 10-08 23:10:44<br>
+我是两点多<br>
+天天早晨: 10-08 23:10:46<br>
+晚上应该可以<br>
+justice: 10-08 23:10:59<br>
+行<br>
+天天早晨: 10-08 23:11:01<br>
+下午不是还有国际学院那个迎新活动么<br>
+justice: 10-08 23:11:08<br>
+那个我没报<br>
+justice: 10-08 23:11:26<br>
+不过我现在的功力应该只能翻字典了[泪奔]<br>
+天天早晨: 10-08 23:11:31<br>
+我看看我区域赛那个队伍有没有空<br>
+天天早晨: 10-08 23:11:40<br>
+如果他们有空 就我们打 然后你们在旁边跟着做<br>
+justice: 10-08 23:11:46<br>
+ok<br>
+霍希: 10-08 23:11:48<br>
+@justice 不要和我抢啊[流泪][流泪][流泪]<br>
+霍希: 10-08 23:11:53<br>
+OKOK<br>
+天天早晨: 10-08 23:11:56<br>
+如果他们不来 那就我们选个简单的打<br>
+天天早晨: 10-08 23:12:24<br>
+@霍希 没事 还有一本模板<br>
+justice: 10-08 23:12:27<br>
+我争取在正式考试前再恢复一点[捂脸]<br>
+天天早晨: 10-08 23:13:51<br>
+还是挺多书翻的（<br>
+天天早晨: 10-08 23:15:49<br>
+我草<br>
+天天早晨: 10-08 23:15:51<br>
+计划有变<br>
+天天早晨: 10-08 23:17:10<br>
+那我先给你们报名吧<br>
+天天早晨: 10-08 23:19:17<br>
+第20届北京邮电大学程序设计竞赛报名（截止2026年10月9日 18:00）<br>
+北京邮电大学程序设计竞赛（网络赛）预计在2026年10月10或11日举行；<br>
+北京邮电大学程序设计竞赛（正式赛）预计在2026年10月17或18日举行，09:00-17:00（具体日程后继在QQ群中通知）。</p>
+</blockquote>
+<p>然后就给他们填了报名表，并且吐槽了几句，“报了 管他这的那的 再说吧，校队也是神秘，只给十几个小时报名不说，还安排这么神秘的时间，牛魔的，网络赛第一天撞国际学院的那个活动，第二天撞体测，校赛第二天撞疫苗接种。”</p>
+<h2 id="day-2"><a class="markdownIt-Anchor" href="#day-2"></a> Day -2</h2>
+<p>接到杨教练通知：“计划网络赛是周日晚上19点-21点，我们明天借好教室后再正式通知。”<br>
+在招新群里讨论了一下校队关于 CCSP 的报名政策，发现我把 CCSP 记成团队赛了，原来是 $12$<span class="has-jax" hidden=""></span> 小时的单人比赛吗，太抽象了。<br>
+在各个群里讨论女装是否能借用图灵老祖的力量以提升成绩，平时就不训练，一比赛就搞这些歪门邪道，哈哈。众群友：“你就是想穿。”队友：“看看女装。”我：“打金牌了就女装上去领奖，哈哈，反正也打不到。”<br>
+我都图灵派了为什么还是天天掉头发啊，呜呜，呜呜呜，我的头发。。。</p>
+
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+</div>
+<div class="callout-title-inner">关于“图灵派”和“冯诺依曼派”的一些解释</div>
+</div>
+<div class="callout-content"><p>下面是 DeepSeek 的联网搜索模式对一些网络热梗做的总结。需要注意的是，不要因为互联网上的一些玩笑话对某些人或某个群体产生偏见，请尊重每个人的审美取向与性取向。</p>
+</div></div><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">“图灵派”和“冯诺依曼派”是2026年起在中文程序员社区（如LINUX DO、Bilibili）中流行起来的一组<span class="strong">**二分网络热梗**</span>，它把计算机科学的两位奠基人——艾伦·图灵和约翰·冯·诺依曼——借用来划分程序员的不同“流派”与刻板形象。</span><br><span class="line"></span><br><span class="line"><span class="section">### 👨‍💻 核心梗概：“老祖的祝福”</span></span><br><span class="line"></span><br><span class="line">这组梗有一个核心的叙事模板：<span class="strong">**程序员在祈祷代码没有Bug时，其实是在和“程序员的老祖”做交易**</span>。回应你的老祖不同，你获得的“祝福”（或“诅咒”）也不同：</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**冯诺依曼派**</span>：你会逐渐<span class="strong">**变成秃头**</span>。这调侃了冯·诺依曼本人发际线较高的历史形象，也关联了程序员因高强度脑力劳动而“秃头”的经典刻板印象。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**图灵派**</span>：你会逐渐<span class="strong">**变成“男娘”**</span>（即穿着女性化、风格可爱的男性）。这源于图灵本人的同性恋身份，在网络亚文化中被戏谑地转译和演绎为“女装”或“男娘”风格。</span><br><span class="line"></span><br><span class="line"><span class="section">### 🎭 两大“派系”的详细画像</span></span><br><span class="line"></span><br><span class="line">围绕这个核心，网友们从多个维度对两个派系进行了“角色设定”：</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**外貌与穿搭**</span>：</span><br><span class="line"><span class="bullet">    *</span>   <span class="strong">**图灵派**</span>：关联<span class="strong">**长发、格子裙**</span>、二次元风格的可爱外观。梗图中常被描绘为萌系动漫角色，日常“愁怎么脱毛”。</span><br><span class="line"><span class="bullet">    *</span>   <span class="strong">**冯诺依曼派**</span>：关联<span class="strong">**秃顶、格子衫**</span>、传统程序员形象。梗图中常被描绘为表情严肃的男性，日常“愁怎么生发”。</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**网络头像**</span>：</span><br><span class="line"><span class="bullet">    *</span>   一项有趣的“研究”指出，<span class="strong">**图灵派**</span>偏爱<span class="strong">**二次元、动漫角色或“男娘”风格**</span>的头像；而<span class="strong">**冯诺依曼派**</span>则偏好<span class="strong">**老教授照片、系统默认头像或证件照**</span>，形成泾渭分明的两个“部落”。在中文开发者中，二次元头像的实际占比约为<span class="strong">**40%**</span>。</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**技术风格**</span>：</span><br><span class="line"><span class="bullet">    *</span>   一种流传的说法是，<span class="strong">**冯诺依曼派**</span>的思维更偏向<span class="strong">**指令、内存地址和物理世界**</span>，关注程序如何在实际硬件上运行。</span><br><span class="line"><span class="bullet">    *</span>   而<span class="strong">**图灵派**</span>的思维则更偏向<span class="strong">**图灵机、状态转移和逻辑世界**</span>，认为代码的本质是逻辑推演，如同在纸带上计算。</span><br><span class="line"></span><br><span class="line"><span class="section">### 💬 社区中的趣味延伸</span></span><br><span class="line"></span><br><span class="line">在LINUX DO等论坛上，这组梗引发了大量二次创作和自我调侃：</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**身份困惑**</span>：有网友自嘲是“<span class="strong">**啥也不是派**</span>”（图灵派的天赋和冯诺依曼派的努力都没有），或者戏称自己是“<span class="strong">**香芋派**</span>”、“<span class="strong">**派大星派**</span>”。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**穿搭调侃**</span>：“<span class="strong">**冯诺依曼派穿格子衫，图灵派穿格子裙**</span>”，并衍生出“冯诺依曼派每天都在愁怎么生发，图灵派每天都在愁怎么脱毛”的笑谈。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**假发梗**</span>：Bilibili上有视频调侃“<span class="strong">**带假发的时候是图灵派，摘假发的时候是冯诺依曼派**</span>”，形象地连接了“秃头”与“长发”两个特征。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**现实感概**</span>：也有评论将“二次元头像”、“女装程序员”等现象视为一种<span class="strong">**刻板印象的形成**</span>，认为它反映了社群中某种真实存在的亚文化趋势。</span><br><span class="line"></span><br><span class="line">总的来说，“图灵派”与“冯诺依曼派”这个梗，本质上是程序员社群利用历史人物进行的一场<span class="strong">**自我解构与身份游戏**</span>，它融合了职业焦虑（秃头）、亚文化表达（男娘/二次元）和计算机科学史，成为了一种独特的社群文化符号。</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="day-1"><a class="markdownIt-Anchor" href="#day-1"></a> Day -1</h2>
+<p>防止撞校赛时间，早上去把疫苗打掉了，虽然学校规定国际学院在下周日下午打，但是疫苗是按身份证打的，这么多学生他哪有空查每个学生是哪个学院的，所以就混进去打掉了。<br>
+下午趁室友不在试了下女装（万一真打金牌了呢），把裙子的定位线拆了。<br>
+提醒了队友带插线板。讨论了一下复杂的比赛现场，插座连插座，构成的数据结构是树还是图。最后发现由于必须从有限个教室电源口出发，每个插线板必须有唯一一个给他供电的父节点，若成环则必定不能互相供电，所以必须构成一颗森林。<br>
+比较晚的时候发布了网络赛的正式通知，大概看了一下，需要准备一个没有 AI 插件的本地 IDE，和下载 OMS 系统。尝试配置 Sublime，但是后面还是换成了删除了所有插件，退出 GitHub 账号的 VS Code，用了这么久，习惯了，突然换可能会出问题。<br>
+队友看到参赛名单里还有学长的队伍，对能否拿牌产生了担忧。我指出标准的 ICPC 比赛是 $10\%+20\%+30\%=60\%$<span class="has-jax" hidden=""></span> 的获奖率，应该问题不大。</p>
+<h2 id="day-0"><a class="markdownIt-Anchor" href="#day-0"></a> Day 0</h2>
+<p>比赛前很紧张，明明这个网络赛并不重要，或许是太久没比赛了吧，有些失眠。<br>
+早上起来去把体测的室内项目完成了，立定跳远拼尽全力无法战胜，跳了十多次得了 40 分。截止这一部分的写稿日（10.12夜）腿还是痛的。引体向上跳都跳不上去，哈哈，不考了。问问学长这个体测成绩还能不能凹，学长说可以试试坐位体前屈。然后我发现坐位体前屈的机器测试要求比较松，动作可以不用那么标准，然后我略微弯了点腿，一不小心拍到满分了，被监考老师制止了。然后我略微规范了一些动作，但是还是弯了一点点腿，不太明显，依旧满分，老师也就没说什么了。在学校新生群里问体测动作不规范会不会扣分，学长说如果要求动作规范，百分之八十的学生都及格不了了，而且机器也没那么高精度。<br>
+体测完吃完饭想回寝室接着睡觉的，室友在快乐地激战 CS-GO，零零散散的睡了一会，起来玩原神，同时学习超星学习通平台上的《国家安全教育》网课。反诈小短剧还挺有意思的。<br>
+下载了 OMS，注册绑定了 PTA 账号。删除了 VScode 的所有插件，留了一个基本的 C/C++。<br>
+整理了一下比赛穿的衣服，带的模板书，用的充电器和插座。赛前最后让队友去印了一个这个板子：</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 20261011</span></span><br><span class="line"></span><br><span class="line"><span class="section">## template.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="section">#include <span class="language-xml">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace std;</span><br><span class="line">// #define int long long</span><br><span class="line"></span><br><span class="line">signed main()</span><br><span class="line">{</span><br><span class="line"><span class="section">#ifdef DEBUG</span></span><br><span class="line"><span class="code">    clock_t t0 = clock();</span></span><br><span class="line"><span class="code">    freopen("data.in", "r", stdin);</span></span><br><span class="line"><span class="code">    freopen("data.out", "w", stdout);</span></span><br><span class="line"><span class="code">#endif</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    ios::sync_with_stdio(false);</span></span><br><span class="line"><span class="code">    cin.tie(nullptr);</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    // you have so much time</span></span><br><span class="line"><span class="code">    // tomorrow yet to come</span></span><br><span class="line"><span class="code">    // you deserve more love</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section">#ifdef DEBUG</span></span><br><span class="line"><span class="code">    cerr &lt;&lt; "Time used:" &lt;&lt; clock() - t0 &lt;&lt; "ms" &lt;&lt; endl;</span></span><br><span class="line"><span class="code">#endif</span></span><br><span class="line"><span class="code">    return 0;</span></span><br><span class="line"><span class="code">}</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"></span><br><span class="line"><span class="section">## new.ps1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Copy-Item template.cpp test.cpp</span><br><span class="line">Remove-Item data.in </span><br><span class="line">Remove-Item data.out</span><br><span class="line">New-Item -Name data.in </span><br><span class="line">New-Item -Name data.out</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">## run.ps1</span></span><br><span class="line"></span><br><span class="line">g++ -DDEBUG -std=gnu++20 -O2 -Wall -Wextra test.cpp -o test.exe</span><br><span class="line">./test.exe</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>六点左右来到了比赛的教学综合实验楼 N105 教室，接水上厕所，连接插线板，和队友聊了会天，睡大觉准备比赛。<br>
+头上戴了一个超级可爱的飘带发卡，图灵老祖显显灵吧，然后被后面学长认出来了。“哥们你是天天早晨吗，群里的那个可爱 xnn”，我：“我这么有名的吗。”<br>
+开赛前连接监考系统，打板子和编译命令，快打完了监考人员说赛前不能动键盘，我就给全删了。<br>
+发卷，监考人员说正式开考前不能看题，我：这就和考英语四六级的写作文的时候不能看听力一样。我队友告诉我，后面好像零个人遵守，大家都在翻。然后我们也偷偷翻题册，但是监考人员一直走来走去导致我们看进去了零个单词。<br>
+我们开始猜测题目含义，猜测题目难度。我队友：“E 题这个简单的字符串问题真的简单吗”，我：“这种话你也信啊，出题人的话你也信。”没想到这真的是签到题，失算了。<br>
+开赛，读题，队友对各种名词如”整除“，”取余“，”闭区间“，”子字符串“感到好奇，虽然我都认识，但他们还是去翻字典了，查字典也是 ICPC 的一大乐趣，哈哈。<br>
+然后我看了一下电脑上的 A 题，迅速翻译出了 A 题中对十的幂次整除取模的含义，总结出了题意：</p>
+<ul>
+<li><strong>A good prime</strong>：给定询问数 $T$<span class="has-jax" hidden=""></span>（$T\le 10^6$<span class="has-jax" hidden=""></span>）与 $T$<span class="has-jax" hidden=""></span> 个区间 $[l,r]$<span class="has-jax" hidden=""></span>（$1\le l\le r\le 5\times10^7$<span class="has-jax" hidden=""></span>），统计区间内满足「十进制表示中存在某个连续数字子串为素数」的整数 $x$<span class="has-jax" hidden=""></span> 的个数。</li>
+</ul>
+<p>我想着先用线性筛把质数全找出来，然后对于每一个数，判断他有没有质数子串，最多也就是两个 log。最后做一个前缀和，对每个询问求一个差就好了。总的复杂度应该是线性乘一个不大常数（我设定为 8 * 8 = 64 了，10 的 0~7 次幂共 8 位），而且跑不满，看了一下两秒的时限，应该可以过。然后就开始写代码，从蓝书上抄了一个线性筛的板子，让队友去看后面的题了。<br>
+第一次提交 A 题，把线性筛的上限写成 1e7 了，WA，之后一直 TLE。断定为系统卡常，开始尝试优化。想了各种卡常办法，把输入输出换成了 <code>scanf/printf</code>，等等，均为通过。我看排行榜，发现一小时仍然无人通过 A 题，反而是 B 题和 E 题有通过，判断系统卡常过于严重，遂保存代码开 B 题，队友告诉了我题意：</p>
+<ul>
+<li><strong>B MystPal</strong>：给定长度 $n$<span class="has-jax" hidden=""></span>（$n\le10^8$<span class="has-jax" hidden=""></span>，$T\le10^5$<span class="has-jax" hidden=""></span> 次询问），统计长度为 $n$<span class="has-jax" hidden=""></span> 的 <code>0/1</code> 串中「是回文、且其二进制值能被 $3$<span class="has-jax" hidden=""></span> 整除」的串数，答案对 $998244353$<span class="has-jax" hidden=""></span> 取模。</li>
+</ul>
+<p>然后数竞背景的队友告诉我用费马小定理转换，等价于奇数位置上的 1 和偶数上的 1 的个数相等。然后他们分析出了偶数长度的字符串都可取，我得出答案就是 $2^\frac{n}{2}$<span class="has-jax" hidden=""></span>，队友提醒我取模，我去蓝书上抄了一个快速幂取模的板子。然后我们开始推奇数的公式，我按 $k = \frac{n - 1}{2}$<span class="has-jax" hidden=""></span> 的奇偶给出了两组组合数求和，让数竞的队友想想这个东西怎么算，我指出这个东西可能要用范德蒙德卷积，但是我不记得公式了，队友指出他没听说过，于是我们开 E 题。</p>
+<ul>
+<li><strong>E Maybe an Easy String Problem</strong>：给定字符串 $s$<span class="has-jax" hidden=""></span> 与 $q$<span class="has-jax" hidden=""></span> 次询问 $[l,r]$<span class="has-jax" hidden=""></span>（$n,q\le10^6$<span class="has-jax" hidden=""></span>），求子串 $s[l,r]$<span class="has-jax" hidden=""></span> 内<strong>出现次数最多的子串</strong>的出现次数。</li>
+</ul>
+<p>队友问我单个字母算不算子串，我说，你看第四个样例呗，区间长度为 $2$<span class="has-jax" hidden=""></span> 的询问答案都为 $1$<span class="has-jax" hidden=""></span> 了，你说算不算。我：“这倒是提醒我了”，子串的重复个数，肯定不多于里面某个字母的重复个数，那这不就是问出现最多的字母出现了多少次吗，字母就 $26$<span class="has-jax" hidden=""></span> 个小写字母，那直接开 $26$<span class="has-jax" hidden=""></span> 棵线段树呗。队友说，他之前学过的最高级的数据结构就是线段树了，现在已经忘了。我说，等下这个东西又不用修改，那直接开 $26$<span class="has-jax" hidden=""></span> 个前缀和不就是了，于是迅速写出了代码。然后又 TLE，我草，$O(cn)$<span class="has-jax" hidden=""></span> 的复杂度怎么可能还不对哦，发现忘记把板子上的关同步流抄上去了，遂换 <code>scanf</code>，又交，又 TLE，发现忘记写 <code>printf</code> 了。然后总算过了。看了一下排名，跟队友说进正赛肯定稳了，大家非常开心。<br>
+接下来我们讨论 B 题的公式，我让他们考虑一下组合意义，因为每一个复杂的组合恒等式背后，都蕴含着一个简洁的组合意义。然后他们在思考，我去接着卡 A 题的常数。<br>
+我把末尾为 ${2,3,5,7}$<span class="has-jax" hidden=""></span> 的数字去掉了，减少了 $40\%$<span class="has-jax" hidden=""></span> 的计算量，然后又把十位是这些数的去掉了，继续减少计算量，但都未通过。我：“你们帮我在草稿纸上默写一下 $0 \sim 100$<span class="has-jax" hidden=""></span> 的质数”，两位队友争着抢着做，说总算找到了一些真的会做的事了。然后我把含 $2,3,5,7$<span class="has-jax" hidden=""></span> 的划掉，剩了 5 个，把这几个结尾的数也去掉，本地预处理所用的时间从 $2300ms \rightarrow 1800ms \rightarrow 1100ms \rightarrow 800ms$<span class="has-jax" hidden=""></span> ，还是无法通过。于是我放弃抵抗，对评测机破口大骂。<br>
+在对评测机的一片骂声中结束了比赛，赛后队友和后面学长聊天，发现他们是 25 级大二的。我：我怎么在高年级里也这么有名，学长说在北邮各个内卷群、竞赛群里都能看见我，然后我们加了好友。<br>
+最终比赛爆零率 $58\%$<span class="has-jax" hidden=""></span>，最强的队伍通过了 $3$<span class="has-jax" hidden=""></span> 题。就是上述的三题。其他试题 $0$<span class="has-jax" hidden=""></span> 个队伍通过。<br>
+群里交流，好像说后面两题是南昌 CCPC 的原题，然后前面四题是原创的，我也没搜到原题。<br>
+晚上睡前，和校队的成员学长交流比赛。学长说应该参与了网络预选赛的都可以打校赛，主要是判断是否有基本的竞赛素养。我：“牛魔的，机器这么慢，数据开给这么大，爆了”，学长：“没绷住”。<br>
+睡了十分钟醒了，百思不得其解那个组合数怎么算，于是拿出手机问大肥鱼老师，发现真的是范德蒙德卷积，又爆了。</p>
+<h2 id="day-014"><a class="markdownIt-Anchor" href="#day-014"></a> Day 0.14</h2>
+<p>早上起来碰到队友，跟他们说那个组合数就是范德蒙德卷积，然后我有空把题目补一下给队友讲一下，这个题目出的还是不错的，可以学到很多东西，就是评测机太烂了。<br>
+带着两个刚入门大学程序设计竞赛的小萌新打比赛其实还是挺有意思的，希望大家都能学到东西吧，也不必要追求那个奖项。<br>
+早上心理课写高数作业，中午体育课太极拳学不会，下午计算导论与程序设计课本来想写游记的，但是呼呼大睡了，然后晚上写游记写到这里。<br>
+晚上还公布了正式赛的报名通知，把报名表填了，队伍名使用了之前定好的 <code>队长原神uid227532488</code>，网络赛没有滚榜，都没显示这个。</p>
+</article>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>前缀和</a><a class="tag" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>快速幂</a><a class="tag" href="/tags/%E7%B4%A0%E6%95%B0%E5%88%A4%E5%AE%9A/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>素数判定</a><a class="tag" href="/tags/%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>排列与组合</a></div>
+
+
+  <div class="article-share slide-up" id="share">
+    <div class="body">
+      <div class="social-wrap dis-select"><a class="social share-item qrcode ui-interactive is-icon-only" onclick="util.toggle(&quot;share-qrcode&quot;)" aria-label="分享文章: QR Code" title="分享文章: QR Code"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M10.553 13.447c-.424-.424-.95-.596-1.535-.675c-.553-.074-1.25-.074-2.086-.074H5.827c-.58 0-1.065 0-1.459.037c-.411.04-.795.124-1.146.34c-.345.21-.634.5-.845.844c-.216.352-.3.735-.34 1.147C2 15.459 2 15.944 2 16.525v.068c0 .884 0 1.597.055 2.17c.056.592.175 1.108.459 1.571c.288.47.682.864 1.152 1.152c.463.284.979.403 1.57.46C5.81 22 6.524 22 7.407 22h.07c.58 0 1.064 0 1.458-.037c.412-.04.795-.124 1.147-.34c.344-.21.633-.5.844-.844c.216-.352.3-.736.34-1.147c.037-.394.037-.879.037-1.46v-1.104c0-.836 0-1.533-.074-2.086c-.079-.584-.251-1.111-.675-1.535m-1.62-11.41c.412.04.795.124 1.147.34c.344.21.633.5.844.845c.216.351.3.735.34 1.146c.037.394.037.879.037 1.46v1.104c0 .836 0 1.533-.074 2.086c-.079.584-.251 1.111-.675 1.535s-.95.596-1.535.675c-.553.074-1.25.074-2.086.074H5.827c-.58 0-1.065 0-1.459-.037c-.411-.04-.795-.124-1.146-.34a2.56 2.56 0 0 1-.845-.844c-.216-.352-.3-.735-.34-1.147C2 8.54 2 8.056 2 7.475v-.068c0-.884 0-1.597.055-2.17c.056-.592.175-1.108.459-1.571c.288-.47.682-.864 1.152-1.152c.463-.284.979-.403 1.57-.46C5.81 2 6.524 2 7.407 2h.07c.58 0 1.064 0 1.458.037M16.593 2h-.068c-.58 0-1.065 0-1.46.037c-.41.04-.794.124-1.146.34c-.344.21-.633.5-.844.845c-.216.351-.3.735-.34 1.146c-.037.394-.037.879-.037 1.46v1.104c0 .836 0 1.533.074 2.086c.079.584.251 1.111.675 1.535s.95.596 1.535.675c.553.074 1.25.074 2.086.074h1.105c.58 0 1.065 0 1.459-.037c.411-.04.795-.124 1.146-.34c.345-.21.634-.5.845-.844c.216-.352.3-.735.34-1.147C22 8.54 22 8.056 22 7.475v-.068c0-.884 0-1.597-.055-2.17c-.056-.592-.175-1.108-.459-1.571a3.5 3.5 0 0 0-1.152-1.152c-.463-.284-.979-.403-1.57-.46C18.19 2 17.477 2 16.594 2" opacity=".5"/><path fill="currentColor" d="M14.093 21.302a.698.698 0 1 1-1.396 0v-2.79h1.396z" opacity=".4"/><path fill="currentColor" d="M21.302 12.698a.7.7 0 0 0-.697.697v3.256H22v-3.256a.7.7 0 0 0-.698-.697" opacity=".5"/><path fill="currentColor" d="M16.076 16.617c-.076.184-.076.417-.076.883s0 .699.076.883a1 1 0 0 0 .541.54c.184.077.417.077.883.077s.699 0 .883-.076a1 1 0 0 0 .54-.541c.077-.184.077-.417.077-.883s0-.699-.076-.883a1 1 0 0 0-.541-.54C18.199 16 17.966 16 17.5 16s-.699 0-.883.076a1 1 0 0 0-.54.541"/><path fill="currentColor" d="M22 18.535v-.023h-1.396c0 .443 0 .74-.016.97c-.015.224-.043.333-.073.405a1.16 1.16 0 0 1-.629.63c-.072.029-.18.056-.405.072c-.23.015-.527.016-.97.016h-1.86V22h1.883c.414 0 .759 0 1.042-.02a2.6 2.6 0 0 0 .844-.175a2.56 2.56 0 0 0 1.384-1.384c.112-.27.156-.549.176-.844c.02-.283.02-.628.02-1.042" opacity=".7"/><path fill="currentColor" d="M12.697 16.616v.035h1.396c0-.668 0-1.116.035-1.458c.034-.33.093-.482.16-.583a1.2 1.2 0 0 1 .321-.32c.101-.068.254-.128.584-.161c.342-.035.79-.036 1.458-.036h1.86v-1.395h-1.896c-.623 0-1.142 0-1.563.043c-.44.044-.85.142-1.218.388c-.28.187-.519.426-.706.706c-.246.368-.343.777-.388 1.217c-.043.421-.043.94-.043 1.564" opacity=".6"/><path fill="currentColor" d="M5.508 18.69c.219.155.528.155 1.146.155c.619 0 .928 0 1.146-.155a.8.8 0 0 0 .2-.199c.154-.218.154-.527.154-1.146s0-.927-.155-1.146A.8.8 0 0 0 7.8 16c-.218-.155-.527-.155-1.146-.155s-.927 0-1.146.155a.8.8 0 0 0-.199.2c-.155.218-.155.527-.155 1.145c0 .619 0 .928.155 1.146a.8.8 0 0 0 .2.2M6.654 8.155c-.618 0-.927 0-1.146-.155a.8.8 0 0 1-.199-.2c-.155-.217-.155-.527-.155-1.145c0-.619 0-.928.155-1.146a.8.8 0 0 1 .2-.2c.218-.154.527-.154 1.145-.154c.619 0 .928 0 1.146.155a.8.8 0 0 1 .2.199c.154.218.154.527.154 1.146s0 .928-.155 1.146A.8.8 0 0 1 7.8 8c-.218.155-.527.155-1.146.155M16.2 8c.218.155.527.155 1.146.155s.927 0 1.146-.155a.8.8 0 0 0 .199-.199c.155-.218.155-.528.155-1.146c0-.619 0-.928-.155-1.146a.8.8 0 0 0-.2-.2c-.218-.154-.527-.154-1.145-.154c-.619 0-.928 0-1.146.155a.8.8 0 0 0-.2.199c-.154.218-.154.527-.154 1.146s0 .928.155 1.146A.8.8 0 0 0 16.2 8"/></svg></span></a><a class="social share-item weibo ui-interactive is-icon-only" href="https:&#x2F;&#x2F;service.weibo.com&#x2F;share&#x2F;share.php?url&#x3D;http%3A%2F%2Fttzc.github.io%2F991eb47b%2F&amp;title&#x3D;%E7%AC%AC20%E5%B1%8A%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%20%E6%B8%B8%E8%AE%B0%20-%20zaochen&#39;s%20blog&amp;summary&#x3D;%E8%AE%B0%E5%BD%95%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6%E7%AC%AC%2020%20%E5%B1%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E7%BD%91%E7%BB%9C%E9%A2%84%E9%80%89%E8%B5%9B%202026-10-11%EF%BC%8C%E6%AD%A3%E5%BC%8F%E8%B5%9B%202026-10-18%EF%BC%89%E7%9A%84%E5%A4%87%E8%B5%9B%E4%B8%8E%E5%8F%82%E8%B5%9B%E5%85%A8%E7%A8%8B%EF%BC%9A%E6%8A%A5%E5%90%8D%E7%AA%81%E5%87%BB%E3%80%81%E9%98%9F%E5%8F%8B%E7%BE%A4%E8%81%8A%E4%B8%8E%E3%80%8C%E5%9B%BE%E7%81%B5%E6%B4%BE%2F%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%B4%BE%E3%80%8D%E7%BD%91%E7%BB%9C%E7%83%AD%E6%A2%97%E3%80%81%E4%BD%93%E6%B5%8B%E4%B8%8E%E7%96%AB%E8%8B%97%E7%9A%84%E7%A9%BF%E6%8F%92%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%AF%94%E8%B5%9B%E5%BD%93%E6%97%A5%E7%9A%84%E5%8D%A1%E5%B8%B8%E8%8B%A6%E6%88%98%E3%80%82%E5%A4%8D%E7%9B%98%E4%BA%86%20A%2FB%2F..." target="_blank" rel="external nofollow noopener noreferrer" aria-label="分享文章: Weibo" title="分享文章: Weibo"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Simple Icons - https://creativecommons.org/publicdomain/zero/1.0/ --><path fill="currentColor" d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.737 5.439l-.002.004zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.601.622.263.82.972.442 1.592zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.313-.361-.177-.586.138-.227.436-.346.672-.24.239.09.315.36.18.601l.014-.028zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.64 4.318-.341 5.132-2.179.8-1.793-.201-3.642-2.161-4.149zm7.563-1.224c-.346-.105-.57-.18-.405-.615.375-.977.42-1.804 0-2.404-.781-1.112-2.915-1.053-5.364-.03 0 0-.766.331-.571-.271.376-1.217.315-2.224-.27-2.809-1.338-1.337-4.869.045-7.888 3.08C1.309 10.87 0 13.273 0 15.348c0 3.981 5.099 6.395 10.086 6.395 6.536 0 10.888-3.801 10.888-6.82 0-1.822-1.547-2.854-2.915-3.284v.01zm1.908-5.092c-.766-.856-1.908-1.187-2.96-.962-.436.09-.706.511-.616.932.09.42.511.691.932.602.511-.105 1.067.044 1.442.465.376.421.466.977.316 1.473-.136.406.089.856.51.992.405.119.857-.105.992-.512.33-1.021.12-2.178-.646-3.035l.03.045zm2.418-2.195c-1.576-1.757-3.905-2.419-6.054-1.968-.496.104-.812.587-.706 1.081.104.496.586.813 1.082.707 1.532-.331 3.185.15 4.296 1.383 1.112 1.246 1.429 2.943.947 4.416-.165.48.106 1.007.586 1.157.479.165.991-.104 1.157-.586.675-2.088.241-4.478-1.338-6.235l.03.045z"/></svg></span></a><a class="social share-item x ui-interactive is-icon-only" href="https:&#x2F;&#x2F;x.com&#x2F;intent&#x2F;tweet?text&#x3D;%E7%AC%AC20%E5%B1%8A%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%20%E6%B8%B8%E8%AE%B0%20-%20zaochen&#39;s%20blog&amp;url&#x3D;http%3A%2F%2Fttzc.github.io%2F991eb47b%2F" target="_blank" rel="external nofollow noopener noreferrer" aria-label="分享文章: X" title="分享文章: X"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Simple Icons - https://creativecommons.org/publicdomain/zero/1.0/ --><path fill="currentColor" d="M14.234 10.162L22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299l-.929-1.329L3.076 1.56h3.182l5.965 8.532l.929 1.329l7.754 11.09h-3.182z"/></svg></span></a><a class="social share-item telegram ui-interactive is-icon-only" href="https:&#x2F;&#x2F;t.me&#x2F;share&#x2F;url?url&#x3D;http%3A%2F%2Fttzc.github.io%2F991eb47b%2F&amp;text&#x3D;%E7%AC%AC20%E5%B1%8A%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%20%E6%B8%B8%E8%AE%B0%20-%20zaochen&#39;s%20blog" target="_blank" rel="external nofollow noopener noreferrer" aria-label="分享文章: Telegram" title="分享文章: Telegram"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Simple Icons - https://creativecommons.org/publicdomain/zero/1.0/ --><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12a12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.5.5 0 0 1 .171.325c.016.093.036.306.02.472c-.18 1.898-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.065-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024q-.159.037-5.061 3.345q-.72.495-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.245-1.349-.374-1.297-.789q.04-.324.893-.663q5.247-2.286 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635"/></svg></span></a><a class="social share-item whatsapp ui-interactive is-icon-only" href="https:&#x2F;&#x2F;wa.me&#x2F;?text&#x3D;%E7%AC%AC20%E5%B1%8A%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%20%E6%B8%B8%E8%AE%B0%20-%20zaochen&#39;s%20blog%0Ahttp%3A%2F%2Fttzc.github.io%2F991eb47b%2F" target="_blank" rel="external nofollow noopener noreferrer" aria-label="分享文章: WhatsApp" title="分享文章: WhatsApp"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Simple Icons - https://creativecommons.org/publicdomain/zero/1.0/ --><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15c-.197.297-.767.966-.94 1.164c-.173.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.018-.458.13-.606c.134-.133.298-.347.446-.52s.198-.298.298-.497c.099-.198.05-.371-.025-.52s-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074s2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625c.712.227 1.36.195 1.871.118c.571-.085 1.758-.719 2.006-1.413s.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214l-3.741.982l.998-3.648l-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884c2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"/></svg></span></a><a class="social share-item email ui-interactive is-icon-only" href="mailto:?subject&#x3D;%E7%AC%AC20%E5%B1%8A%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%20%E6%B8%B8%E8%AE%B0%20-%20zaochen&#39;s%20blog&amp;body&#x3D;http%3A%2F%2Fttzc.github.io%2F991eb47b%2F" aria-label="分享文章: Email" title="分享文章: Email"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" fill-rule="evenodd" d="M3.172 5.172C2 6.343 2 8.229 2 12s0 5.657 1.172 6.828C4.343 20 6.229 20 10 20h4c3.771 0 5.657 0 6.828-1.172C22 17.657 22 15.771 22 12s0-5.657-1.172-6.828C19.657 4 17.771 4 14 4h-4C6.229 4 4.343 4 3.172 5.172m15.404 2.348a.75.75 0 0 1-.096 1.056l-2.196 1.83c-.887.739-1.605 1.338-2.24 1.746-.66.424-1.303.693-2.044.693s-1.384-.269-2.045-.693c-.634-.408-1.352-1.007-2.239-1.745L5.52 8.576a.75.75 0 1 1 .96-1.152l2.159 1.799c.933.777 1.58 1.315 2.128 1.667.529.34.888.455 1.233.455s.704-.115 1.233-.455c.547-.352 1.195-.89 2.128-1.667l2.159-1.8a.75.75 0 0 1 1.056.097" clip-rule="evenodd"/></svg></span></a></div>
+      <div class="share-qrcode" id="share-qrcode" style="opacity:0;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&amp;data=http%3A%2F%2Fttzc.github.io%2F991eb47b%2F" onerror="this.onerror&#x3D;null;this.src&#x3D;&quot;&#x2F;images&#x2F;stellar-error.491ee870f4940739.svg&quot;"/></div>
+    </div>
+  </div>
+
+<div class="article-footer slide-up">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section></div>
+
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章 <svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-right" aria-hidden="true"></svg></div><a href="/4dac1417/">【基础算法】离散化 学习笔记</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">zaochen</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0">Stellar 2.0.0</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。<br />
+全站访问量 <span id="busuanzi_site_pv">-</span> 次 · 访客数 <span id="busuanzi_site_uv">-</span> 人 · 本页面浏览 <span id="busuanzi_page_pv">-</span> 次</p>
+<script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
+</div></footer>
+</main>
+<aside data-stellar-runtime-region id="rightbar-region" class="site-region site-region--rightbar" data-region="rightbar" aria-label="Rightbar"><div class="site-region__surface ui-drawer-surface"><div class="site-region__viewport"><div class="widgets widget-stack widget-stack--rightbar widget-stack--rightbar"><div class="widget-instance widget-instance--toc" data-widget-id="rightbar:1:toc" data-presentation="rightbar">
+
+
+<widget class="widget-wrapper slide-up toc" id="data-toc" collapse="false">
+  
+    <div class="widget-header dis-select">
+      <span class="name">本文目录</span>
+      <button type="button" class="cap-action ui-interactive card-hover card-hover--spotlight" data-shell-action="toggle-toc" aria-label="Toggle table of contents" aria-pressed="false"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></span></button>
+    </div>
+  
+  <div class="widget-body"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#day-3"><span class="toc-text"> Day -3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#day-2"><span class="toc-text"> Day -2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#day-1"><span class="toc-text"> Day -1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#day-0"><span class="toc-text"> Day 0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#day-014"><span class="toc-text"> Day 0.14</span></a></li></ol></div>
+  <div class="widget-footer"><a class="top ui-interactive" onclick="util.scrollTop()"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M20.536 3.464C22 4.93 22 7.286 22 12s0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12s0-7.071 1.464-8.536C4.93 2 7.286 2 12 2s7.071 0 8.535 1.464" opacity=".5"/><path fill="currentColor" d="M9.53 12.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 9.56z"/><path fill="currentColor" d="M9.53 16.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 13.56z"/></svg></span><span>回到顶部</span></a></div>
+</widget>
+
+
+</div></div></div></div></aside>
+</div><button type="button" class="site-scrim" data-shell-action="dismiss-drawer" aria-label="Close navigation" tabindex="-1"></button><div data-stellar-runtime-region class="site-dock" role="group" aria-label="Layout panels">
+  <button type="button" class="site-dock__button site-dock__button--rightbar ui-interactive" aria-label="Open rightbar" aria-controls="rightbar-region" aria-expanded="false" data-shell-action="toggle-rightbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type="button" class="site-dock__button site-dock__button--leftbar ui-interactive" aria-label="Open leftbar" aria-controls="leftbar-region" aria-expanded="false" data-shell-action="toggle-leftbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+
+<dialog data-stellar-runtime-region class="search-dialog" id="site-search-dialog" aria-labelledby="site-search-title">
+  <div class="search-dialog__panel search-wrapper" id="site-search-wrapper" searching="false">
+    <div class="search-dialog__header">
+      <div class="search-form" role="search">
+        <span class="search-button" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Adapted from Google Material Icons by Material Design Authors - https://github.com/material-icons/material-icons/blob/master/LICENSE --><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h3M3 13h3M3 18h8M16.83 13.83l3.76 3.76"/><circle cx="14" cy="11" r="4"/></g></svg></span>
+        <input type="search" class="search-input" id="site-search-input" aria-labelledby="site-search-title" placeholder="搜索">
+      </div>
+      <button type="button" class="search-dialog__close" data-shell-action="close-search" aria-label="关闭搜索">×</button>
+    </div>
+    
+      <div class="search-dialog__scope" role="radiogroup" aria-labelledby="site-search-title" hidden>
+        <label class="search-dialog__scope-option" data-search-scope-option="all">
+          <input class="ui-radio" type="radio" name="site-search-scope" value="all">
+          <span>全站</span>
+        </label>
+        <label class="search-dialog__scope-option" data-search-scope-option="blog" hidden>
+          <input class="ui-radio" type="radio" name="site-search-scope" value="blog">
+          <span>博客</span>
+        </label>
+        <label class="search-dialog__scope-option" data-search-scope-option="current" hidden>
+          <input class="ui-radio" type="radio" name="site-search-scope" value="current">
+          <span data-search-scope-current-label></span>
+        </label>
+      </div>
+    
+    <h2 class="search-dialog__title" id="site-search-title">站内搜索</h2>
+    <div class="search-result" id="site-search-result"></div>
+    <div class="search-no-result">没有找到内容！</div>
+  </div>
+</dialog>
+</div><div class="site-scripts">
+<script data-stellar-script="core" src="/js/stellar-icons.js?v=39c6ac17e854ffe2"></script>
+
+<script data-stellar-script="defines">
+  window.canonical = window.stellarClientData.canonical;
+  const ctx = window.stellarClientData.ctx;
+  window.canonical.param = {permalink: "http://ttzc.github.io/991eb47b/", checklink: ctx.services.video.js};
+  ctx.date_suffix = {"just":"刚刚","min":"分钟前","hour":"小时前","day":"天前"};
+  if (ctx.search) Object.assign(ctx.search, {"more":"更多","no_more":"没有更多了"});
+  const def = window.stellarClientData.def;
+  window.ctx = ctx;
+  window.def = def;
+</script>
+
+
+<!-- core: 迁移期 DOM/资源兼容工具；Extension 注册与生命周期由 ESM runtime 所有 -->
+<script data-stellar-script="core" src="/js/utils.js?v=2.0.0"></script>
+<script data-stellar-script="core" src="/js/main.js?v=2.0.0" defer></script>
+<script data-stellar-script="core" defer src="/js/profile.js?v=2.0.0"></script>
+
+
+
+
+
+<script data-stellar-script="core" type="application/json" id="stellar-runtime-config">{"version":1,"root":"/","policy":{"cache":{"enabled":true,"defaultTtl":3600,"ttl":{"giscus":600,"waline":600,"artalk":600,"memos":600,"memos-user":86400,"sites":86400,"friends":86400,"friends_and_posts":86400,"siteinfo":86400},"maxEntries":200},"request":{"retries":2,"timeoutMs":5000,"idleTimeoutMs":3000,"maxCacheEntryBytes":204800},"features":{"codeCopyToastMs":2500},"providers":{"linkPrefetch":"flying_pages","lightbox":"fancybox","diagrams":"mermaid"}},"extensions":[{"id":"pin-slider","module":"/js/runtime/extensions/pin-slider.js","scope":"region","when":{"selector":".pin-slider"},"config":{}},{"id":"page-controls","module":"/js/runtime/extensions/page-controls.js","scope":"region","when":{"always":true},"config":{"highlight":"/js/search/highlight.js","tagtree":"/js/tagtree.js"}},{"id":"partial-navigation","module":"/js/runtime/extensions/partial-navigation.js","scope":"document","when":{"always":true},"config":{}},{"id":"search","module":"/js/runtime/extensions/search.js","scope":"document","when":{"selector":".search-input"},"config":{"provider":"local","options":{"scope":"all","includeContent":true,"cacheTtlSeconds":86400},"assets":{"client":null,"provider":"/js/search/local-search.js","shortcut":"/js/search/shortcut.js"}}},{"id":"hero-parallax","module":"/js/runtime/extensions/hero-parallax.js","scope":"region","when":{"selector":".wiki-hero"},"config":{}},{"id":"hero-effect","module":"/js/runtime/extensions/hero-effect.js","scope":"region","when":{"selector":"canvas[data-hero-effect]"},"config":{}},{"id":"lazy-loading","module":"/js/runtime/extensions/lazy-loading.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"}},{"id":"deferred-icons","module":"/js/runtime/extensions/deferred-icons.js","scope":"region","when":{"selector":"svg.icon[data-icon]"},"config":{}},{"id":"dropdown","module":"/js/runtime/extensions/dropdown.js","scope":"region","when":{"selector":"details.dropdown"},"config":{}},{"id":"services","module":"/js/runtime/extensions/services.js","scope":"region","when":{"selector":"#artalk_container, #twikoo_container, #waline_container, .data-service, [class*='ds-'], a[cardlink], a[data-md-link][data-siteinfo-api], .site-card [data-siteinfo-api], .voice\u003eaudio, .video\u003evideo, .chat-file"},"config":{"marked":"https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js"}},{"id":"settings","module":"/js/runtime/extensions/settings.js","scope":"region","when":{"selector":".settings-page"},"config":{}},{"id":"link-prefetch","module":"/js/runtime/extensions/link-prefetch.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"}},{"id":"lightbox","module":"/js/runtime/extensions/lightbox.js","scope":"region","when":{"selector":"[data-fancybox]:not(.error), .with-fancybox, .ds-memos, .timenode p\u003eimg"},"config":{"enabled":true,"selector":".timenode p\u003eimg","assets":{"localCss":"/css/plugins/fancybox.css","js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"}}},{"id":"reveal","module":"/js/runtime/extensions/reveal.js","scope":"region","when":{"selector":".slide-up"},"config":{"enabled":true,"duration":800,"interval":200,"distance":8,"blur":4}},{"id":"mathjax","module":"/js/runtime/extensions/mathjax.js","scope":"region","when":{"selector":".has-jax, script[type^='math/tex']"},"config":{"options":{},"asset":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"}},{"id":"code-copy","module":"/js/runtime/extensions/code-copy.js","scope":"region","when":{"selector":".code"},"config":{"assets":{"js":"/js/plugins/copycode.js"},"messages":{"label":"复制","copied":"复制成功","denied":"未获得剪贴板权限","unsupported":"当前浏览器不支持剪贴板或页面不是 HTTPS"}}},{"id":"adaptive-text","module":"/js/runtime/extensions/adaptive-text.js","scope":"region","when":{"selector":"[data-text-adaptive]"},"config":{"assets":{"colorJs":"/js/color.js","js":"/js/plugins/adaptive-text.js"}}},{"id":"swiper","module":"/js/runtime/extensions/swiper.js","scope":"region","when":{"selector":"#swiper-api"},"config":{"assets":{"localCss":"/css/plugins/swiper.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js","css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css"}}}]}</script>
+<script data-stellar-script="core" type="module" src="/js/runtime/index.js?v=2.0.0&runtime=1"></script>
+
+
+<!-- inject -->
+
+
+<script data-stellar-script="core" defer src="/js/navigation-init.js?v=2.0.0"></script>
+</div></body></html>
+
