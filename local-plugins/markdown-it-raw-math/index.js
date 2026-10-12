@@ -1,7 +1,7 @@
 /**
  * markdown-it-raw-math
  *
- * 背景：本站 math 由浏览器端 MathJax 渲染（见 _config.stellar.yml plugins.mathjax），
+ * 背景：本站 math 由浏览器端 MathJax 渲染（见 _config.stellar.yml features.math），
  * 服务端没有 markdown 插件"认领"公式时，markdown-it 会把公式当普通文本处理：
  *   1. emphasis 规则把 $...$ 里的 `_` 跨公式配对成 <em>，破坏 $ 配对；
  *   2. 反斜杠转义吞掉 `\;`、`\,`、`\{`、矩阵换行的 `\\`。
@@ -121,13 +121,18 @@ function escapeHtml(unsafe) {
 }
 
 module.exports = function raw_math_plugin(md) {
-    // 输出原样定界符，MathJax 在浏览器端读取 textContent 后自行渲染
+    // 输出原样定界符，MathJax 在浏览器端读取 textContent 后自行渲染。
+    // 另附一个空的 .has-jax 标记：Stellar v2 客户端 runtime 只有在区域内
+    // 匹配到 .has-jax 时才会加载 MathJax（见主题 contribution-registry
+    // 的 activation selector），$ 原样透传本身不会触发它，缺了这行公式
+    // 会保持源码态、完全不渲染。hidden 保证标记不占位、不可见。
+    var ACTIVATE = '<span class="has-jax" hidden></span>';
     md.renderer.rules.raw_math = function (tokens, idx) {
         var t = tokens[idx];
-        return escapeHtml(t.markup + t.content + t.markup);
+        return escapeHtml(t.markup + t.content + t.markup) + ACTIVATE;
     };
     md.renderer.rules.raw_math_block = function (tokens, idx) {
-        return escapeHtml('$$\n' + tokens[idx].content + '\n$$') + '\n';
+        return escapeHtml('$$\n' + tokens[idx].content + '\n$$') + ACTIVATE + '\n';
     };
 
     md.inline.ruler.after('escape', 'math_inline', math_inline);
