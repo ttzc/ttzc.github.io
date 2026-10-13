@@ -304,14 +304,14 @@
 
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;bdb4f8e6&#x2F;" title="代码模板-树状数组">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;4951afbf&#x2F;" title="代码模板-矩阵">
   
   
   <span class="ui-collection__initial" aria-hidden="true">代</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">代码模板-树状数组</span>
+      <span class="ui-collection__title">代码模板-矩阵</span>
       
       
     </span>
@@ -322,14 +322,14 @@
 
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;4951afbf&#x2F;" title="代码模板-矩阵">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;bdb4f8e6&#x2F;" title="代码模板-树状数组">
   
   
   <span class="ui-collection__initial" aria-hidden="true">代</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">代码模板-矩阵</span>
+      <span class="ui-collection__title">代码模板-树状数组</span>
       
       
     </span>
@@ -533,7 +533,7 @@
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">calc_RBS_3</span><span class="params">(<span class="type">const</span> string &amp;str)</span> </span>{</span><br><span class="line">    <span class="type">int</span> n = str.<span class="built_in">length</span>();</span><br><span class="line">    <span class="type">const</span> string s = <span class="string">" "</span> + str;</span><br><span class="line">    <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, lth = <span class="number">0</span>, maxl = <span class="number">0</span>;</span><br><span class="line">    set&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; st_cnt;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从左到右：处理"右括号不足"导致的断点</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">'('</span>) left++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (!left) lth = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> {</span><br><span class="line">            left--, lth += <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (!left) {                            <span class="comment">// left 归零 = 一段完整合法</span></span><br><span class="line">                <span class="keyword">if</span> (lth &gt; maxl) {</span><br><span class="line">                    maxl = lth;</span><br><span class="line">                    st_cnt.<span class="built_in">clear</span>();</span><br><span class="line">                    st_cnt.<span class="built_in">insert</span>({i - lth + <span class="number">1</span>, i});</span><br><span class="line">                } <span class="keyword">else</span> <span class="keyword">if</span> (lth == maxl)</span><br><span class="line">                    st_cnt.<span class="built_in">insert</span>({i - lth + <span class="number">1</span>, i});</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从右到左：处理"左括号不足"导致的断点</span></span><br><span class="line">    lth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n; i; i--) {</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">')'</span>) right++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (!right) lth = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> {</span><br><span class="line">            right--, lth += <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (!right) {</span><br><span class="line">                <span class="keyword">if</span> (lth &gt; maxl) {</span><br><span class="line">                    maxl = lth;</span><br><span class="line">                    st_cnt.<span class="built_in">clear</span>();</span><br><span class="line">                    st_cnt.<span class="built_in">insert</span>({i, i + lth - <span class="number">1</span>});</span><br><span class="line">                } <span class="keyword">else</span> <span class="keyword">if</span> (lth == maxl)</span><br><span class="line">                    st_cnt.<span class="built_in">insert</span>({i, i + lth - <span class="number">1</span>});</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> cnt = (st_cnt.<span class="built_in">size</span>() ? st_cnt.<span class="built_in">size</span>() : <span class="number">1</span>);</span><br><span class="line">    cout &lt;&lt; maxl &lt;&lt; <span class="string">' '</span> &lt;&lt; cnt &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>三种解法对比小结</strong>：DP 写法状态最紧凑、转移直接；栈写法思路最直观、适合初学者；双向贪心 + set 写法思路最巧妙——通过两次反向扫描覆盖两类断点，用 <code>set</code> 统一去重，避免了去重逻辑的显式编码。实际性能差距在 30ms 量级，三者都是可提交的优质解法，方法经典，都有学习的价值。</p>
 </article>
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/Codeforces/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>Codeforces</a><a class="tag" href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>括号序列</a><a class="tag" href="/tags/%E6%A0%88/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>栈</a><a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>字符串</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>动态规划</a><a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>字符串</a><a class="tag" href="/tags/Codeforces/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>Codeforces</a><a class="tag" href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>括号序列</a><a class="tag" href="/tags/%E6%A0%88/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>栈</a></div>
 
 
   <div class="article-share slide-up" id="share">
@@ -550,7 +550,7 @@
 </div>
     </section></div>
 
-<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note"><svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-left" aria-hidden="true"></svg> 较新文章</div><a href="/2983d0b1/">洛谷 P8818 策略游戏 - Solution</a></div><div class="item" id="next"><div class="note">较早文章 <svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-right" aria-hidden="true"></svg></div><a href="/2905f300/">Codeforces 26B Regular Bracket Sequence - Solution</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note"><svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-left" aria-hidden="true"></svg> 较新文章</div><a href="/2905f300/">Codeforces 26B Regular Bracket Sequence - Solution</a></div><div class="item" id="next"><div class="note">较早文章 <svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-right" aria-hidden="true"></svg></div><a href="/a7fba9f3/">代码模板-并查集</a></div></section></div>
 
 
 
