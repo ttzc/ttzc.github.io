@@ -338,14 +338,14 @@
 
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;41e5d11e&#x2F;" title="【数据结构】树状数组 学习笔记">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;492e958b&#x2F;" title="【线性代数】矩阵 学习笔记">
   
   
   <span class="ui-collection__initial" aria-hidden="true">【</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
       
       
     </span>
@@ -356,14 +356,14 @@
 
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;492e958b&#x2F;" title="【线性代数】矩阵 学习笔记">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;41e5d11e&#x2F;" title="【数据结构】树状数组 学习笔记">
   
   
   <span class="ui-collection__initial" aria-hidden="true">【</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
       
       
     </span>
@@ -540,7 +540,7 @@ $$<span class="has-jax" hidden=""></span>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxActiveSectionsAfterTrade</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(s)</span><br><span class="line">        cnt1 = <span class="number">0</span>          <span class="comment"># 1 的总数</span></span><br><span class="line">        pre = -<span class="number">1</span>          <span class="comment"># 上一个被 1 包围的 0 段长度，-1 表示尚不存在</span></span><br><span class="line">        mx = <span class="number">0</span>            <span class="comment"># 相邻两个 0 段长度之和的最大值</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; n:</span><br><span class="line">            j = i + <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> j &lt; n <span class="keyword">and</span> s[j] == s[i]:</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">            cur = j - i</span><br><span class="line">            <span class="keyword">if</span> s[i] == <span class="string">"1"</span>:</span><br><span class="line">                cnt1 += cur</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> pre != -<span class="number">1</span>:</span><br><span class="line">                    mx = <span class="built_in">max</span>(mx, pre + cur)</span><br><span class="line">                pre = cur</span><br><span class="line">            i = j</span><br><span class="line">        <span class="keyword">return</span> cnt1 + mx</span><br></pre></td></tr></tbody></table></figure>
 <p>两种写法复杂度同为 $O(n)$<span class="has-jax" hidden=""></span>，差异在空间与可读性：分段写法逻辑分层清晰，便于调试和理解；一次遍历写法空间更省、常数更小。思路都经典，都有学习的价值。</p>
 </article>
-<div class="article-tags slide-up"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>贪心</a><a class="tag" href="/tags/LeetCode/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>LeetCode</a><a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>字符串</a></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>贪心</a><a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>字符串</a><a class="tag" href="/tags/LeetCode/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>LeetCode</a></div>
 
 
   <div class="article-share slide-up" id="share">
