@@ -1,5 +1,5 @@
 ---
-title: 从凌晨灵感到发布：一个 AI 可读的人脉图谱 Skill 开发全记录
+title: 【Agent】从凌晨灵感到发布：一个 AI 可读的人脉图谱 Skill 开发全记录
 categories:
   - AI
 tags:
