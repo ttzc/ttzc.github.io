@@ -39,6 +39,101 @@
         ]
       }
     },
+    "https://bee-reg-ab.imagency.cn/mr/202611/03/6ae9476a11e6b.png": {
+      "updatedAt": "2026-11-03T02:44:05.951Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1390,
+        "height": 887
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          196.6572,
+          14.8125,
+          94.1234,
+          1
+        ]
+      }
+    },
+    "https://bee-reg-ab.imagency.cn/mr/202611/03/6ae9485c2b698.png": {
+      "updatedAt": "2026-11-03T02:44:05.936Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 530,
+        "height": 468
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          210.2795,
+          34.3318,
+          76.8917,
+          1
+        ]
+      }
+    },
+    "https://bee-reg-ab.imagency.cn/mr/202611/03/6ae9485cd1064.png": {
+      "updatedAt": "2026-11-03T02:44:06.376Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1778,
+        "height": 476
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          51.9512,
+          8.684,
+          96.086,
+          1
+        ]
+      }
+    },
+    "https://bee-reg-ab.imagency.cn/mr/202611/03/6ae948628062b.png": {
+      "updatedAt": "2026-11-03T02:44:08.308Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1476,
+        "height": 1608
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          244.0209,
+          5.2917,
+          79.9245,
+          1
+        ]
+      }
+    },
+    "https://bee-reg-ab.imagency.cn/mr/202611/03/6ae948b918005.png": {
+      "updatedAt": "2026-11-03T02:44:06.373Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 756,
+        "height": 492
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          50.9024,
+          8.8644,
+          96.6623,
+          1
+        ]
+      }
+    },
     "https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png": {
       "updatedAt": "2026-10-08T03:00:51.843Z",
       "dimensions": {
