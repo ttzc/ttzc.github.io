@@ -353,14 +353,14 @@
 
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
   
   
   <span class="ui-collection__initial" aria-hidden="true">【</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
       
       
     </span>
@@ -371,14 +371,14 @@
 
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/492e958b/" title="【线性代数】矩阵 学习笔记">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/41e5d11e/" title="【数据结构】树状数组 学习笔记">
   
   
   <span class="ui-collection__initial" aria-hidden="true">【</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
       
       
     </span>
@@ -435,7 +435,7 @@
     
     <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/AI/">AI</a>
-</div><div class="right"><span class="cap reading">815 字 · 预计阅读 3 分钟</span></div></div><div class="meta-row">
+</div><div class="right"><span class="cap reading">968 字 · 预计阅读 4 分钟</span></div></div><div class="meta-row">
 <div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-11-02T14:56:00.000Z">2026-11-02</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-11-02T14:56:00.000Z">2026-11-02</time></span></div>
 </div></div>
     
@@ -461,6 +461,13 @@
 <figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">process/</span><br><span class="line">    ├── train/{luo,miku}/...</span><br><span class="line">    ├── val/{luo,miku}/...</span><br><span class="line">    └── test/{luo,miku}/...</span><br></pre></td></tr></tbody></table></figure>
 <p>然后 <code>05_preprocess.py</code> 的功能是，统一了图片格式为 jpg，把长边分辨率使用 pillow 模块缩放到 1024。<br>
 至此数据准备与分组工作完成，把过程中用到的相关脚本上传到了 GitHub。</p>
+<h2 id="模型训练"><a class="markdownIt-Anchor" href="#模型训练"></a> 模型训练</h2>
+<h3 id="环境准备"><a class="markdownIt-Anchor" href="#环境准备"></a> 环境准备</h3>
+<p>我习惯使用 <code>uv</code> 工具来管理 Python 环境，我的轻薄本没有 GPU，需要配置 PyTorch CPU 环境，于是在 <code>pyproject.toml</code> 里写入了如下内容：</p>
+<figure class="highlight toml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[[tool.uv.index]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"pytorch-cpu"</span></span><br><span class="line"><span class="attr">url</span> = <span class="string">"https://download.pytorch.org/whl/cpu"</span></span><br><span class="line"><span class="attr">explicit</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.uv.sources]</span></span><br><span class="line"><span class="attr">torch</span> = { index = <span class="string">"pytorch-cpu"</span> }</span><br><span class="line"><span class="attr">torchvision</span> = { index = <span class="string">"pytorch-cpu"</span> }</span><br></pre></td></tr></tbody></table></figure>
+<p>接下来使用下面的命令配置了环境：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uv init</span><br><span class="line"><span class="comment"># 然后编辑 pyproject.toml，加入上面的 [[tool.uv.index]] 和 [tool.uv.sources]</span></span><br><span class="line">uv add torch torchvision</span><br><span class="line">uv add matplotlib numpy pandas pillow</span><br><span class="line">uv <span class="built_in">sync</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.cuda.is_available() <span class="comment"># cpu 版本</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></tbody></table></figure>
 <p>（未完待续）</p>
 </article>
 <div class="article-tags slide-up"><a class="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>深度学习</a><a class="tag" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>神经网络</a><a class="tag" href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>图像分类</a><a class="tag" href="/tags/PyTorch/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>PyTorch</a></div>
@@ -503,7 +510,7 @@
       <button type="button" class="cap-action ui-interactive card-hover card-hover--spotlight" data-shell-action="toggle-toc" aria-label="Toggle table of contents" aria-pressed="false"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg></span></button>
     </div>
   
-  <div class="widget-body"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-text"> 场景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"><span class="toc-text"> 数据准备</span></a></li></ol></div>
+  <div class="widget-body"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-text"> 场景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"><span class="toc-text"> 数据准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83"><span class="toc-text"> 模型训练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text"> 环境准备</span></a></li></ol></li></ol></div>
   <div class="widget-footer"><a class="top ui-interactive" onclick="util.scrollTop()"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M20.536 3.464C22 4.93 22 7.286 22 12s0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12s0-7.071 1.464-8.536C4.93 2 7.286 2 12 2s7.071 0 8.535 1.464" opacity=".5"></path><path fill="currentColor" d="M9.53 12.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 9.56z"></path><path fill="currentColor" d="M9.53 16.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 13.56z"></path></svg></span><span>回到顶部</span></a></div>
 </widget>
 
