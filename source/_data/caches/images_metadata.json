@@ -20,6 +20,25 @@
         ]
       }
     },
+    "https://bee-reg-ab.imagency.cn/mr/202611/02/6ae8ad56f17ca.png": {
+      "updatedAt": "2026-11-02T15:34:42.664Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 866,
+        "height": 828
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          211.0129,
+          1.2509,
+          76.5715,
+          1
+        ]
+      }
+    },
     "https://bee-reg-ab.imagency.cn/p/b2ba9b1825fc95cae4db249c1ef38a81.png": {
       "updatedAt": "2026-10-08T03:00:51.843Z",
       "dimensions": {
