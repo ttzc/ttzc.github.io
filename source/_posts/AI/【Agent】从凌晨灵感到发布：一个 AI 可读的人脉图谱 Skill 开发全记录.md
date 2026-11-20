@@ -111,7 +111,7 @@ INDEX.md 是 AI 的入口——里面有联系人总览表 + 三层标签导航�
 
 **安全审计发布**：推送 GitHub 后，用安全审查工具做了完整审计。结论 Benign——无远程下载、无自动执行、无凭证泄露。顺便试用了一下 WorkBuddy 的智能体邮箱功能，直接把打包好的 zip 作为附件发给了一个初中同学——从打包到发送全程不用离开对话界面，比手动开网页邮箱快多了。
 
-已发布到 SkillHub 市场：[relationship-graph](https://skillhub.cn/skills/user_e267c873/relationship-graph)
+已发布到 SkillHub 市场：[relationship-graph](https://skillhub.cn/skills/indiv-zaochen/relationship-graph)
 
 ### 7. 最终 Skill 结构
 
@@ -153,4 +153,4 @@ relationship-graph/
 如果你也想建立自己的关系图谱，可以直接在SkillHub安装这个Skill，按模板录入即可。当然，这个项目在数据组织等方面还存在很多可以改进的地方，欢迎开发者朋友在 GitHub 进行贡献。
 
 - GitHub：[github.com/ttzc/relationship-graph](https://github.com/ttzc/relationship-graph)
-- SkillHub：[skillhub.cn/skills/user_e267c873/relationship-graph](https://skillhub.cn/skills/user_e267c873/relationship-graph)
+- SkillHub：[skillhub.cn/skills/indiv-zaochen/relationship-graph](https://skillhub.cn/skills/indiv-zaochen/relationship-graph)

@@ -247,6 +247,25 @@
           1
         ]
       }
+    },
+    "https://www.mztlab.net/favicon.svg": {
+      "updatedAt": "2026-11-18T13:38:37.290Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1080,
+        "height": 1080
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          189.1734,
+          26.5174,
+          12.8785,
+          1
+        ]
+      }
     }
   }
 }
