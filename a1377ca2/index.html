@@ -340,24 +340,6 @@
 
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;bdb4f8e6&#x2F;" title="代码模板-树状数组">
-  
-  
-  <span class="ui-collection__initial" aria-hidden="true">代</span>
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">代码模板-树状数组</span>
-      
-      
-    </span>
-  
-  
-  
-</a>
-
-  
-    
 <a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;4951afbf&#x2F;" title="代码模板-矩阵">
   
   
@@ -376,14 +358,14 @@
 
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;492e958b&#x2F;" title="【线性代数】矩阵 学习笔记">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;bdb4f8e6&#x2F;" title="代码模板-树状数组">
   
   
-  <span class="ui-collection__initial" aria-hidden="true">【</span>
+  <span class="ui-collection__initial" aria-hidden="true">代</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
+      <span class="ui-collection__title">代码模板-树状数组</span>
       
       
     </span>
@@ -402,6 +384,24 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">【数据结构】树状数组 学习笔记</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;492e958b&#x2F;" title="【线性代数】矩阵 学习笔记">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">【</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">【线性代数】矩阵 学习笔记</span>
       
       
     </span>
@@ -440,7 +440,7 @@
     
     <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/AI/">AI</a>
-</div><div class="right"><span class="cap reading">3744 字 · 预计阅读 13 分钟</span></div></div><div class="meta-row">
+</div><div class="right"><span class="cap reading">3736 字 · 预计阅读 13 分钟</span></div></div><div class="meta-row">
 <div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-08-08T11:56:00.000Z">2026-08-08</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-11-23T14:50:00.000Z">2026-11-23</time></span></div>
 </div></div>
     
@@ -546,7 +546,7 @@
 <tbody>
 <tr>
 <td>INDEX 对账</td>
-<td>两行误并成一行的坏行、联系人缺行、名单计数过期（名单 6/46 而 INDEX 还写 5/47）、导航行指向不存在的文件、触发标签格落后于档案</td>
+<td>两行误并成一行的坏行、联系人缺行、名单计数过期、导航行指向不存在的文件、触发标签格落后于档案</td>
 </tr>
 <tr>
 <td>标签页成员双向核对</td>
@@ -575,12 +575,12 @@
 <li><code>platform</code>（单数）/ <code>met</code> 扶正——54/55 个文件实际早就这么写，规范定的 <code>platforms</code> / <code>context</code> 只有第一个人遵守，于是统一了一下；</li>
 <li>新增 <code>platform.qq_nickname</code> / <code>wechat_nickname</code> 昵称子键。动机是一起识别事故：档案只记了 QQ 号没记昵称，聊天记录里对方以昵称出现，AI 认不出来、当成陌生人重新分析了一遍。教训「要连昵称一起记」当初只写在了那人的备注里，模板却没改——这次把它变成结构字段和审计提示，散落各处（YAML 注释、<code>other</code> 文案、QQ 号值里的括号注释）的昵称全部统一归宿；</li>
 <li><code>strength</code> 从英文枚举改为<strong>自由词、零校验</strong>：55 个文件只有 1 个用枚举，实际写的是「恩师」「刚建联」「最最好的朋友（QQ 置顶）」。枚举已死，与其留着死规范，不如给一份仅参考的中文词表；</li>
-<li>INDEX 第 2 列收编为「缩写·网名」检索列（拼音首字母 + 空格分隔网名）——不加新列，把已经发生的使用习惯扶正，2d 检索群聊昵称优先命中这里；</li>
+<li>INDEX 第 2 列收编为「缩写·网名」检索列（拼音首字母 + 空格分隔网名）——不加新列，把已经发生的使用习惯扶正，处理聊天记录检索昵称优先命中这里；</li>
 <li>名单计数规范形 <code>N 已登记 / M 仅名单（另含本人）</code>，审计逐份核对。</li>
 </ul>
 <p><strong>方法论沉淀</strong>：</p>
 <ul>
-<li>聊天记录处理（2d）：步骤 0「先识别身份，再解读内容」——拿到任何群聊记录，先全库 grep 每个昵称 / QQ 号确认谁已入库；QQ 截图附件要下载下来真做视觉识别，截图的信息量常常大于文字层；</li>
+<li>聊天记录处理：步骤 0「先识别身份，再解读内容」——拿到任何群聊记录，先全库 grep 每个昵称 / QQ 号确认谁已入库；QQ 截图附件要下载下来真做视觉识别，截图的信息量常常大于文字层；</li>
 <li>导入版式：<code>## 2026-10-23 · 主题</code> + <code>&gt; 来源</code> + <code>谁 | 原话</code> 逐字表，放联系人文件末尾按日期升序；引用原话保留原始措辞；</li>
 <li><strong>批量补全的保真原则</strong>：这次重构是 AI 批量脚本干的，翻车方式很典型——把标签页里人工精选的语境行覆盖成从 <code>identity</code> 字段硬截断的通用串（切出半截括号、半截英文 handle）。由此立了四条规矩：不覆盖人工评注、截断宁可长不可断、删散键必须把信息迁进备注、改完必扫 git diff。一句话：<strong>审计保证「没错」，diff 保证「没退化」</strong>——审计抓不到语义倒退。</li>
 </ul>
